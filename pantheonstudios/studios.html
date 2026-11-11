@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-[#0d0405] text-amber-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pantheon Studio - Minecraft Mods, Plugins & Development</title>
+    
+    <!-- Google Fonts: Cinzel & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="flex flex-col min-h-full font-sans antialiased bg-[#0d0405] text-amber-100/90 selection:bg-amber-500 selection:text-black">
+
+    <!-- Header Banner / Logo Branding -->
+    <header class="bg-gradient-to-b from-[#1a0507] via-[#120406] to-[#0d0405] border-b border-amber-500/30 pt-6 pb-4 shadow-2xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
+            
+            <!-- Logo Container -->
+            <div class="flex items-center justify-center space-x-3 mb-2">
+                <h1 class="font-cinzel text-3xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-600 tracking-widest uppercase drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]">
+                    Pantheon
+                </h1>
+                <img class="h-10 sm:h-14 w-auto rounded-full border border-amber-500/40 object-contain drop-shadow-[0_2px_10px_rgba(245,158,11,0.5)] transition-transform duration-300 hover:scale-105" src="/images/logo.png" alt="pantheon_logo">
+            </div>
+            
+            <!-- Navigation Links (Single-Line Flex) -->
+            <nav class="mt-4 flex flex-nowrap justify-center items-center gap-1 sm:gap-4 border-t border-amber-500/20 pt-4 w-full max-w-4xl font-cinzel overflow-x-auto whitespace-nowrap">
+                <a href="/index.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Home</a>
+                <a href="/pantheon/tournaments.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Tournaments</a>
+                <a href="/pantheonnetwork/network.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Pantheon Network</a>
+                <a href="/pantheonstudios/studios.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-400 bg-amber-500/10 border border-amber-500/40 rounded transition-all duration-300 shadow-[0_0_10px_rgba(245,158,11,0.2)] hover:-translate-y-0.5">Pantheon Studio</a>
+                <a href="/pantheon/community.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/75 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Community</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+        
+        <!-- SECTION 1: Studio Hero Intro & Metrics -->
+        <section class="bg-gradient-to-r from-[#320a0e] via-[#1c0407] to-[#120406] p-6 sm:p-10 rounded-xl border border-amber-500/40 shadow-[0_0_30px_rgba(139,0,0,0.3)] flex flex-col md:flex-row items-center justify-between gap-8">
+            <div class="space-y-3 max-w-2xl text-center md:text-left">
+                <span class="font-cinzel px-2.5 py-0.5 text-[10px] font-black uppercase bg-amber-500 text-black rounded tracking-widest">Development Division</span>
+                <h2 class="font-cinzel text-3xl sm:text-4xl font-black text-amber-300 tracking-wide uppercase drop-shadow">Pantheon Development Studio</h2>
+                <p class="text-sm sm:text-base text-amber-100/80 leading-relaxed">
+                    The technical backbone of Pantheon. Our specialized development branch engineers custom Minecraft mods, performance modpacks, server plugins, and high-definition resource packs for our network and the global gaming community.
+                </p>
+            </div>
+
+            <!-- Tech Badges & Quick Stats -->
+            <div class="w-full md:w-auto bg-[#100305] border border-amber-500/40 p-6 rounded-xl text-center space-y-4 shadow-xl min-w-[280px]">
+                <span class="font-cinzel text-xs font-bold text-amber-400 uppercase tracking-widest">Toolkit & Ecosystem</span>
+                <div class="flex flex-wrap justify-center gap-2 font-mono text-xs">
+                    <span class="px-2.5 py-1 bg-[#1a0507] border border-amber-500/30 text-amber-200 rounded">Fabric</span>
+                    <span class="px-2.5 py-1 bg-[#1a0507] border border-amber-500/30 text-amber-200 rounded">Forge / Neo</span>
+                    <span class="px-2.5 py-1 bg-[#1a0507] border border-amber-500/30 text-amber-200 rounded">Paper/Spigot</span>
+                    <span class="px-2.5 py-1 bg-[#1a0507] border border-amber-500/30 text-amber-200 rounded">Blockbench</span>
+                </div>
+                <div class="border-t border-amber-500/20 pt-3 flex justify-around text-xs">
+                    <div>
+                        <span class="block text-[10px] text-amber-100/50 uppercase">Projects</span>
+                        <strong class="font-cinzel text-amber-300 text-sm">12+ Active</strong>
+                    </div>
+                    <div>
+                        <span class="block text-[10px] text-amber-100/50 uppercase">Downloads</span>
+                        <strong class="font-cinzel text-emerald-400 text-sm">50K+ Total</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: Modrinth Projects Gallery (Themed Emerald / Green) -->
+        <section class="space-y-6">
+            <div class="flex items-center justify-between border-b border-[#1bd96a]/30 pb-4">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 rounded bg-[#1bd96a]/20 border border-[#1bd96a]/50 flex items-center justify-center font-bold text-[#1bd96a] text-sm">M</div>
+                    <div>
+                        <span class="font-cinzel text-[10px] text-[#1bd96a] uppercase tracking-widest font-bold">Open-Source Ecosystem</span>
+                        <h3 class="font-cinzel text-2xl font-black text-slate-100 uppercase tracking-wide">Modrinth Projects</h3>
+                    </div>
+                </div>
+                <a href="https://modrinth.com" target="_blank" class="font-cinzel hidden sm:inline-block text-xs font-bold text-[#1bd96a] hover:underline uppercase tracking-wider">
+                    View Organization Profile &rarr;
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Modrinth Item 1 -->
+                <div class="bg-gradient-to-b from-[#0a1e12] to-[#07120b] border border-[#1bd96a]/30 rounded-xl p-6 shadow-xl flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:border-[#1bd96a]/70 hover:shadow-[0_10px_25px_rgba(27,217,106,0.15)]">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-2 py-0.5 text-[10px] font-black uppercase bg-[#1bd96a]/20 text-[#1bd96a] border border-[#1bd96a]/40 rounded">Modpack</span>
+                            <span class="text-[11px] text-emerald-300/70 font-mono">Fabric 1.20+</span>
+                        </div>
+                        <h4 class="font-cinzel text-lg font-bold text-slate-100 mb-2">Pantheon Optimized</h4>
+                        <p class="text-xs text-slate-300/70 leading-relaxed mb-4">
+                            A lightweight performance modpack fine-tuned for high FPS, ultra-fast chunk rendering, and seamless esports multiplayer.
+                        </p>
+                    </div>
+                    <div class="border-t border-[#1bd96a]/20 pt-4 flex items-center justify-between">
+                        <span class="text-[11px] font-mono text-emerald-400">⚡ 28.4K Downloads</span>
+                        <a href="#" class="font-cinzel text-xs font-bold uppercase text-[#1bd96a] hover:text-white transition-colors">Download &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Modrinth Item 2 -->
+                <div class="bg-gradient-to-b from-[#0a1e12] to-[#07120b] border border-[#1bd96a]/30 rounded-xl p-6 shadow-xl flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:border-[#1bd96a]/70 hover:shadow-[0_10px_25px_rgba(27,217,106,0.15)]">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-2 py-0.5 text-[10px] font-black uppercase bg-[#1bd96a]/20 text-[#1bd96a] border border-[#1bd96a]/40 rounded">Mod</span>
+                            <span class="text-[11px] text-emerald-300/70 font-mono">Fabric / Forge</span>
+                        </div>
+                        <h4 class="font-cinzel text-lg font-bold text-slate-100 mb-2">Olympus HUD Extras</h4>
+                        <p class="text-xs text-slate-300/70 leading-relaxed mb-4">
+                            Custom heads-up display mod featuring real-time ping trackers, team status overlays, and clean competitive indicators.
+                        </p>
+                    </div>
+                    <div class="border-t border-[#1bd96a]/20 pt-4 flex items-center justify-between">
+                        <span class="text-[11px] font-mono text-emerald-400">⚡ 12.1K Downloads</span>
+                        <a href="#" class="font-cinzel text-xs font-bold uppercase text-[#1bd96a] hover:text-white transition-colors">Download &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Modrinth Item 3 -->
+                <div class="bg-gradient-to-b from-[#0a1e12] to-[#07120b] border border-[#1bd96a]/30 rounded-xl p-6 shadow-xl flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:border-[#1bd96a]/70 hover:shadow-[0_10px_25px_rgba(27,217,106,0.15)]">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-2 py-0.5 text-[10px] font-black uppercase bg-[#1bd96a]/20 text-[#1bd96a] border border-[#1bd96a]/40 rounded">Resource Pack</span>
+                            <span class="text-[11px] text-emerald-300/70 font-mono">Universal</span>
+                        </div>
+                        <h4 class="font-cinzel text-lg font-bold text-slate-100 mb-2">Pantheon Royal Textures</h4>
+                        <p class="text-xs text-slate-300/70 leading-relaxed mb-4">
+                            Dark royal red and gold UI revamp for Minecraft’s native menus, inventory containers, and hotbars.
+                        </p>
+                    </div>
+                    <div class="border-t border-[#1bd96a]/20 pt-4 flex items-center justify-between">
+                        <span class="text-[11px] font-mono text-emerald-400">⚡ 9.8K Downloads</span>
+                        <a href="#" class="font-cinzel text-xs font-bold uppercase text-[#1bd96a] hover:text-white transition-colors">Download &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: CurseForge Projects Gallery (Themed Flame Orange) -->
+        <section class="space-y-6">
+            <div class="flex items-center justify-between border-b border-[#f16436]/30 pb-4">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 rounded bg-[#f16436]/20 border border-[#f16436]/50 flex items-center justify-center font-bold text-[#f16436] text-sm">C</div>
+                    <div>
+                        <span class="font-cinzel text-[10px] text-[#f16436] uppercase tracking-widest font-bold">CurseForge Catalog</span>
+                        <h3 class="font-cinzel text-2xl font-black text-slate-100 uppercase tracking-wide">CurseForge Projects</h3>
+                    </div>
+                </div>
+                <a href="https://curseforge.com" target="_blank" class="font-cinzel hidden sm:inline-block text-xs font-bold text-[#f16436] hover:underline uppercase tracking-wider">
+                    View Author Hub &rarr;
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- CurseForge Item 1 -->
+                <div class="bg-gradient-to-b from-[#25100a] to-[#120704] border border-[#f16436]/30 rounded-xl p-6 shadow-xl flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:border-[#f16436]/70 hover:shadow-[0_10px_25px_rgba(241,100,54,0.15)]">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-2 py-0.5 text-[10px] font-black uppercase bg-[#f16436]/20 text-[#f16436] border border-[#f16436]/40 rounded">Modpack</span>
+                            <span class="text-[11px] text-orange-300/70 font-mono">Forge 1.20</span>
+                        </div>
+                        <h4 class="font-cinzel text-lg font-bold text-slate-100 mb-2">Pantheon SMP Pack</h4>
+                        <p class="text-xs text-slate-300/70 leading-relaxed mb-4">
+                            The official modpack used on our survival server. Features claim integrations, proximity voice chat, and custom cosmetics.
+                        </p>
+                    </div>
+                    <div class="border-t border-[#f16436]/20 pt-4 flex items-center justify-between">
+                        <span class="text-[11px] font-mono text-orange-400">🔥 18.2K Downloads</span>
+                        <a href="#" class="font-cinzel text-xs font-bold uppercase text-[#f16436] hover:text-white transition-colors">Download &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- CurseForge Item 2 -->
+                <div class="bg-gradient-to-b from-[#25100a] to-[#120407] border border-[#f16436]/30 rounded-xl p-6 shadow-xl flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:border-[#f16436]/70 hover:shadow-[0_10px_25px_rgba(241,100,54,0.15)]">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-2 py-0.5 text-[10px] font-black uppercase bg-[#f16436]/20 text-[#f16436] border border-[#f16436]/40 rounded">Plugin</span>
+                            <span class="text-[11px] text-orange-300/70 font-mono">Paper / Spigot</span>
+                        </div>
+                        <h4 class="font-cinzel text-lg font-bold text-slate-100 mb-2">Guild & Clan System</h4>
+                        <p class="text-xs text-slate-300/70 leading-relaxed mb-4">
+                            High-performance server plugin enabling players to form esports clans, declare scrim matches, and manage shared banks.
+                        </p>
+                    </div>
+                    <div class="border-t border-[#f16436]/20 pt-4 flex items-center justify-between">
+                        <span class="text-[11px] font-mono text-orange-400">🔥 14.7K Downloads</span>
+                        <a href="#" class="font-cinzel text-xs font-bold uppercase text-[#f16436] hover:text-white transition-colors">Download &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- CurseForge Item 3 -->
+                <div class="bg-gradient-to-b from-[#25100a] to-[#120704] border border-[#f16436]/30 rounded-xl p-6 shadow-xl flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:border-[#f16436]/70 hover:shadow-[0_10px_25px_rgba(241,100,54,0.15)]">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-2 py-0.5 text-[10px] font-black uppercase bg-[#f16436]/20 text-[#f16436] border border-[#f16436]/40 rounded">Custom Asset</span>
+                            <span class="text-[11px] text-orange-300/70 font-mono">Blockbench</span>
+                        </div>
+                        <h4 class="font-cinzel text-lg font-bold text-slate-100 mb-2">Pantheon Armors & Crowns</h4>
+                        <p class="text-xs text-slate-300/70 leading-relaxed mb-4">
+                            3D model pack adding Spartan and Roman-inspired ceremonial armor sets and trophies for server rewards.
+                        </p>
+                    </div>
+                    <div class="border-t border-[#f16436]/20 pt-4 flex items-center justify-between">
+                        <span class="text-[11px] font-mono text-orange-400">🔥 8.9K Downloads</span>
+                        <a href="#" class="font-cinzel text-xs font-bold uppercase text-[#f16436] hover:text-white transition-colors">Download &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: Commissions & Support Section (Request Project / Donate) -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <!-- Request a Project (Commission) Card -->
+            <div class="bg-gradient-to-b from-[#320a0e] to-[#1a0507] border border-amber-500/40 rounded-xl p-6 sm:p-8 shadow-xl flex flex-col justify-between space-y-6">
+                <div>
+                    <span class="font-cinzel px-2.5 py-0.5 text-[10px] font-black uppercase bg-amber-500 text-black rounded tracking-wider">Custom Development</span>
+                    <h3 class="font-cinzel text-2xl font-black text-amber-300 mt-2 mb-3 uppercase">Request a Custom Project</h3>
+                    <p class="text-xs sm:text-sm text-amber-100/70 leading-relaxed">
+                        Need a custom Minecraft plugin, tailored modpack, or custom 3D model for your server or content creation team? Our studio takes on custom commission work.
+                    </p>
+                </div>
+                <a href="#" class="font-cinzel text-center block w-full py-3 bg-gradient-to-r from-amber-400 to-amber-600 hover:from-amber-300 hover:to-amber-500 text-black font-extrabold uppercase tracking-wider text-xs rounded-lg transition-all shadow-[0_0_15px_rgba(245,158,11,0.3)]">
+                    Submit Project Brief &rarr;
+                </a>
+            </div>
+
+            <!-- Donate & Support Studio Card -->
+            <div class="bg-gradient-to-b from-[#320a0e] to-[#1a0507] border border-amber-500/40 rounded-xl p-6 sm:p-8 shadow-xl flex flex-col justify-between space-y-6">
+                <div>
+                    <span class="font-cinzel px-2.5 py-0.5 text-[10px] font-black uppercase bg-emerald-950 text-emerald-400 border border-emerald-500/40 rounded tracking-wider">Support Free Mods</span>
+                    <h3 class="font-cinzel text-2xl font-black text-amber-300 mt-2 mb-3 uppercase">Support Pantheon Studio</h3>
+                    <p class="text-xs sm:text-sm text-amber-100/70 leading-relaxed">
+                        Our public mods and plugins remain 100% free and open-source. Help fund server infrastructure, test environments, and development coffee!
+                    </p>
+                </div>
+                <div class="flex gap-3">
+                    <a href="https://ko-fi.com" target="_blank" class="font-cinzel flex-1 text-center py-3 bg-[#24070a] border border-amber-500/30 hover:border-amber-400 text-amber-300 font-bold uppercase tracking-wider text-xs rounded-lg transition-all">
+                        Ko-fi / Patreon
+                    </a>
+                    <a href="https://github.com/sponsors" target="_blank" class="font-cinzel flex-1 text-center py-3 bg-[#24070a] border border-amber-500/30 hover:border-amber-400 text-amber-300 font-bold uppercase tracking-wider text-xs rounded-lg transition-all">
+                        GitHub Sponsor
+                    </a>
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#080203] border-t border-amber-500/20 text-amber-100/50 py-6 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs space-y-2">
+            <p class="font-cinzel font-bold text-amber-400 tracking-widest uppercase">&copy; 2026 Pantheon Esports Organization. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

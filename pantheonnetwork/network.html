@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-[#0d0405] text-amber-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pantheon Network - Minecraft & Community Hub</title>
+    
+    <!-- Google Fonts: Cinzel & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="flex flex-col min-h-full font-sans antialiased bg-[#0d0405] text-amber-100/90 selection:bg-amber-500 selection:text-black">
+
+    <!-- Header Banner / Logo Branding -->
+    <header class="bg-gradient-to-b from-[#1a0507] via-[#120406] to-[#0d0405] border-b border-amber-500/30 pt-6 pb-4 shadow-2xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
+            
+            <!-- Logo Container -->
+            <div class="flex items-center justify-center space-x-3 mb-2">
+                <h1 class="font-cinzel text-3xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-600 tracking-widest uppercase drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]">
+                    Pantheon
+                </h1>
+                <img class="h-10 sm:h-14 w-auto rounded-full border border-amber-500/40 object-contain drop-shadow-[0_2px_10px_rgba(245,158,11,0.5)] transition-transform duration-300 hover:scale-105" src="/images/logo.png" alt="pantheon_logo">
+            </div>
+            
+            <!-- Navigation Links (Single-Line Flex) -->
+            <nav class="mt-4 flex flex-nowrap justify-center items-center gap-1 sm:gap-4 border-t border-amber-500/20 pt-4 w-full max-w-4xl font-cinzel overflow-x-auto whitespace-nowrap">
+                <a href="/index.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Home</a>
+                <a href="/pantheon/tournaments.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Tournaments</a>
+                <a href="/pantheonnetwork/network.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-400 bg-amber-500/10 border border-amber-500/40 rounded transition-all duration-300 shadow-[0_0_10px_rgba(245,158,11,0.2)] hover:-translate-y-0.5">Pantheon Network</a>
+                <a href="/pantheonstudios/studios.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Pantheon Studio</a>
+                <a href="/pantheon/community.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/75 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Community</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+        
+        <!-- SECTION 1: Network Intro Banner & One-Click Connect IP -->
+        <section class="bg-gradient-to-r from-[#320a0e] via-[#1c0407] to-[#120406] p-6 sm:p-10 rounded-xl border border-amber-500/40 shadow-[0_0_30px_rgba(139,0,0,0.3)] flex flex-col md:flex-row items-center justify-between gap-8">
+            <div class="space-y-3 max-w-2xl text-center md:text-left">
+                <div class="inline-flex items-center space-x-2 px-3 py-1 bg-amber-500/20 border border-amber-500/30 rounded-full">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span class="font-cinzel text-xs font-bold uppercase text-amber-300">Server Status: Online</span>
+                </div>
+                <h2 class="font-cinzel text-3xl sm:text-4xl font-black text-amber-300 tracking-wide uppercase drop-shadow">Pantheon Minecraft Network</h2>
+                <p class="text-sm sm:text-base text-amber-100/80 leading-relaxed">
+                    Welcome to the official gaming hub for Pantheon. Hang out, build your base, and chill with fellow esports players, team rosters, and community members in our dedicated Survival Multiplayer world.
+                </p>
+            </div>
+
+            <!-- Server Connection Widget -->
+            <div class="w-full md:w-auto bg-[#100305] border border-amber-500/40 p-6 rounded-xl text-center space-y-4 shadow-xl min-w-[280px]">
+                <span class="font-cinzel text-xs font-bold text-amber-400 uppercase tracking-widest">Connect & Play</span>
+                <div class="transition-all duration-300 hover:-translate-y-2 hover:border-amber-400/80 hover:shadow-[0_12px_30px_rgba(139,0,0,0.4)] bg-[#1c0507] border border-amber-500/30 px-4 py-2.5 rounded-lg flex items-center justify-between gap-3">
+                    <span id="server-ip" class="font-mono text-sm font-bold text-amber-200">play.pantheonesports.com</span>
+                    <button onclick="copyIP()" class="font-cinzel text-[11px] font-black uppercase text-black bg-gradient-to-r from-amber-400 to-amber-600 px-3 py-1.5 rounded hover:brightness-110 transition-all shadow">
+                        <span id="copy-btn-text">Copy</span>
+                    </button>
+                </div>
+                <p class="text-[11px] text-amber-100/50">Java & Bedrock Compatible • Version 1.21+</p>
+            </div>
+        </section>
+
+        <!-- SECTION 2: Compact Gamemodes Grid -->
+        <section class="space-y-6">
+            <div class="border-b border-amber-500/20 pb-4">
+                <span class="font-cinzel text-xs text-amber-400/80 uppercase tracking-widest font-bold">Featured Gamemodes</span>
+                <h3 class="font-cinzel text-2xl font-black text-amber-400 uppercase tracking-wide">Network Server Modes</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <!-- Gamemode 1: Survival SMP (Compact Card) -->
+                <div class="bg-gradient-to-b from-[#320a0e] to-[#1a0507] border border-amber-500/40 rounded-xl p-6 shadow-xl relative overflow-hidden group transition-all duration-300 hover:-translate-y-2 hover:border-amber-400/80 hover:shadow-[0_12px_30px_rgba(139,0,0,0.4)] flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="font-cinzel px-2.5 py-0.5 text-[10px] font-black uppercase bg-amber-500 text-black rounded tracking-wider">Active Mode</span>
+                            <span class="text-xs font-semibold text-amber-400/80">Survival</span>
+                        </div>
+                        <h4 class="font-cinzel text-xl font-bold text-amber-300 mb-2">Pantheon SMP</h4>
+                        <p class="text-xs text-amber-100/70 leading-relaxed mb-4">
+                            Our primary community survival world featuring grief prevention, player-driven economy, custom land claiming, and no seasonal map resets.
+                        </p>
+                    </div>
+                    <div class="border-t border-amber-500/20 pt-4 flex items-center justify-between text-xs text-amber-100/60">
+                        <span>Version: <strong class="text-amber-300">1.21+</strong></span>
+                        <span>Mode: <strong class="text-amber-300">PvE / Claims</strong></span>
+                    </div>
+                </div>
+
+                <!-- Gamemode 2: Future Expansion Teaser (Compact Card) -->
+                <div class="bg-gradient-to-b from-[#1b0609] to-[#0f0406] border border-dashed border-amber-500/30 rounded-xl p-6 shadow-xl relative overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="font-cinzel px-2.5 py-0.5 text-[10px] font-black uppercase bg-purple-950 text-purple-400 border border-purple-500/40 rounded tracking-wider">In Development</span>
+                            <span class="text-xs font-semibold text-amber-400/80">Mini-Games</span>
+                        </div>
+                        <h4 class="font-cinzel text-xl font-bold text-amber-300 mb-2">Practice & Scrim Hubs</h4>
+                        <p class="text-xs text-amber-100/60 leading-relaxed mb-4">
+                            Custom BedWars, duel arenas, and tournament warmup lobbies are currently being engineered for future community seasons.
+                        </p>
+                    </div>
+                    <div class="border-t border-amber-500/20 pt-4 flex items-center justify-between text-xs text-amber-100/50">
+                        <span>Status: <strong class="text-amber-400/70">Coming Soon</strong></span>
+                        <span>Access: <strong class="text-amber-400/70">Season 2</strong></span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 3: Official Webstore Section -->
+        <section class="bg-gradient-to-r from-[#4a0d14] via-[#31080d] to-[#1c0407] border border-amber-500/50 rounded-xl p-6 sm:p-10 shadow-2xl transition-all duration-300 hover:border-amber-400">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+                
+                <div class="space-y-4 max-w-2xl text-center md:text-left">
+                    <span class="font-cinzel px-2.5 py-0.5 text-[10px] font-black uppercase bg-amber-500 text-black rounded tracking-widest">Support the Network</span>
+                    <h3 class="font-cinzel text-2xl sm:text-3xl font-black text-amber-300 uppercase tracking-wide">Pantheon Official Store</h3>
+                    <p class="text-xs sm:text-sm text-amber-100/80 leading-relaxed">
+                        Enhance your gameplay experience and support network server operations. Unlock exclusive VIP ranks, cosmetic titles, chat prefixes, and claim expansion packs directly through our webstore.
+                    </p>
+
+                    <!-- Feature Badges -->
+                    <div class="flex flex-wrap gap-2 justify-center md:justify-start font-cinzel pt-2">
+                        <span class="px-3 py-1 bg-[#180507] border border-amber-500/30 text-[11px] font-bold text-amber-300 rounded">👑 VIP Ranks</span>
+                        <span class="px-3 py-1 bg-[#180507] border border-amber-500/30 text-[11px] font-bold text-amber-300 rounded">✨ Custom Tags</span>
+                        <span class="px-3 py-1 bg-[#180507] border border-amber-500/30 text-[11px] font-bold text-amber-300 rounded">🔑 Cosmetic Keys</span>
+                    </div>
+                </div>
+
+                <!-- Visit Store Button -->
+                <div class="w-full md:w-auto text-center">
+                    <a href="https://store.pantheonesports.com" target="_blank" class="font-cinzel inline-block whitespace-nowrap px-8 py-4 bg-gradient-to-r from-amber-400 to-amber-600 hover:from-amber-300 hover:to-amber-500 text-black font-black uppercase tracking-wider text-xs sm:text-sm rounded-xl transition-all duration-300 hover:scale-105 shadow-[0_0_20px_rgba(245,158,11,0.4)]">
+                        Visit Official Store 🛒
+                    </a>
+                    <p class="text-[10px] text-amber-100/50 mt-2">Instant automatic checkout delivery</p>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#080203] border-t border-amber-500/20 text-amber-100/50 py-6 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs space-y-2">
+            <p class="font-cinzel font-bold text-amber-400 tracking-widest uppercase">&copy; 2026 Pantheon Esports Organization. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Copy IP JavaScript -->
+    <script>
+        function copyIP() {
+            const ip = document.getElementById('server-ip').innerText;
+            navigator.clipboard.writeText(ip);
+            
+            const btnText = document.getElementById('copy-btn-text');
+            btnText.innerText = "Copied!";
+            setTimeout(() => {
+                btnText.innerText = "Copy";
+            }, 2000);
+        }
+    </script>
+
+</body>
+</html>

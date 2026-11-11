@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-[#0d0405] text-amber-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pantheon - Esports & Competitive Gaming</title>
+
+    <!-- Google Fonts: Cinzel & Sans-serif -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="flex flex-col min-h-full font-sans antialiased bg-[#0d0405] text-amber-100/90 selection:bg-amber-500 selection:text-black">
+
+    <!-- Header Banner / Logo Branding -->
+<header class="bg-gradient-to-b from-[#1a0507] via-[#120406] to-[#0d0405] border-b border-amber-500/30 pt-6 pb-4 shadow-2xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
+
+        <!-- Logo Container -->
+        <div class="flex items-center justify-center space-x-3 mb-2">
+            <h1 class="font-cinzel text-3xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-600 tracking-widest uppercase drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]">
+                Pantheon
+            </h1>
+            <img class="h-10 sm:h-14 w-auto rounded-full border border-amber-500/40 object-contain drop-shadow-[0_2px_10px_rgba(245,158,11,0.5)] transition-transform duration-300 hover:scale-105" src="images/logo.png" alt="pantheon_logo">
+        </div>
+
+        <!-- Navigation Links (Single-Line Flex Wrapper) -->
+        <nav class="mt-4 flex flex-nowrap justify-center items-center gap-1 sm:gap-4 border-t border-amber-500/20 pt-4 w-full max-w-4xl font-cinzel overflow-x-auto whitespace-nowrap">
+            <a href="index.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-400 bg-amber-500/10 border border-amber-500/40 rounded transition-all duration-300 shadow-[0_0_10px_rgba(245,158,11,0.2)] hover:-translate-y-0.5">Home</a>
+            <a href="pantheon/tournaments.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Tournaments</a>
+            <a href="/pantheonnetwork/network.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Pantheon Network</a>
+            <a href="/pantheonstudios/studios.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Pantheon Studio</a>
+            <a href="/pantheon/community.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/75 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Community</a>
+
+        </nav>
+    </div>
+</header>
+
+    <!-- Main Container -->
+    <div class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col lg:flex-row gap-8">
+
+        <!-- Main Content Area -->
+        <main class="flex-1 bg-gradient-to-b from-[#1b0609] via-[#140507] to-[#0f0406] p-6 md:p-8 rounded-xl border border-amber-500/30 shadow-[0_0_25px_rgba(139,0,0,0.25)]">
+            <section class="space-y-8">
+
+                <!-- About Us Intro Section -->
+                <div>
+                    <h2 class="font-cinzel text-3xl font-bold text-amber-400 tracking-wide sm:text-4xl drop-shadow">About Us</h2>
+                    <p class="mt-4 text-base sm:text-lg text-amber-100/80 leading-relaxed">
+                        Founded in July, our organization is dedicated to training newly formed and inexperienced Mobile Legends: Bang Bang (MLBB) teams, empowering them to rise up and compete in the competitive scene. We bridge the gap between amateur play and competitive glory by providing development resources and exciting opportunities for new rosters to build their reputation—highlighted by our flagship, recurring league, <span class="font-bold text-amber-400 font-cinzel">Heroes of Olympus</span>.
+                    </p>
+                </div>
+
+                <hr class="border-amber-500/20" />
+
+                <!-- Mission & Vision Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Mission -->
+                    <div class="bg-gradient-to-b from-[#320a0e] to-[#1a0507] border border-amber-500/40 rounded-xl p-6 shadow-xl relative overflow-hidden group transition-all duration-300 ease-out hover:-translate-y-2 hover:border-amber-400/80 hover:shadow-[0_12px_30px_rgba(139,0,0,0.4)]">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="font-cinzel text-xl font-bold text-amber-300 uppercase tracking-wider transition-colors duration-300 group-hover:text-amber-400">Mission</h3>
+                            <span class="font-cinzel w-8 h-8 rounded-full bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400 text-xs font-bold transition-transform duration-300 group-hover:scale-110">01</span>
+                        </div>
+                        <p class="text-amber-100/70 text-sm leading-relaxed">
+                            To scout, mentor, and elevate grassroots esports talent by providing structured competition, skill development, and a platform for emerging teams to prove themselves.
+                        </p>
+                    </div>
+
+                    <!-- Vision -->
+                    <div class="bg-gradient-to-b from-[#320a0e] to-[#1a0507] border border-amber-500/40 rounded-xl p-6 shadow-xl relative overflow-hidden group transition-all duration-300 ease-out hover:-translate-y-2 hover:border-amber-400/80 hover:shadow-[0_12px_30px_rgba(139,0,0,0.4)]">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="font-cinzel text-xl font-bold text-amber-300 uppercase tracking-wider transition-colors duration-300 group-hover:text-amber-400">Vision</h3>
+                            <span class="font-cinzel w-8 h-8 rounded-full bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400 text-xs font-bold transition-transform duration-300 group-hover:scale-110">02</span>
+                        </div>
+                        <p class="text-amber-100/70 text-sm leading-relaxed">
+                            To become a premier multi-title esports hub recognized for fostering competitive excellence, fairness, and opportunity across the amateur gaming ecosystem.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Goals & Milestones Roadmap -->
+                <div class="bg-gradient-to-b from-[#180507] to-[#100305] border border-amber-500/30 rounded-xl p-6 shadow-lg transition-all duration-300 hover:border-amber-500/50">
+                    <h3 class="font-cinzel text-xl font-bold text-amber-400 uppercase tracking-wider mb-6 flex items-center gap-2">
+                        <span>Roadmap & Milestones</span>
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Short Term -->
+                        <div class="bg-[#24070a]/60 border border-emerald-500/30 rounded-lg p-5 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/60 hover:shadow-[0_8px_20px_rgba(16,185,129,0.15)]">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <span class="font-cinzel px-2.5 py-0.5 text-xs font-extrabold bg-emerald-950 text-emerald-400 border border-emerald-500/40 rounded uppercase tracking-wider">Short-Term</span>
+                            </div>
+                            <h4 class="font-cinzel font-bold text-slate-100 text-base mb-1">Build a 500+ Member Community</h4>
+                            <p class="text-xs text-amber-100/60 leading-relaxed">Expanding our Community and player base to create an active ecosystem of teams, scrim partners, and passionate spectators.</p>
+                        </div>
+
+                        <!-- Long Term -->
+                        <div class="bg-[#24070a]/60 border border-purple-500/30 rounded-lg p-5 transition-all duration-300 hover:-translate-y-1 hover:border-purple-500/60 hover:shadow-[0_8px_20px_rgba(168,85,247,0.15)]">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <span class="font-cinzel px-2.5 py-1 text-xs font-extrabold bg-purple-950 text-purple-400 border border-purple-500/40 rounded uppercase tracking-wider">Long-Term</span>
+                            </div>
+                            <h4 class="font-cinzel font-bold text-slate-100 text-base mb-1">Multi-Title Expansion</h4>
+                            <p class="text-xs text-amber-100/60 leading-relaxed">Scaling our league infrastructure beyond MLBB into major titles including Call of Duty: Mobile (CODM), Valorant, and beyond.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Community Banner -->
+                <div class="bg-gradient-to-r from-[#4a0d14] via-[#31080d] to-[#1c0407] border border-amber-500/50 text-amber-100 rounded-xl p-6 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-2xl transition-all duration-300 hover:-translate-y-1.5 hover:border-amber-400 hover:shadow-[0_12px_35px_rgba(245,158,11,0.2)]">
+                    <div>
+                        <span class="font-cinzel px-2.5 py-0.5 text-[10px] font-black uppercase bg-amber-500 text-black rounded tracking-widest">Join the Pantheon</span>
+                        <h4 class="font-cinzel text-xl font-bold mt-2 text-amber-300 uppercase tracking-wide">Road to 500 Members</h4>
+                        <p class="text-xs text-amber-100/70 mt-1 max-w-xl leading-relaxed">
+                            Be part of our core community. Join our Community to find scrim partners, roster up for upcoming leagues, and stay up to date.
+                        </p>
+                    </div>
+                    <a href="/pantheon/community.html" class="font-cinzel whitespace-nowrap px-6 py-3 bg-gradient-to-r from-amber-400 to-amber-600 hover:from-amber-300 hover:to-amber-500 text-black font-extrabold uppercase tracking-wider text-xs rounded-lg transition-all duration-300 hover:scale-105 shadow-[0_0_15px_rgba(245,158,11,0.4)]">
+                        Join Community
+                    </a>
+                </div>
+
+            </section>
+        </main>
+
+        <!-- Sidebar -->
+        <aside class="w-full lg:w-80 space-y-6">
+            <!-- Quick League Card -->
+            <div class="bg-gradient-to-b from-[#2a080c] to-[#170406] p-6 rounded-xl border border-amber-500/30 shadow-xl text-center transition-all duration-300 hover:-translate-y-2 hover:border-amber-400/70 hover:shadow-[0_12px_30px_rgba(139,0,0,0.35)]">
+                <span class="font-cinzel px-2.5 py-1 text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40 rounded uppercase tracking-wider">Featured Tournament</span>
+                <h3 class="font-cinzel text-xl font-bold text-amber-300 mt-3 mb-1 uppercase tracking-wide">Heroes of Olympus</h3>
+                <div class="my-3 flex justify-center text-amber-400 transition-transform duration-300 hover:scale-110">
+                    <svg class="w-12 h-12 drop-shadow-[0_0_10px_rgba(245,158,11,0.5)]" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94A5.01 5.01 0 0011 15.9v2.1H8v2h8v-2h-3v-2.1c2.03-.43 3.61-2.03 3.96-4.06C19.33 11.45 21 9.42 21 7V5c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z"/>
+                    </svg>
+                </div>
+                <p class="text-amber-100/60 text-xs leading-relaxed mb-5">
+                    Our flagship recurring tournament for emerging MLBB teams. Registration are open!
+                </p>
+                <a href="/construction.html" class="font-cinzel block w-full text-center text-xs font-black uppercase tracking-wider text-black bg-gradient-to-r from-amber-400 to-amber-600 py-3 rounded-lg hover:brightness-110 transition-all duration-300 hover:scale-[1.02] shadow-[0_0_15px_rgba(245,158,11,0.3)]">
+                    Registration Open Now !
+                </a>
+            </div>
+
+            <!-- Community Goal Progress -->
+            <div class="bg-gradient-to-b from-[#2a080c] to-[#170406] p-6 rounded-xl border border-amber-500/30 shadow-xl transition-all duration-300 hover:-translate-y-1.5 hover:border-amber-400/60">
+                <h3 class="font-cinzel text-xs font-bold text-amber-400 uppercase tracking-widest mb-4">Community Goal Progress</h3>
+                <div class="flex justify-between text-xs font-bold mb-2">
+                    <span class="text-amber-100/70">Community Members</span>
+                    <span id="cg-label" class="font-cinzel text-amber-400">Loading…</span>
+                </div>
+                <div class="w-full bg-[#100305] rounded-full h-3 mb-4 border border-amber-500/30 p-0.5 overflow-hidden">
+                    <div class="bg-gradient-to-r from-amber-600 via-amber-400 to-amber-300 h-full rounded-full shadow-[0_0_10px_rgba(245,158,11,0.6)]" id="cg-fill" style="width: 0%; transition: width 1.2s ease-out"></div>
+                </div>
+                <ul id="cg-servers" class="mb-4 space-y-1.5 text-xs"></ul>
+                <p class="text-[11px] text-amber-100/50 leading-relaxed">Help us reach our target and unlock community prize pools!</p>
+            </div>
+
+        </aside>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#080203] border-t border-amber-500/20 text-amber-100/50 py-6 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs space-y-2">
+            <p class="font-cinzel font-bold text-amber-400 tracking-widest uppercase">&copy; 2026 Pantheon Esports Organization. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+    <script>
+        // ===================== EDIT THIS: your Discord servers =====================
+        // invite = just the code after discord.gg/ (use a permanent invite that never expires)
+        // name   = optional; leave out to use the server's own name from Discord
+        const DISCORDS = [
+            { invite: "gMQVDEbpt6" },
+            { invite: "YOUR_INVITE_CODE_2" },
+            { invite: "YOUR_INVITE_CODE_3" },
+        ];
+        const GOAL = 500;            // the member goal the bar fills towards
+        const COUNT_MODE = "sum";    // "sum": add all servers together (people in 2 servers count twice)
+                                     // "max": use only your biggest server
+        // ===========================================================================
+
+        const $ = id => document.getElementById(id);
+        const nf = n => n.toLocaleString();
+        const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        function countTo(el, to) {
+            const from = Number(el.dataset.v || 0);
+            el.dataset.v = to;
+            const text = v => `${nf(v)} / ${nf(GOAL)}`;
+            if (reduceMotion || from === to) { el.textContent = text(to); return; }
+            const t0 = performance.now(), D = 1200;
+            (function step(t) {
+                const k = Math.min((t - t0) / D, 1), e = 1 - Math.pow(1 - k, 3);
+                el.textContent = text(Math.round(from + (to - from) * e));
+                if (k < 1) requestAnimationFrame(step);
+            })(t0);
+        }
+
+        async function fetchServer(s) {
+            try {
+                const res = await fetch(`https://discord.com/api/v10/invites/${encodeURIComponent(s.invite)}?with_counts=true`);
+                if (!res.ok) throw new Error(res.status);
+                const d = await res.json();
+                return { name: s.name || (d.guild && d.guild.name) || "Discord server",
+                         members: d.approximate_member_count, online: d.approximate_presence_count };
+            } catch (e) {
+                console.warn("Discord counts unavailable for", s.invite, e);
+                return null;
+            }
+        }
+
+        async function refreshCommunity() {
+            const real = DISCORDS.filter(s => s.invite && !s.invite.startsWith("YOUR_"));
+            if (!real.length) { $("cg-label").textContent = "—"; return; }       // invites not set up yet
+            const results = (await Promise.all(real.map(fetchServer))).filter(r => r && r.members != null);
+            if (!results.length) { $("cg-label").textContent = "Unavailable"; return; }
+
+            const counts = results.map(r => r.members);
+            const total = COUNT_MODE === "max" ? Math.max(...counts) : counts.reduce((a, b) => a + b, 0);
+            countTo($("cg-label"), total);
+            requestAnimationFrame(() => $("cg-fill").style.width = Math.min(total / GOAL, 1) * 100 + "%");
+
+            $("cg-servers").replaceChildren(...results.map(r => {
+                const li = document.createElement("li");
+                li.className = "flex justify-between items-center gap-2";
+                li.innerHTML = '<span class="text-amber-100/70 truncate"></span><span class="font-cinzel text-amber-300 whitespace-nowrap"></span>';
+                li.children[0].textContent = r.name;
+                li.children[1].textContent = nf(r.members) + (r.online != null ? ` · ${nf(r.online)} online` : "");
+                return li;
+            }));
+        }
+        refreshCommunity();
+        setInterval(refreshCommunity, 5 * 60 * 1000);   // refresh every 5 minutes
+    </script>
+
+</body>
+</html>

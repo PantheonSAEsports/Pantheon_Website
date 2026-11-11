@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Modrinth gallery test</title>
+<!-- Tailwind via the browser build: no input.css / output.css / npm needed. Meant for testing. -->
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<style type="text/tailwindcss">
+  @theme {
+    --color-bg:#14070b; --color-surface:#220d13; --color-ink:#f4ede6; --color-muted:#c4a5a9;
+    --color-gold:#d4ad5a; --color-crimson:#b3243a; --color-line:#44212a;
+    --font-display:Georgia,serif;
+  }
+  .edge-fade{-webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)}
+</style>
+</head>
+<body class="bg-bg px-4 py-8 font-sans leading-relaxed text-ink">
+<main class="mx-auto max-w-5xl">
+  <h1 class="font-display text-3xl text-gold">Modrinth gallery test</h1>
+  <p class="mb-6 text-muted">Pick User or Organization, type the username or organization slug, and the projects scroll below.</p>
+
+  <form id="form" class="mb-4 flex flex-wrap gap-2">
+    <select id="kind" class="border border-line bg-surface px-3 py-2">
+      <option value="user">User</option>
+      <option value="organization">Organization</option>
+    </select>
+    <input id="name" required autocomplete="off" placeholder="Username or organization slug"
+           class="min-w-48 flex-1 border border-line bg-surface px-3 py-2">
+    <button class="bg-crimson px-5 py-2 font-semibold text-[#f6e7bb]">Load projects</button>
+  </form>
+  <p id="status" class="mb-4 min-h-6 text-muted"></p>
+
+  <div class="mb-2 flex flex-wrap items-center justify-between gap-2">
+  <a id="cf-page" target="_blank" rel="noopener" style="display:none"
+     class="border border-line bg-surface px-3 py-1.5 text-gold hover:border-gold">View all on CurseForge &rarr;</a>
+  <div id="gallery-controls" class="flex gap-2" style="display:none">
+    <button id="g-prev" type="button" aria-label="Scroll projects left" class="border border-line bg-surface px-3 py-1.5 hover:border-gold">&larr;</button>
+    <button id="g-toggle" type="button" class="border border-line bg-surface px-3 py-1.5 hover:border-gold">Pause</button>
+    <button id="g-next" type="button" aria-label="Scroll projects right" class="border border-line bg-surface px-3 py-1.5 hover:border-gold">&rarr;</button>
+  </div>
+  </div>
+  <div id="gallery" tabindex="0" aria-label="Projects"
+       class="edge-fade flex gap-4 overflow-x-auto py-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"></div>
+</main>
+
+<script>
+const API = "https://api.modrinth.com";
+const SPEED = 40; // auto-scroll speed in pixels per second
+
+// ===== CURSEFORGE (no API needed; edit these by hand) =====
+const CURSEFORGE_PAGE = "";   // your CurseForge author page, e.g. "https://www.curseforge.com/members/yourname/projects"
+// Projects that are on BOTH platforms: Modrinth slug -> its CurseForge page
+const ALSO_ON_CURSEFORGE = {
+  // "my-mod-slug": "https://www.curseforge.com/minecraft/mc-mods/my-mod",
+};
+// Projects that are ONLY on CurseForge
+const CURSEFORGE_ONLY = [
+  // { title: "My Mod", description: "What it does.", icon: "https://.../icon.png",
+  //   url: "https://www.curseforge.com/minecraft/mc-mods/my-mod", type: "mod" },
+];
+// ==========================================================
+const $ = id => document.getElementById(id);
+const el = $("gallery");
+
+async function getJson(url, notFound) {
+  const res = await fetch(url);
+  if (res.status === 404) throw new Error(notFound);
+  if (!res.ok) throw new Error(`Modrinth returned an error (${res.status}).`);
+  return res.json();
+}
+
+const fromModrinth = p => ({ title: p.title, description: p.description, icon: p.icon_url, type: p.project_type,
+  modrinth: `https://modrinth.com/${p.project_type}/${p.slug}`, curseforge: ALSO_ON_CURSEFORGE[p.slug] || null,
+  downloads: p.downloads });
+const fromCurseforge = c => ({ title: c.title, description: c.description || "", icon: c.icon || "", type: c.type || "mod",
+  modrinth: null, curseforge: c.url, downloads: null });
+
+function card(item) {
+  const a = document.createElement("article");
+  a.style.cssText = "width:18rem;flex:none";
+  a.className = "group relative border-l-[3px] border-crimson bg-surface p-5 transition duration-300 ease-out " +
+    "hover:-translate-y-2 hover:scale-[1.03] hover:border-gold hover:shadow-[0_12px_30px_-6px_rgba(212,173,90,0.4)]";
+  a.innerHTML = `<div class="mb-3 flex items-center gap-3">
+      <img class="hidden size-12 rounded-lg transition duration-300 group-hover:scale-110 group-hover:-rotate-3" alt="">
+      <span class="text-xs tracking-wide text-muted uppercase"></span></div>
+    <h3 class="font-display text-xl transition-colors duration-300 group-hover:text-gold">
+      <a target="_blank" rel="noopener" class="after:absolute after:inset-0"></a></h3>
+    <p class="mt-1 mb-2 line-clamp-3 text-muted"></p>
+    <p class="min-h-5 text-sm font-semibold text-gold"></p>
+    <div class="relative z-10 mt-3 flex flex-wrap gap-2 text-xs"></div>`;
+  const [top, h3, desc, stats, links] = a.children;
+  const [img, type] = top.children;
+  if (item.icon) { img.src = item.icon; img.classList.remove("hidden"); }
+  type.textContent = item.type;
+  const main = h3.firstElementChild;
+  main.textContent = item.title;                 // textContent: API text can't inject HTML
+  main.href = item.modrinth || item.curseforge;  // clicking anywhere on the card opens this
+  desc.textContent = item.description;
+  if (item.downloads != null) stats.textContent = `${item.downloads.toLocaleString()} downloads on Modrinth`;
+  [["Modrinth", item.modrinth], ["CurseForge", item.curseforge]].forEach(([name, url]) => {
+    if (!url) return;
+    const l = document.createElement("a");
+    l.href = url; l.target = "_blank"; l.rel = "noopener"; l.textContent = name;
+    l.className = "border border-line px-2 py-0.5 transition-colors hover:border-gold hover:text-gold";
+    links.append(l);
+  });
+  return a;
+}
+
+/* ---------- Gallery: auto-scroll, manual scroll, seamless loop ---------- */
+const G = { active: false, n: 0, hover: false, focus: false, manualUntil: 0, wasPaused: true,
+            pos: 0, last: performance.now(),
+            userPaused: false };
+const now = () => performance.now();
+const period = () => el.children[G.n].offsetLeft - el.children[0].offsetLeft;
+const paused = () => G.hover || G.focus || G.userPaused || now() < G.manualUntil;
+const label = () => { $("g-toggle").textContent = G.userPaused ? "Play" : "Pause"; $("g-toggle").setAttribute("aria-pressed", G.userPaused); };
+
+function showGallery(projects) {
+  G.active = false; G.pos = 0; G.wasPaused = true;
+  el.scrollLeft = 0;
+  el.replaceChildren(...projects.map(card));
+  $("gallery-controls").style.display = "none";
+  if (!projects.length) return;
+  G.n = projects.length;
+  const originals = [...el.children];
+  const addSet = () => originals.forEach(c => {              // copies are hidden from screen readers and tabbing
+    const k = c.cloneNode(true);
+    k.setAttribute("aria-hidden", "true");
+    k.querySelectorAll("a").forEach(l => l.tabIndex = -1);
+    el.append(k);
+  });
+  addSet();
+  const sets = Math.ceil(el.clientWidth / period()) + 2;     // enough repeats to always fill the row, even with 1 project
+  for (let i = 2; i < sets; i++) addSet();
+  $("gallery-controls").style.display = "flex";
+  label();
+  G.active = true;
+}
+
+function tick(t) {
+  const dt = Math.min(t - G.last, 100); G.last = t;
+  if (G.active) {
+    const p = paused();
+    if (!p) {
+      if (G.wasPaused) G.pos = el.scrollLeft;                  // resume where the visitor left off
+      G.pos += SPEED * dt / 1000;
+      if (G.pos >= period()) G.pos -= period();
+      el.scrollLeft = G.pos;
+    }
+    G.wasPaused = p;
+  }
+  requestAnimationFrame(tick);
+}
+requestAnimationFrame(tick);
+
+el.addEventListener("mouseenter", () => G.hover = true);
+el.addEventListener("mouseleave", () => G.hover = false);
+el.addEventListener("focusin", () => G.focus = true);
+el.addEventListener("focusout", () => G.focus = false);
+el.addEventListener("touchstart", () => G.manualUntil = now() + 4000, { passive: true });
+el.addEventListener("wheel", () => G.manualUntil = now() + 4000, { passive: true });
+el.addEventListener("scroll", () => { if (G.active && el.scrollLeft >= period()) el.scrollLeft -= period(); });
+
+function nudge(dir) {
+  G.manualUntil = now() + 4000;
+  if (dir < 0 && el.scrollLeft <= 0) el.scrollLeft = period();
+  el.scrollBy({ left: dir * 300, behavior: "smooth" });
+}
+$("g-prev").addEventListener("click", () => nudge(-1));
+$("g-next").addEventListener("click", () => nudge(1));
+$("g-toggle").addEventListener("click", () => { G.userPaused = !G.userPaused; label(); });
+
+/* ---------- Loading projects ---------- */
+async function load(name, kind) {
+  const status = $("status");
+  status.className = "mb-4 min-h-6 text-muted"; status.textContent = "Loading…";
+  G.active = false; el.replaceChildren(); $("gallery-controls").style.display = "none";
+  if (CURSEFORGE_PAGE) { $("cf-page").href = CURSEFORGE_PAGE; $("cf-page").style.display = "inline-block"; }
+  let items = [];
+  try {
+    let projects;
+    if (kind === "organization") {
+      const list = await getJson(`${API}/v3/organization/${encodeURIComponent(name)}/projects`,
+        "Organization not found. Use its slug, as shown in its Modrinth URL.");
+      const ids = list.map(p => p.id);
+      projects = ids.length
+        ? await getJson(`${API}/v2/projects?ids=${encodeURIComponent(JSON.stringify(ids))}`, "Projects not found.")
+        : [];
+    } else {
+      projects = await getJson(`${API}/v2/user/${encodeURIComponent(name)}/projects`,
+        "User not found. Check the spelling.");
+    }
+    projects.sort((a, b) => b.downloads - a.downloads);
+    items = projects.map(fromModrinth);
+    status.textContent = `${items.length} Modrinth project(s) found.`;
+  } catch (e) {
+    status.className = "mb-4 min-h-6 text-red-400";
+    status.textContent = e.message.includes("Failed to fetch")
+      ? "Couldn’t reach Modrinth. Check your connection." : e.message;
+  }
+  items = items.concat(CURSEFORGE_ONLY.map(fromCurseforge));   // hand-listed CurseForge-only projects
+  if (items.length) showGallery(items);
+}
+
+$("form").addEventListener("submit", e => { e.preventDefault(); load($("name").value.trim(), $("kind").value); });
+
+// Optional: ?user=yourname or ?org=yourslug loads automatically
+const params = new URLSearchParams(location.search);
+const auto = params.get("org") || params.get("user");
+if (auto) {
+  $("kind").value = params.get("org") ? "organization" : "user";
+  $("name").value = auto;
+  load(auto, $("kind").value);
+}
+label();
+</script>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-[#0d0405] text-amber-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Hub - Pantheon Esports</title>
+    
+    <!-- Google Fonts: Cinzel & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="flex flex-col min-h-full font-sans antialiased bg-[#0d0405] text-amber-100/90 selection:bg-amber-500 selection:text-black">
+
+    <!-- Header Banner / Logo Branding -->
+    <header class="bg-gradient-to-b from-[#1a0507] via-[#120406] to-[#0d0405] border-b border-amber-500/30 pt-6 pb-4 shadow-2xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
+            
+            <!-- Logo Container -->
+            <div class="flex items-center justify-center space-x-3 mb-2">
+                <h1 class="font-cinzel text-3xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-600 tracking-widest uppercase drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]">
+                    Pantheon
+                </h1>
+                <img class="h-10 sm:h-14 w-auto rounded-full border border-amber-500/40 object-contain drop-shadow-[0_2px_10px_rgba(245,158,11,0.5)] transition-transform duration-300 hover:scale-105" src="/images/logo.png" alt="pantheon_logo">
+            </div>
+            
+            <!-- Navigation Links (Single-Line Flex) -->
+            <nav class="mt-4 flex flex-nowrap justify-center items-center gap-1 sm:gap-4 border-t border-amber-500/20 pt-4 w-full max-w-4xl font-cinzel overflow-x-auto whitespace-nowrap">
+                <a href="/index.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Home</a>
+                <a href="/pantheon/tournaments.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Tournaments</a>
+                <a href="/pantheonnetwork/network.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Pantheon Network</a>
+                <a href="/pantheonstudios/studios.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Pantheon Studio</a>
+                <a href="/pantheon/community.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/75 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Community</a>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+        
+        <!-- SECTION 1: Community Overview Banner -->
+        <section class="bg-gradient-to-r from-[#320a0e] via-[#1c0407] to-[#120406] p-6 sm:p-10 rounded-xl border border-amber-500/40 shadow-[0_0_30px_rgba(139,0,0,0.3)] transition-all duration-300 hover:border-amber-500/60">
+            <div class="max-w-3xl space-y-3">
+                <span class="font-cinzel px-2.5 py-0.5 text-[10px] font-black uppercase bg-amber-500 text-black rounded tracking-widest">Connect & Engage</span>
+                <h2 class="font-cinzel text-3xl sm:text-4xl font-black text-amber-300 tracking-wide uppercase drop-shadow">Pantheon Communities</h2>
+                <p class="text-sm sm:text-base text-amber-100/80 leading-relaxed">
+                    Join our official community spaces and partner networks. Whether you are looking for scrim partners in our esports hub, discussing Minecraft builds, checking mod releases, or chatting with our partnered gaming organizations—find your portal below.
+                </p>
+            </div>
+        </section>
+
+        <!-- SECTION 2: Official Pantheon Communities Grid -->
+        <section class="space-y-6">
+            <div class="border-b border-amber-500/20 pb-4">
+                <span class="font-cinzel text-xs text-amber-400/80 uppercase tracking-widest font-bold">Official Channels</span>
+                <h3 class="font-cinzel text-2xl font-black text-amber-400 uppercase tracking-wide">Pantheon Ecosystem</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Card 1: Pantheon Esports Main Discord -->
+                <div class="bg-gradient-to-b from-[#320a0e] to-[#1a0507] border border-amber-500/40 rounded-xl p-6 shadow-xl relative overflow-hidden group transition-all duration-300 hover:-translate-y-2 hover:border-amber-400/80 hover:shadow-[0_12px_30px_rgba(139,0,0,0.4)] flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="font-cinzel text-[10px] font-bold uppercase bg-indigo-950 text-indigo-400 border border-indigo-500/40 px-2.5 py-0.5 rounded">Discord</span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" title="Active"></span>
+                        </div>
+                        <h4 class="font-cinzel text-xl font-bold text-amber-300 mb-2">Pantheon Esports</h4>
+                        <p class="text-xs text-amber-100/70 leading-relaxed mb-6">
+                            Our primary competitive hub. Find team scrims, tournament announcements, player recruiting, and live broadcast updates.
+                        </p>
+                    </div>
+                    <a href="https://discord.gg/gMQVDEbpt6" target="_blank" class="font-cinzel block w-full text-center text-xs font-extrabold uppercase tracking-wider text-black bg-gradient-to-r from-amber-400 to-amber-600 py-3 rounded-lg hover:brightness-110 transition-all duration-300 hover:scale-[1.02] shadow-[0_0_12px_rgba(245,158,11,0.3)]">
+                        Join Discord Server
+                    </a>
+                </div>
+
+                <!-- Card 2: Pantheon Network Discord -->
+                <div class="bg-gradient-to-b from-[#320a0e] to-[#1a0507] border border-amber-500/40 rounded-xl p-6 shadow-xl relative overflow-hidden group transition-all duration-300 hover:-translate-y-2 hover:border-amber-400/80 hover:shadow-[0_12px_30px_rgba(139,0,0,0.4)] flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="font-cinzel text-[10px] font-bold uppercase bg-indigo-950 text-indigo-400 border border-indigo-500/40 px-2.5 py-0.5 rounded">Discord</span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" title="Active"></span>
+                        </div>
+                        <h4 class="font-cinzel text-xl font-bold text-amber-300 mb-2">Pantheon Network</h4>
+                        <p class="text-xs text-amber-100/70 leading-relaxed mb-6">
+                            The dedicated space for our Minecraft SMP server. Connect with players, trade items, report bugs, and view server updates.
+                        </p>
+                    </div>
+                    <a href="https://discord.gg" target="_blank" class="font-cinzel block w-full text-center text-xs font-extrabold uppercase tracking-wider text-black bg-gradient-to-r from-amber-400 to-amber-600 py-3 rounded-lg hover:brightness-110 transition-all duration-300 hover:scale-[1.02] shadow-[0_0_12px_rgba(245,158,11,0.3)]">
+                        Join Network Server
+                    </a>
+                </div>
+
+                <!-- Card 3: Pantheon Studio Discord -->
+                <div class="bg-gradient-to-b from-[#320a0e] to-[#1a0507] border border-amber-500/40 rounded-xl p-6 shadow-xl relative overflow-hidden group transition-all duration-300 hover:-translate-y-2 hover:border-amber-400/80 hover:shadow-[0_12px_30px_rgba(139,0,0,0.4)] flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="font-cinzel text-[10px] font-bold uppercase bg-indigo-950 text-indigo-400 border border-indigo-500/40 px-2.5 py-0.5 rounded">Discord</span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" title="Active"></span>
+                        </div>
+                        <h4 class="font-cinzel text-xl font-bold text-amber-300 mb-2">Pantheon Studio</h4>
+                        <p class="text-xs text-amber-100/70 leading-relaxed mb-6">
+                            Where developers and creators collaborate. Get dev support for our mods/plugins, request commissions, and view changelogs.
+                        </p>
+                    </div>
+                    <a href="https://discord.gg" target="_blank" class="font-cinzel block w-full text-center text-xs font-extrabold uppercase tracking-wider text-black bg-gradient-to-r from-amber-400 to-amber-600 py-3 rounded-lg hover:brightness-110 transition-all duration-300 hover:scale-[1.02] shadow-[0_0_12px_rgba(245,158,11,0.3)]">
+                        Join Studio Dev Hub
+                    </a>
+                </div>
+
+                <!-- Card 4: Pantheon WhatsApp Community -->
+                <div class="bg-gradient-to-b from-[#320a0e] to-[#1a0507] border border-amber-500/40 rounded-xl p-6 shadow-xl relative overflow-hidden group transition-all duration-300 hover:-translate-y-2 hover:border-amber-400/80 hover:shadow-[0_12px_30px_rgba(139,0,0,0.4)] flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="font-cinzel text-[10px] font-bold uppercase bg-emerald-950 text-emerald-400 border border-emerald-500/40 px-2.5 py-0.5 rounded">WhatsApp</span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" title="Active"></span>
+                        </div>
+                        <h4 class="font-cinzel text-xl font-bold text-amber-300 mb-2">Pantheon WhatsApp</h4>
+                        <p class="text-xs text-amber-100/70 leading-relaxed mb-6">
+                            Instant mobile updates and direct announcements. Stay informed on match schedules, community goals, and major drops.
+                        </p>
+                    </div>
+                    <a href="https://chat.whatsapp.com" target="_blank" class="font-cinzel block w-full text-center text-xs font-extrabold uppercase tracking-wider text-black bg-gradient-to-r from-amber-400 to-amber-600 py-3 rounded-lg hover:brightness-110 transition-all duration-300 hover:scale-[1.02] shadow-[0_0_12px_rgba(245,158,11,0.3)]">
+                        Join WhatsApp Group
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 3: Partner Organizations & Networks -->
+        <section class="space-y-6">
+            <div class="border-b border-amber-500/20 pb-4">
+                <span class="font-cinzel text-xs text-amber-400/80 uppercase tracking-widest font-bold">Alliances & Affiliates</span>
+                <h3 class="font-cinzel text-2xl font-black text-amber-400 uppercase tracking-wide">Official Partners</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <!-- Partner 1: Waylander Gaming -->
+                <div class="bg-gradient-to-b from-[#1b0609] via-[#140507] to-[#0f0406] border border-amber-500/30 rounded-xl p-6 sm:p-8 shadow-xl flex flex-col justify-between space-y-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-amber-400/70">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="font-cinzel px-2.5 py-0.5 text-[10px] font-bold uppercase bg-amber-500/20 text-amber-300 border border-amber-500/30 rounded">Partner Organization</span>
+                            <span class="text-xs text-amber-100/50">Gaming Alliance</span>
+                        </div>
+                        <h4 class="font-cinzel text-2xl font-black text-amber-300 uppercase">Waylander Gaming</h4>
+                        <p class="text-xs sm:text-sm text-amber-100/70 leading-relaxed mt-2">
+                            A premier esports partner collaborating with Pantheon for cross-community tournaments, competitive scrims, and player development initiatives.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                        <a href="https://discord.gg" target="_blank" class="font-cinzel flex items-center justify-center gap-2 py-2.5 bg-[#24070a] border border-indigo-500/40 hover:border-indigo-400 text-indigo-300 hover:text-indigo-200 font-bold uppercase tracking-wider text-xs rounded-lg transition-all duration-300 hover:scale-105">
+                            Discord Server
+                        </a>
+                        <a href="https://chat.whatsapp.com" target="_blank" class="font-cinzel flex items-center justify-center gap-2 py-2.5 bg-[#24070a] border border-emerald-500/40 hover:border-emerald-400 text-emerald-300 hover:text-emerald-200 font-bold uppercase tracking-wider text-xs rounded-lg transition-all duration-300 hover:scale-105">
+                            WhatsApp Group
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Partner 2: LA Network -->
+                <div class="bg-gradient-to-b from-[#1b0609] via-[#140507] to-[#0f0406] border border-amber-500/30 rounded-xl p-6 sm:p-8 shadow-xl flex flex-col justify-between space-y-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-amber-400/70">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="font-cinzel px-2.5 py-0.5 text-[10px] font-bold uppercase bg-amber-500/20 text-amber-300 border border-amber-500/30 rounded">Network Affiliate</span>
+                            <span class="text-xs text-amber-100/50">Gaming Community</span>
+                        </div>
+                        <h4 class="font-cinzel text-2xl font-black text-amber-300 uppercase">LA Network</h4>
+                        <p class="text-xs sm:text-sm text-amber-100/70 leading-relaxed mt-2">
+                            An affiliated community network fostering competitive play, multiplayer events, and shared player experiences across various gaming titles.
+                        </p>
+                    </div>
+
+                    <div class="pt-2">
+                        <a href="https://discord.gg" target="_blank" class="font-cinzel flex items-center justify-center gap-2 w-full py-2.5 bg-[#24070a] border border-indigo-500/40 hover:border-indigo-400 text-indigo-300 hover:text-indigo-200 font-bold uppercase tracking-wider text-xs rounded-lg transition-all duration-300 hover:scale-105">
+                            Discord Server
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#080203] border-t border-amber-500/20 text-amber-100/50 py-6 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs space-y-2">
+            <p class="font-cinzel font-bold text-amber-400 tracking-widest uppercase">&copy; 2026 Pantheon Esports Organization. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
