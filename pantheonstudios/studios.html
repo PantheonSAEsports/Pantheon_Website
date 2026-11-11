@@ -24,31 +24,81 @@
             }
         }
     </script>
+    <style>
+        .edge-fade { -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent); mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent); }
+        .no-scrollbar { scrollbar-width: none; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
 </head>
 <body class="flex flex-col min-h-full font-sans antialiased bg-[#0d0405] text-amber-100/90 selection:bg-amber-500 selection:text-black">
 
     <!-- Header Banner / Logo Branding -->
-    <header class="bg-gradient-to-b from-[#1a0507] via-[#120406] to-[#0d0405] border-b border-amber-500/30 pt-6 pb-4 shadow-2xl">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
-            
+    <header class="bg-gradient-to-b from-[#1a0507] via-[#120406] to-[#0d0405] border-b border-amber-500/30 pt-4 pb-4 shadow-2xl relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- Top Utility Bar: Hamburger Profile (Left) & Auth Buttons (Right) -->
+            <div class="flex items-center justify-between pb-3 border-b border-amber-500/10">
+                <button onclick="toggleProfileDrawer()" class="flex items-center gap-2 px-3 py-1.5 bg-[#24070a] border border-amber-500/30 hover:border-amber-400 rounded-lg text-amber-300 transition-all duration-300 group">
+                    <svg class="w-5 h-5 text-amber-400 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    <span class="font-cinzel text-xs font-bold uppercase tracking-wider hidden sm:inline">Profile</span>
+                </button>
+
+                <div class="flex items-center gap-2 font-cinzel">
+                    <a href="/registration/auth.html" class="px-3 py-1.5 text-[10px] sm:text-xs font-bold uppercase tracking-wider text-amber-300 hover:text-white transition-colors">Sign In</a>
+                    <a href="/registration/auth.html" class="px-3.5 py-1.5 text-[10px] sm:text-xs font-extrabold uppercase tracking-wider text-black bg-gradient-to-r from-amber-400 to-amber-600 hover:brightness-110 rounded-lg shadow-[0_0_10px_rgba(245,158,11,0.3)] transition-all hover:scale-105">Register</a>
+                </div>
+            </div>
+
             <!-- Logo Container -->
-            <div class="flex items-center justify-center space-x-3 mb-2">
+            <div class="flex items-center justify-center space-x-3 my-4">
                 <h1 class="font-cinzel text-3xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-600 tracking-widest uppercase drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]">
                     Pantheon
                 </h1>
                 <img class="h-10 sm:h-14 w-auto rounded-full border border-amber-500/40 object-contain drop-shadow-[0_2px_10px_rgba(245,158,11,0.5)] transition-transform duration-300 hover:scale-105" src="/images/logo.png" alt="pantheon_logo">
             </div>
-            
-            <!-- Navigation Links (Single-Line Flex) -->
-            <nav class="mt-4 flex flex-nowrap justify-center items-center gap-1 sm:gap-4 border-t border-amber-500/20 pt-4 w-full max-w-4xl font-cinzel overflow-x-auto whitespace-nowrap">
+
+            <!-- Navigation Links -->
+            <nav class="flex flex-nowrap justify-center items-center gap-1 sm:gap-4 border-t border-amber-500/20 pt-4 w-full max-w-4xl mx-auto font-cinzel overflow-x-auto whitespace-nowrap">
                 <a href="/index.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Home</a>
                 <a href="/pantheon/tournaments.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Tournaments</a>
-                <a href="/pantheonnetwork/network.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Pantheon Network</a>
-                <a href="/pantheonstudios/studios.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-400 bg-amber-500/10 border border-amber-500/40 rounded transition-all duration-300 shadow-[0_0_10px_rgba(245,158,11,0.2)] hover:-translate-y-0.5">Pantheon Studio</a>
+                <a href="/pantheon/stats.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Stats & Intel</a>
+                <a href="/pantheonnetwork/network.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Network</a>
+                <a href="/pantheonstudios/studios.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-400 bg-amber-500/10 border border-amber-500/40 rounded transition-all duration-300 shadow-[0_0_10px_rgba(245,158,11,0.2)] hover:-translate-y-0.5">Studio</a>
                 <a href="/pantheon/community.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/75 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Community</a>
+                <a href="/pantheon/store.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/75 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Store</a>
             </nav>
         </div>
     </header>
+
+    <!-- Slide-Out Profile Drawer -->
+    <div id="profile-drawer-backdrop" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden transition-opacity opacity-0" onclick="toggleProfileDrawer()"></div>
+    <div id="profile-drawer" class="fixed top-0 left-0 h-full w-80 bg-gradient-to-b from-[#1a0507] via-[#120406] to-[#0d0405] border-r border-amber-500/40 shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 flex flex-col justify-between p-6">
+        <div>
+            <div class="flex items-center justify-between pb-4 border-b border-amber-500/20">
+                <h3 class="font-cinzel text-lg font-black text-amber-300 uppercase tracking-wider">Player Profile</h3>
+                <button onclick="toggleProfileDrawer()" class="text-amber-400 hover:text-white font-cinzel text-lg">&times;</button>
+            </div>
+            <div class="my-6 p-4 bg-[#24070a]/60 border border-amber-500/30 rounded-xl space-y-2">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-amber-500/20 border border-amber-500/50 flex items-center justify-center font-cinzel font-bold text-amber-300">P</div>
+                    <div>
+                        <p class="font-cinzel text-xs font-bold text-amber-200">Guest Player</p>
+                        <p class="text-[10px] text-amber-100/50">Not Signed In</p>
+                    </div>
+                </div>
+            </div>
+            <ul class="space-y-2 font-cinzel text-xs">
+                <li><a href="/registration/auth.html" class="flex items-center gap-3 p-3 rounded-lg bg-[#24070a]/40 border border-amber-500/20 hover:border-amber-400 text-amber-200 transition-all"><span>🛡️</span> My Profile & Stats</a></li>
+                <li><a href="/pantheon/tournaments.html" class="flex items-center gap-3 p-3 rounded-lg bg-[#24070a]/40 border border-amber-500/20 hover:border-amber-400 text-amber-200 transition-all"><span>⚔️</span> Roster Registrations</a></li>
+                <li><a href="/pantheonnetwork/network.html" class="flex items-center gap-3 p-3 rounded-lg bg-[#24070a]/40 border border-amber-500/20 hover:border-amber-400 text-amber-200 transition-all"><span>⛏️</span> SMP Account Link</a></li>
+            </ul>
+        </div>
+        <div class="pt-4 border-t border-amber-500/20 font-cinzel">
+            <a href="/registration/auth.html" class="block text-center w-full py-3 bg-gradient-to-r from-amber-400 to-amber-600 text-black font-extrabold uppercase text-xs rounded-lg shadow-[0_0_12px_rgba(245,158,11,0.3)]">Sign In / Register</a>
+        </div>
+    </div>
 
     <!-- Main Container -->
     <div class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
@@ -63,7 +113,6 @@
                 </p>
             </div>
 
-            <!-- Tech Badges & Quick Stats -->
             <div class="w-full md:w-auto bg-[#100305] border border-amber-500/40 p-6 rounded-xl text-center space-y-4 shadow-xl min-w-[280px]">
                 <span class="font-cinzel text-xs font-bold text-amber-400 uppercase tracking-widest">Toolkit & Ecosystem</span>
                 <div class="flex flex-wrap justify-center gap-2 font-mono text-xs">
@@ -72,167 +121,55 @@
                     <span class="px-2.5 py-1 bg-[#1a0507] border border-amber-500/30 text-amber-200 rounded">Paper/Spigot</span>
                     <span class="px-2.5 py-1 bg-[#1a0507] border border-amber-500/30 text-amber-200 rounded">Blockbench</span>
                 </div>
-                <div class="border-t border-amber-500/20 pt-3 flex justify-around text-xs">
-                    <div>
-                        <span class="block text-[10px] text-amber-100/50 uppercase">Projects</span>
-                        <strong class="font-cinzel text-amber-300 text-sm">12+ Active</strong>
-                    </div>
-                    <div>
-                        <span class="block text-[10px] text-amber-100/50 uppercase">Downloads</span>
-                        <strong class="font-cinzel text-emerald-400 text-sm">50K+ Total</strong>
-                    </div>
-                </div>
             </div>
         </section>
 
-        <!-- SECTION 2: Modrinth Projects Gallery (Themed Emerald / Green) -->
-        <section class="space-y-6">
-            <div class="flex items-center justify-between border-b border-[#1bd96a]/30 pb-4">
+        <!-- SECTION 2: Combined projects gallery (Modrinth organization, auto-scrolling, with CurseForge links) -->
+        <section id="projects-section" class="space-y-6">
+            <div class="flex flex-wrap items-center justify-between gap-4 border-b border-[#1bd96a]/30 pb-4">
                 <div class="flex items-center space-x-3">
                     <div class="w-8 h-8 rounded bg-[#1bd96a]/20 border border-[#1bd96a]/50 flex items-center justify-center font-bold text-[#1bd96a] text-sm">M</div>
                     <div>
-                        <span class="font-cinzel text-[10px] text-[#1bd96a] uppercase tracking-widest font-bold">Open-Source Ecosystem</span>
-                        <h3 class="font-cinzel text-2xl font-black text-slate-100 uppercase tracking-wide">Modrinth Projects</h3>
+                        <span class="font-cinzel text-[10px] text-[#1bd96a] uppercase tracking-widest font-bold">Live from Modrinth &amp; CurseForge</span>
+                        <h3 class="font-cinzel text-2xl font-black text-slate-100 uppercase tracking-wide">Featured Open-Source Projects</h3>
                     </div>
                 </div>
-                <a href="https://modrinth.com" target="_blank" class="font-cinzel hidden sm:inline-block text-xs font-bold text-[#1bd96a] hover:underline uppercase tracking-wider">
-                    View Organization Profile &rarr;
-                </a>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Modrinth Item 1 -->
-                <div class="bg-gradient-to-b from-[#0a1e12] to-[#07120b] border border-[#1bd96a]/30 rounded-xl p-6 shadow-xl flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:border-[#1bd96a]/70 hover:shadow-[0_10px_25px_rgba(27,217,106,0.15)]">
-                    <div>
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="px-2 py-0.5 text-[10px] font-black uppercase bg-[#1bd96a]/20 text-[#1bd96a] border border-[#1bd96a]/40 rounded">Modpack</span>
-                            <span class="text-[11px] text-emerald-300/70 font-mono">Fabric 1.20+</span>
-                        </div>
-                        <h4 class="font-cinzel text-lg font-bold text-slate-100 mb-2">Pantheon Optimized</h4>
-                        <p class="text-xs text-slate-300/70 leading-relaxed mb-4">
-                            A lightweight performance modpack fine-tuned for high FPS, ultra-fast chunk rendering, and seamless esports multiplayer.
-                        </p>
-                    </div>
-                    <div class="border-t border-[#1bd96a]/20 pt-4 flex items-center justify-between">
-                        <span class="text-[11px] font-mono text-emerald-400">⚡ 28.4K Downloads</span>
-                        <a href="#" class="font-cinzel text-xs font-bold uppercase text-[#1bd96a] hover:text-white transition-colors">Download &rarr;</a>
-                    </div>
-                </div>
-
-                <!-- Modrinth Item 2 -->
-                <div class="bg-gradient-to-b from-[#0a1e12] to-[#07120b] border border-[#1bd96a]/30 rounded-xl p-6 shadow-xl flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:border-[#1bd96a]/70 hover:shadow-[0_10px_25px_rgba(27,217,106,0.15)]">
-                    <div>
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="px-2 py-0.5 text-[10px] font-black uppercase bg-[#1bd96a]/20 text-[#1bd96a] border border-[#1bd96a]/40 rounded">Mod</span>
-                            <span class="text-[11px] text-emerald-300/70 font-mono">Fabric / Forge</span>
-                        </div>
-                        <h4 class="font-cinzel text-lg font-bold text-slate-100 mb-2">Olympus HUD Extras</h4>
-                        <p class="text-xs text-slate-300/70 leading-relaxed mb-4">
-                            Custom heads-up display mod featuring real-time ping trackers, team status overlays, and clean competitive indicators.
-                        </p>
-                    </div>
-                    <div class="border-t border-[#1bd96a]/20 pt-4 flex items-center justify-between">
-                        <span class="text-[11px] font-mono text-emerald-400">⚡ 12.1K Downloads</span>
-                        <a href="#" class="font-cinzel text-xs font-bold uppercase text-[#1bd96a] hover:text-white transition-colors">Download &rarr;</a>
-                    </div>
-                </div>
-
-                <!-- Modrinth Item 3 -->
-                <div class="bg-gradient-to-b from-[#0a1e12] to-[#07120b] border border-[#1bd96a]/30 rounded-xl p-6 shadow-xl flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:border-[#1bd96a]/70 hover:shadow-[0_10px_25px_rgba(27,217,106,0.15)]">
-                    <div>
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="px-2 py-0.5 text-[10px] font-black uppercase bg-[#1bd96a]/20 text-[#1bd96a] border border-[#1bd96a]/40 rounded">Resource Pack</span>
-                            <span class="text-[11px] text-emerald-300/70 font-mono">Universal</span>
-                        </div>
-                        <h4 class="font-cinzel text-lg font-bold text-slate-100 mb-2">Pantheon Royal Textures</h4>
-                        <p class="text-xs text-slate-300/70 leading-relaxed mb-4">
-                            Dark royal red and gold UI revamp for Minecraft’s native menus, inventory containers, and hotbars.
-                        </p>
-                    </div>
-                    <div class="border-t border-[#1bd96a]/20 pt-4 flex items-center justify-between">
-                        <span class="text-[11px] font-mono text-emerald-400">⚡ 9.8K Downloads</span>
-                        <a href="#" class="font-cinzel text-xs font-bold uppercase text-[#1bd96a] hover:text-white transition-colors">Download &rarr;</a>
-                    </div>
+                <div class="flex flex-wrap items-center gap-2 font-cinzel text-xs font-bold uppercase tracking-wider">
+                    <a id="modrinth-page" href="https://modrinth.com/organization/chained-studio" target="_blank" rel="noopener" class="px-3 py-1.5 border border-[#1bd96a]/40 text-[#1bd96a] rounded-lg hover:bg-[#1bd96a]/10 transition-colors">Modrinth &rarr;</a>
+                    <a id="cf-page" href="#" target="_blank" rel="noopener" style="display:none" class="px-3 py-1.5 border border-[#f16436]/40 text-[#f16436] rounded-lg hover:bg-[#f16436]/10 transition-colors">CurseForge &rarr;</a>
+                    <span id="gallery-controls" class="flex gap-2" style="display:none">
+                        <button id="g-prev" type="button" aria-label="Scroll projects left" class="px-3 py-1.5 bg-[#24070a] border border-amber-500/30 hover:border-amber-400 text-amber-300 rounded-lg transition-colors">&larr;</button>
+                        <button id="g-toggle" type="button" class="px-3 py-1.5 bg-[#24070a] border border-amber-500/30 hover:border-amber-400 text-amber-300 rounded-lg transition-colors">Pause</button>
+                        <button id="g-next" type="button" aria-label="Scroll projects right" class="px-3 py-1.5 bg-[#24070a] border border-amber-500/30 hover:border-amber-400 text-amber-300 rounded-lg transition-colors">&rarr;</button>
+                    </span>
                 </div>
             </div>
+
+            <p id="gallery-status" class="text-center py-8 font-cinzel text-xs text-amber-100/50">Connecting to Modrinth...</p>
+            <div id="gallery" tabindex="0" aria-label="Pantheon Studio projects" class="edge-fade no-scrollbar flex gap-5 overflow-x-auto py-6"></div>
         </section>
 
-        <!-- SECTION 3: CurseForge Projects Gallery (Themed Flame Orange) -->
-        <section class="space-y-6">
-            <div class="flex items-center justify-between border-b border-[#f16436]/30 pb-4">
-                <div class="flex items-center space-x-3">
+        <!-- SECTION 3: CurseForge Direct Portal Section -->
+        <section class="bg-gradient-to-r from-[#25100a] via-[#190a06] to-[#120406] border border-[#f16436]/40 rounded-xl p-8 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8 transition-all duration-300 hover:border-[#f16436]/70">
+            <div class="space-y-3 max-w-2xl text-center md:text-left">
+                <div class="flex items-center justify-center md:justify-start space-x-3">
                     <div class="w-8 h-8 rounded bg-[#f16436]/20 border border-[#f16436]/50 flex items-center justify-center font-bold text-[#f16436] text-sm">C</div>
-                    <div>
-                        <span class="font-cinzel text-[10px] text-[#f16436] uppercase tracking-widest font-bold">CurseForge Catalog</span>
-                        <h3 class="font-cinzel text-2xl font-black text-slate-100 uppercase tracking-wide">CurseForge Projects</h3>
-                    </div>
+                    <span class="font-cinzel px-2.5 py-0.5 text-[10px] font-black uppercase bg-[#f16436]/20 text-[#f16436] rounded tracking-widest">CurseForge Hub</span>
                 </div>
-                <a href="https://curseforge.com" target="_blank" class="font-cinzel hidden sm:inline-block text-xs font-bold text-[#f16436] hover:underline uppercase tracking-wider">
-                    View Author Hub &rarr;
-                </a>
+                <h3 class="font-cinzel text-2xl sm:text-3xl font-black text-amber-300 uppercase tracking-wide">Pantheon CurseForge Projects</h3>
+                <p class="text-xs sm:text-sm text-amber-100/80 leading-relaxed">
+                    Prefer CurseForge for your modpacks and server plugins? Check out our official CurseForge author catalog for Forge modpacks, Spigot plugins, and custom Blockbench assets.
+                </p>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- CurseForge Item 1 -->
-                <div class="bg-gradient-to-b from-[#25100a] to-[#120704] border border-[#f16436]/30 rounded-xl p-6 shadow-xl flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:border-[#f16436]/70 hover:shadow-[0_10px_25px_rgba(241,100,54,0.15)]">
-                    <div>
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="px-2 py-0.5 text-[10px] font-black uppercase bg-[#f16436]/20 text-[#f16436] border border-[#f16436]/40 rounded">Modpack</span>
-                            <span class="text-[11px] text-orange-300/70 font-mono">Forge 1.20</span>
-                        </div>
-                        <h4 class="font-cinzel text-lg font-bold text-slate-100 mb-2">Pantheon SMP Pack</h4>
-                        <p class="text-xs text-slate-300/70 leading-relaxed mb-4">
-                            The official modpack used on our survival server. Features claim integrations, proximity voice chat, and custom cosmetics.
-                        </p>
-                    </div>
-                    <div class="border-t border-[#f16436]/20 pt-4 flex items-center justify-between">
-                        <span class="text-[11px] font-mono text-orange-400">🔥 18.2K Downloads</span>
-                        <a href="#" class="font-cinzel text-xs font-bold uppercase text-[#f16436] hover:text-white transition-colors">Download &rarr;</a>
-                    </div>
-                </div>
-
-                <!-- CurseForge Item 2 -->
-                <div class="bg-gradient-to-b from-[#25100a] to-[#120407] border border-[#f16436]/30 rounded-xl p-6 shadow-xl flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:border-[#f16436]/70 hover:shadow-[0_10px_25px_rgba(241,100,54,0.15)]">
-                    <div>
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="px-2 py-0.5 text-[10px] font-black uppercase bg-[#f16436]/20 text-[#f16436] border border-[#f16436]/40 rounded">Plugin</span>
-                            <span class="text-[11px] text-orange-300/70 font-mono">Paper / Spigot</span>
-                        </div>
-                        <h4 class="font-cinzel text-lg font-bold text-slate-100 mb-2">Guild & Clan System</h4>
-                        <p class="text-xs text-slate-300/70 leading-relaxed mb-4">
-                            High-performance server plugin enabling players to form esports clans, declare scrim matches, and manage shared banks.
-                        </p>
-                    </div>
-                    <div class="border-t border-[#f16436]/20 pt-4 flex items-center justify-between">
-                        <span class="text-[11px] font-mono text-orange-400">🔥 14.7K Downloads</span>
-                        <a href="#" class="font-cinzel text-xs font-bold uppercase text-[#f16436] hover:text-white transition-colors">Download &rarr;</a>
-                    </div>
-                </div>
-
-                <!-- CurseForge Item 3 -->
-                <div class="bg-gradient-to-b from-[#25100a] to-[#120704] border border-[#f16436]/30 rounded-xl p-6 shadow-xl flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:border-[#f16436]/70 hover:shadow-[0_10px_25px_rgba(241,100,54,0.15)]">
-                    <div>
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="px-2 py-0.5 text-[10px] font-black uppercase bg-[#f16436]/20 text-[#f16436] border border-[#f16436]/40 rounded">Custom Asset</span>
-                            <span class="text-[11px] text-orange-300/70 font-mono">Blockbench</span>
-                        </div>
-                        <h4 class="font-cinzel text-lg font-bold text-slate-100 mb-2">Pantheon Armors & Crowns</h4>
-                        <p class="text-xs text-slate-300/70 leading-relaxed mb-4">
-                            3D model pack adding Spartan and Roman-inspired ceremonial armor sets and trophies for server rewards.
-                        </p>
-                    </div>
-                    <div class="border-t border-[#f16436]/20 pt-4 flex items-center justify-between">
-                        <span class="text-[11px] font-mono text-orange-400">🔥 8.9K Downloads</span>
-                        <a href="#" class="font-cinzel text-xs font-bold uppercase text-[#f16436] hover:text-white transition-colors">Download &rarr;</a>
-                    </div>
-                </div>
+            <div class="w-full md:w-auto text-center">
+                <a id="cf-hub-link" href="https://curseforge.com" target="_blank" class="font-cinzel inline-block whitespace-nowrap px-8 py-4 bg-gradient-to-r from-[#f16436] to-amber-600 hover:brightness-110 text-black font-black uppercase tracking-wider text-xs sm:text-sm rounded-xl transition-all duration-300 hover:scale-105 shadow-[0_0_20px_rgba(241,100,54,0.3)]">
+                    Visit CurseForge Catalog 🔥
+                </a>
             </div>
         </section>
 
-        <!-- SECTION 4: Commissions & Support Section (Request Project / Donate) -->
+        <!-- SECTION 4: Commissions & Support Section -->
         <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            
-            <!-- Request a Project (Commission) Card -->
             <div class="bg-gradient-to-b from-[#320a0e] to-[#1a0507] border border-amber-500/40 rounded-xl p-6 sm:p-8 shadow-xl flex flex-col justify-between space-y-6">
                 <div>
                     <span class="font-cinzel px-2.5 py-0.5 text-[10px] font-black uppercase bg-amber-500 text-black rounded tracking-wider">Custom Development</span>
@@ -241,12 +178,11 @@
                         Need a custom Minecraft plugin, tailored modpack, or custom 3D model for your server or content creation team? Our studio takes on custom commission work.
                     </p>
                 </div>
-                <a href="#" class="font-cinzel text-center block w-full py-3 bg-gradient-to-r from-amber-400 to-amber-600 hover:from-amber-300 hover:to-amber-500 text-black font-extrabold uppercase tracking-wider text-xs rounded-lg transition-all shadow-[0_0_15px_rgba(245,158,11,0.3)]">
+                <a href="https://discord.gg/gMQVDEbpt6" target="_blank" class="font-cinzel text-center block w-full py-3 bg-gradient-to-r from-amber-400 to-amber-600 hover:from-amber-300 hover:to-amber-500 text-black font-extrabold uppercase tracking-wider text-xs rounded-lg transition-all shadow-[0_0_15px_rgba(245,158,11,0.3)]">
                     Submit Project Brief &rarr;
                 </a>
             </div>
 
-            <!-- Donate & Support Studio Card -->
             <div class="bg-gradient-to-b from-[#320a0e] to-[#1a0507] border border-amber-500/40 rounded-xl p-6 sm:p-8 shadow-xl flex flex-col justify-between space-y-6">
                 <div>
                     <span class="font-cinzel px-2.5 py-0.5 text-[10px] font-black uppercase bg-emerald-950 text-emerald-400 border border-emerald-500/40 rounded tracking-wider">Support Free Mods</span>
@@ -264,7 +200,6 @@
                     </a>
                 </div>
             </div>
-
         </section>
 
     </div>
@@ -276,5 +211,202 @@
         </div>
     </footer>
 
+    <!-- Scripts -->
+    <script>
+        function toggleProfileDrawer() {
+            const drawer = document.getElementById('profile-drawer');
+            const backdrop = document.getElementById('profile-drawer-backdrop');
+            
+            if (drawer.classList.contains('-translate-x-full')) {
+                drawer.classList.remove('-translate-x-full');
+                backdrop.classList.remove('hidden');
+                setTimeout(() => backdrop.classList.remove('opacity-0'), 10);
+            } else {
+                drawer.classList.add('-translate-x-full');
+                backdrop.classList.add('opacity-0');
+                setTimeout(() => backdrop.classList.add('hidden'), 300);
+            }
+        }
+
+        // =========================================================================
+        // PROJECTS GALLERY: Modrinth organization + CurseForge links
+        // =========================================================================
+        // ---------------- CONFIG: edit this ----------------
+        const MODRINTH_ORG = "chained-studios";   // your Modrinth organization slug (the end of its Modrinth URL)
+        const MODRINTH_USERS = [];               // optional: personal Modrinth usernames to include too
+        const CURSEFORGE_PAGE = "https://www.curseforge.com/members/chainedstudios/projects";              // your CurseForge author page; fills the CurseForge buttons
+        // Projects that are on BOTH platforms: Modrinth slug -> CurseForge page
+        const ALSO_ON_CURSEFORGE = {
+            // "my-mod-slug": "https://www.curseforge.com/minecraft/mc-mods/my-mod",
+        };
+        // Projects that are ONLY on CurseForge
+        const CURSEFORGE_ONLY = [
+            // { title: "My Mod", description: "What it does.", icon: "https://.../icon.png",
+            //   url: "https://www.curseforge.com/minecraft/mc-mods/my-mod", type: "mod" },
+        ];
+        const SPEED = 40;                        // auto-scroll speed in pixels per second
+        // ---------------------------------------------------
+
+        const API = "https://api.modrinth.com";
+        const $ = id => document.getElementById(id);
+        const gallery = $("gallery");
+
+        async function getJson(url) {
+            const res = await fetch(url);
+            if (!res.ok) throw new Error(res.status);
+            return res.json();
+        }
+
+        async function loadModrinth() {
+            const jobs = [];
+            if (MODRINTH_ORG) jobs.push((async () => {
+                // The organization endpoint lists its projects; full details come from the stable v2 endpoint
+                const list = await getJson(`${API}/v3/organization/${encodeURIComponent(MODRINTH_ORG)}/projects`);
+                const ids = list.map(p => p.id);
+                return ids.length ? getJson(`${API}/v2/projects?ids=${encodeURIComponent(JSON.stringify(ids))}`) : [];
+            })());
+            MODRINTH_USERS.forEach(u => jobs.push(getJson(`${API}/v2/user/${encodeURIComponent(u)}/projects`)));
+
+            const settled = await Promise.allSettled(jobs);
+            const byId = new Map();
+            let ok = 0;
+            settled.forEach(r => {
+                if (r.status === "fulfilled") { ok++; r.value.forEach(p => byId.set(p.id, p)); }
+                else console.warn("Modrinth request failed:", r.reason);
+            });
+            if (jobs.length && !ok) throw new Error("All Modrinth requests failed");
+            return [...byId.values()].sort((a, b) => b.downloads - a.downloads);
+        }
+
+        const fromModrinth = p => ({ title: p.title, description: p.description, icon: p.icon_url, type: p.project_type,
+            modrinth: `https://modrinth.com/${p.project_type}/${p.slug}`, curseforge: ALSO_ON_CURSEFORGE[p.slug] || null,
+            downloads: p.downloads, followers: p.followers });
+        const fromCurseforge = c => ({ title: c.title, description: c.description || "", icon: c.icon || "", type: c.type || "mod",
+            modrinth: null, curseforge: c.url, downloads: null, followers: null });
+
+        function card(item) {
+            const a = document.createElement("article");
+            a.style.cssText = "width:19rem;flex:none";
+            a.className = "group relative flex flex-col justify-between rounded-xl border border-[#1bd96a]/30 bg-gradient-to-b from-[#0a1e12] to-[#07120b] p-6 shadow-xl transition-all duration-300 ease-out hover:-translate-y-2 hover:scale-[1.03] hover:border-[#1bd96a]/70 hover:shadow-[0_12px_30px_rgba(27,217,106,0.25)]";
+            a.innerHTML = `
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <img class="hidden w-8 h-8 rounded border border-[#1bd96a]/40 object-cover transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6" alt="">
+                            <span class="px-2 py-0.5 text-[10px] font-black uppercase bg-[#1bd96a]/20 text-[#1bd96a] border border-[#1bd96a]/40 rounded"></span>
+                        </div>
+                        <span class="text-[11px] text-emerald-300/70 font-mono"></span>
+                    </div>
+                    <h4 class="font-cinzel text-lg font-bold text-slate-100 mb-2 transition-colors duration-300 group-hover:text-[#1bd96a]"><a target="_blank" rel="noopener" class="after:absolute after:inset-0"></a></h4>
+                    <p class="text-xs text-slate-300/70 leading-relaxed mb-4 line-clamp-3"></p>
+                </div>
+                <div class="border-t border-[#1bd96a]/20 pt-4">
+                    <span class="block text-[11px] font-mono text-emerald-400 mb-3"></span>
+                    <div class="relative z-10 flex flex-wrap gap-2 font-cinzel text-[10px] font-bold uppercase tracking-wider"></div>
+                </div>`;
+            const [top, h4, desc, foot] = [a.children[0].children[0], a.children[0].children[1], a.children[0].children[2], a.children[1]];
+            const [img, type] = top.children[0].children;
+            const followers = top.children[1];
+            const [downloads, links] = foot.children;
+            if (item.icon) { img.src = item.icon; img.alt = ""; img.classList.remove("hidden"); }
+            type.textContent = item.type;
+            if (item.followers != null) followers.textContent = `⭐ ${item.followers.toLocaleString()}`;
+            const main = h4.firstElementChild;
+            main.textContent = item.title;                    // textContent: API text can't inject HTML
+            main.href = item.modrinth || item.curseforge;     // clicking the card opens this
+            desc.textContent = item.description;
+            downloads.textContent = item.downloads != null ? `⚡ ${item.downloads.toLocaleString()} downloads on Modrinth` : "Available on CurseForge";
+            [["Modrinth", item.modrinth, "27,217,106"], ["CurseForge", item.curseforge, "241,100,54"]].forEach(([name, url, rgb]) => {
+                if (!url) return;
+                const l = document.createElement("a");
+                l.href = url; l.target = "_blank"; l.rel = "noopener"; l.textContent = name + " →";
+                l.className = "px-3 py-1.5 rounded border transition-colors hover:text-white";
+                l.style.cssText = `color:rgb(${rgb});border-color:rgba(${rgb},0.5)`;
+                links.append(l);
+            });
+            return a;
+        }
+
+        /* ---------- Gallery: auto-scroll, manual scroll, seamless loop ---------- */
+        const G = { active: false, n: 0, hover: false, focus: false, manualUntil: 0, wasPaused: true, pos: 0,
+                    last: performance.now(), userPaused: false };
+        const now = () => performance.now();
+        const period = () => gallery.children[G.n].offsetLeft - gallery.children[0].offsetLeft;
+        const paused = () => G.hover || G.focus || G.userPaused || now() < G.manualUntil;
+        const label = () => { $("g-toggle").textContent = G.userPaused ? "Play" : "Pause"; $("g-toggle").setAttribute("aria-pressed", G.userPaused); };
+
+        function showGallery(items) {
+            gallery.replaceChildren(...items.map(card));
+            G.n = items.length;
+            const originals = [...gallery.children];
+            const addSet = () => originals.forEach(c => {          // copies are hidden from screen readers and tabbing
+                const k = c.cloneNode(true);
+                k.setAttribute("aria-hidden", "true");
+                k.querySelectorAll("a").forEach(l => l.tabIndex = -1);
+                gallery.append(k);
+            });
+            addSet();
+            const sets = Math.ceil(gallery.clientWidth / period()) + 2;   // enough repeats to always fill the row
+            for (let i = 2; i < sets; i++) addSet();
+            $("gallery-controls").style.display = "flex";
+            label();
+            G.active = true;
+        }
+
+        function tick(t) {
+            const dt = Math.min(t - G.last, 100); G.last = t;
+            if (G.active) {
+                const p = paused();
+                if (!p) {
+                    if (G.wasPaused) G.pos = gallery.scrollLeft;      // resume where the visitor left off
+                    G.pos += SPEED * dt / 1000;
+                    if (G.pos >= period()) G.pos -= period();
+                    gallery.scrollLeft = G.pos;
+                }
+                G.wasPaused = p;
+            }
+            requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+
+        gallery.addEventListener("mouseenter", () => G.hover = true);
+        gallery.addEventListener("mouseleave", () => G.hover = false);
+        gallery.addEventListener("focusin", () => G.focus = true);
+        gallery.addEventListener("focusout", () => G.focus = false);
+        gallery.addEventListener("touchstart", () => G.manualUntil = now() + 4000, { passive: true });
+        gallery.addEventListener("wheel", () => G.manualUntil = now() + 4000, { passive: true });
+        gallery.addEventListener("scroll", () => { if (G.active && gallery.scrollLeft >= period()) gallery.scrollLeft -= period(); });
+
+        function nudge(dir) {
+            G.manualUntil = now() + 4000;
+            if (dir < 0 && gallery.scrollLeft <= 0) gallery.scrollLeft = period();
+            gallery.scrollBy({ left: dir * 320, behavior: "smooth" });
+        }
+        $("g-prev").addEventListener("click", () => nudge(-1));
+        $("g-next").addEventListener("click", () => nudge(1));
+        $("g-toggle").addEventListener("click", () => { G.userPaused = !G.userPaused; label(); });
+
+        /* ---------- Start ---------- */
+        if (MODRINTH_ORG) $("modrinth-page").href = `https://modrinth.com/organization/${encodeURIComponent(MODRINTH_ORG)}`;
+        if (CURSEFORGE_PAGE) {
+            $("cf-page").href = CURSEFORGE_PAGE; $("cf-page").style.display = "inline-block";
+            $("cf-hub-link").href = CURSEFORGE_PAGE;
+        }
+
+        (async () => {
+            const status = $("gallery-status");
+            let items = [], failed = false;
+            try { items = (await loadModrinth()).map(fromModrinth); }
+            catch (e) { console.error("Error fetching Modrinth API:", e); failed = true; }
+            items = items.concat(CURSEFORGE_ONLY.map(fromCurseforge));
+            if (!items.length) {
+                status.className = "text-center py-8 font-cinzel text-xs " + (failed ? "text-red-400" : "text-amber-100/50");
+                status.textContent = failed ? "Couldn’t load projects from Modrinth. Check the organization slug." : "No projects yet.";
+                return;
+            }
+            status.style.display = "none";
+            showGallery(items);
+        })();
+    </script>
 </body>
 </html>

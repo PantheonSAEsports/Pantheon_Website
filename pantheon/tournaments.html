@@ -28,28 +28,72 @@
 <body class="flex flex-col min-h-full font-sans antialiased bg-[#0d0405] text-amber-100/90 selection:bg-amber-500 selection:text-black">
 
     <!-- Header Banner / Logo Branding -->
-    <header class="bg-gradient-to-b from-[#1a0507] via-[#120406] to-[#0d0405] border-b border-amber-500/30 pt-6 pb-4 shadow-2xl">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
-            
+    <header class="bg-gradient-to-b from-[#1a0507] via-[#120406] to-[#0d0405] border-b border-amber-500/30 pt-4 pb-4 shadow-2xl relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- Top Utility Bar: Hamburger Profile (Left) & Auth Buttons (Right) -->
+            <div class="flex items-center justify-between pb-3 border-b border-amber-500/10">
+                <button onclick="toggleProfileDrawer()" class="flex items-center gap-2 px-3 py-1.5 bg-[#24070a] border border-amber-500/30 hover:border-amber-400 rounded-lg text-amber-300 transition-all duration-300 group">
+                    <svg class="w-5 h-5 text-amber-400 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    <span class="font-cinzel text-xs font-bold uppercase tracking-wider hidden sm:inline">Profile</span>
+                </button>
+
+                <div class="flex items-center gap-2 font-cinzel">
+                    <a href="/registration/auth.html" class="px-3 py-1.5 text-[10px] sm:text-xs font-bold uppercase tracking-wider text-amber-300 hover:text-white transition-colors">Sign In</a>
+                    <a href="/registration/auth.html" class="px-3.5 py-1.5 text-[10px] sm:text-xs font-extrabold uppercase tracking-wider text-black bg-gradient-to-r from-amber-400 to-amber-600 hover:brightness-110 rounded-lg shadow-[0_0_10px_rgba(245,158,11,0.3)] transition-all hover:scale-105">Register</a>
+                </div>
+            </div>
+
             <!-- Logo Container -->
-            <div class="flex items-center justify-center space-x-3 mb-2">
+            <div class="flex items-center justify-center space-x-3 my-4">
                 <h1 class="font-cinzel text-3xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-600 tracking-widest uppercase drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]">
                     Pantheon
                 </h1>
                 <img class="h-10 sm:h-14 w-auto rounded-full border border-amber-500/40 object-contain drop-shadow-[0_2px_10px_rgba(245,158,11,0.5)] transition-transform duration-300 hover:scale-105" src="/images/logo.png" alt="pantheon_logo">
             </div>
-            
-            <!-- Navigation Links (Single-Line Flex) -->
-            <nav class="mt-4 flex flex-nowrap justify-center items-center gap-1 sm:gap-4 border-t border-amber-500/20 pt-4 w-full max-w-4xl font-cinzel overflow-x-auto whitespace-nowrap">
+
+            <!-- Navigation Links -->
+            <nav class="flex flex-nowrap justify-center items-center gap-1 sm:gap-4 border-t border-amber-500/20 pt-4 w-full max-w-4xl mx-auto font-cinzel overflow-x-auto whitespace-nowrap">
                 <a href="/index.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Home</a>
                 <a href="/pantheon/tournaments.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-400 bg-amber-500/10 border border-amber-500/40 rounded transition-all duration-300 shadow-[0_0_10px_rgba(245,158,11,0.2)] hover:-translate-y-0.5">Tournaments</a>
-                <a href="/pantheonnetwork/network.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Pantheon Network</a>
-                <a href="/pantheonstudios/studios.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Pantheon Studio</a>
+                <a href="/pantheon/stats.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Stats & Intel</a>
+                <a href="/pantheonnetwork/network.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Network</a>
+                <a href="/pantheonstudios/studios.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Studio</a>
                 <a href="/pantheon/community.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/75 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Community</a>
-
+                <a href="/pantheon/store.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/75 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Store</a>
             </nav>
         </div>
     </header>
+
+    <!-- Slide-Out Profile Drawer -->
+    <div id="profile-drawer-backdrop" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden transition-opacity opacity-0" onclick="toggleProfileDrawer()"></div>
+    <div id="profile-drawer" class="fixed top-0 left-0 h-full w-80 bg-gradient-to-b from-[#1a0507] via-[#120406] to-[#0d0405] border-r border-amber-500/40 shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 flex flex-col justify-between p-6">
+        <div>
+            <div class="flex items-center justify-between pb-4 border-b border-amber-500/20">
+                <h3 class="font-cinzel text-lg font-black text-amber-300 uppercase tracking-wider">Player Profile</h3>
+                <button onclick="toggleProfileDrawer()" class="text-amber-400 hover:text-white font-cinzel text-lg">&times;</button>
+            </div>
+            <div class="my-6 p-4 bg-[#24070a]/60 border border-amber-500/30 rounded-xl space-y-2">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-amber-500/20 border border-amber-500/50 flex items-center justify-center font-cinzel font-bold text-amber-300">P</div>
+                    <div>
+                        <p class="font-cinzel text-xs font-bold text-amber-200">Guest Player</p>
+                        <p class="text-[10px] text-amber-100/50">Not Signed In</p>
+                    </div>
+                </div>
+            </div>
+            <ul class="space-y-2 font-cinzel text-xs">
+                <li><a href="/registration/auth.html" class="flex items-center gap-3 p-3 rounded-lg bg-[#24070a]/40 border border-amber-500/20 hover:border-amber-400 text-amber-200 transition-all"><span>🛡️</span> My Profile & Stats</a></li>
+                <li><a href="/pantheon/tournaments.html" class="flex items-center gap-3 p-3 rounded-lg bg-[#24070a]/40 border border-amber-500/20 hover:border-amber-400 text-amber-200 transition-all"><span>⚔️</span> Roster Registrations</a></li>
+                <li><a href="/pantheonnetwork/network.html" class="flex items-center gap-3 p-3 rounded-lg bg-[#24070a]/40 border border-amber-500/20 hover:border-amber-400 text-amber-200 transition-all"><span>⛏️</span> SMP Account Link</a></li>
+            </ul>
+        </div>
+        <div class="pt-4 border-t border-amber-500/20 font-cinzel">
+            <a href="/registration/auth.html" class="block text-center w-full py-3 bg-gradient-to-r from-amber-400 to-amber-600 text-black font-extrabold uppercase text-xs rounded-lg shadow-[0_0_12px_rgba(245,158,11,0.3)]">Sign In / Register</a>
+        </div>
+    </div>
 
     <!-- Main Container -->
     <div class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
@@ -65,69 +109,50 @@
             </div>
         </section>
 
-        <!-- SECTION 2: Dedicated Portals (Heroes of Olympus, Player Stats, Team Stats) -->
+        <!-- SECTION 2: Two Interactive Cards (Leaderboards & Live Viewer/Brackets) -->
         <section class="space-y-6">
             <div class="border-b border-amber-500/20 pb-4">
-                <span class="font-cinzel text-xs text-amber-400/80 uppercase tracking-widest font-bold">League Analytics & Standings</span>
-                <h3 class="font-cinzel text-2xl font-black text-amber-400 uppercase tracking-wide">Competitive Hubs</h3>
+                <span class="font-cinzel text-xs text-amber-400/80 uppercase tracking-widest font-bold">League Analytics & Brackets</span>
+                <h3 class="font-cinzel text-2xl font-black text-amber-400 uppercase tracking-wide">Interactive Portals</h3>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 
-                <!-- Portal 1: Heroes of Olympus Leaderboard -->
-                <div class="bg-gradient-to-b from-[#320a0e] to-[#1a0507] border border-amber-500/40 rounded-xl p-6 shadow-xl relative overflow-hidden group transition-all duration-300 hover:-translate-y-2 hover:border-amber-400/80 hover:shadow-[0_12px_30px_rgba(139,0,0,0.4)] flex flex-col justify-between">
+                <!-- Card 1: Leaderboards Hub -->
+                <div class="bg-gradient-to-b from-[#320a0e] to-[#1a0507] border border-amber-500/40 rounded-xl p-8 shadow-xl relative overflow-hidden group transition-all duration-300 hover:-translate-y-2 hover:border-amber-400/80 hover:shadow-[0_12px_30px_rgba(139,0,0,0.4)] flex flex-col justify-between space-y-6">
                     <div>
                         <div class="w-12 h-12 bg-amber-500/10 border border-amber-500/30 rounded-lg flex items-center justify-center text-amber-400 mb-4 transition-transform duration-300 group-hover:scale-110">
                             <svg class="w-7 h-7 drop-shadow-[0_0_8px_rgba(245,158,11,0.5)]" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94A5.01 5.01 0 0011 15.9v2.1H8v2h8v-2h-3v-2.1c2.03-.43 3.61-2.03 3.96-4.06C19.33 11.45 21 9.42 21 7V5c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z"/>
                             </svg>
                         </div>
-                        <span class="font-cinzel text-[10px] font-bold uppercase bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2 py-0.5 rounded">Flagship League</span>
-                        <h4 class="font-cinzel text-xl font-bold text-amber-300 mt-3 mb-2">Heroes of Olympus</h4>
-                        <p class="text-xs text-amber-100/70 leading-relaxed mb-6">
-                            View the official season standings, match scores, point distributions, and group brackets for our flagship league.
+                        <span class="font-cinzel text-[10px] font-bold uppercase bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2.5 py-0.5 rounded">Player & Team Stats</span>
+                        <h4 class="font-cinzel text-2xl font-bold text-amber-300 mt-3 mb-2">Leaderboards & Standings</h4>
+                        <p class="text-xs sm:text-sm text-amber-100/70 leading-relaxed">
+                            Filter through active tournaments, check team win-rates and points, and inspect individual player KDA records, kills, deaths, GPM, and MVP awards.
                         </p>
                     </div>
-                    <a href="/construction.html" class="font-cinzel block w-full text-center text-xs font-extrabold uppercase tracking-wider text-black bg-gradient-to-r from-amber-400 to-amber-600 py-3 rounded-lg hover:brightness-110 transition-all shadow-[0_0_12px_rgba(245,158,11,0.3)]">
-                        View Leaderboard
+                    <a href="/pantheon/stats.html" class="font-cinzel block w-full text-center text-xs font-black uppercase tracking-wider text-black bg-gradient-to-r from-amber-400 to-amber-600 py-3.5 rounded-lg hover:brightness-110 transition-all shadow-[0_0_15px_rgba(245,158,11,0.3)]">
+                        View Leaderboards 🏆
                     </a>
                 </div>
 
-                <!-- Portal 2: Player Stats -->
-                <div class="bg-gradient-to-b from-[#320a0e] to-[#1a0507] border border-amber-500/40 rounded-xl p-6 shadow-xl relative overflow-hidden group transition-all duration-300 hover:-translate-y-2 hover:border-amber-400/80 hover:shadow-[0_12px_30px_rgba(139,0,0,0.4)] flex flex-col justify-between">
+                <!-- Card 2: Live Tournament Viewer & Brackets -->
+                <div class="bg-gradient-to-b from-[#320a0e] to-[#1a0507] border border-amber-500/40 rounded-xl p-8 shadow-xl relative overflow-hidden group transition-all duration-300 hover:-translate-y-2 hover:border-amber-400/80 hover:shadow-[0_12px_30px_rgba(139,0,0,0.4)] flex flex-col justify-between space-y-6">
                     <div>
-                        <div class="w-12 h-12 bg-amber-500/10 border border-amber-500/30 rounded-lg flex items-center justify-center text-amber-400 mb-4 transition-transform duration-300 group-hover:scale-110">
-                            <svg class="w-7 h-7 drop-shadow-[0_0_8px_rgba(245,158,11,0.5)]" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                        <div class="w-12 h-12 bg-red-500/10 border border-red-500/30 rounded-lg flex items-center justify-center text-red-400 mb-4 transition-transform duration-300 group-hover:scale-110">
+                            <svg class="w-7 h-7 drop-shadow-[0_0_8px_rgba(239,68,68,0.5)]" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0-1.9-.9-2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/>
                             </svg>
                         </div>
-                        <span class="font-cinzel text-[10px] font-bold uppercase bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2 py-0.5 rounded">Individual Records</span>
-                        <h4 class="font-cinzel text-xl font-bold text-amber-300 mt-3 mb-2">Player Statistics</h4>
-                        <p class="text-xs text-amber-100/70 leading-relaxed mb-6">
-                            Track individual performance, KDA ratios, MVP awards, gold per minute, and top kills across all league matches.
+                        <span class="font-cinzel text-[10px] font-bold uppercase bg-red-950 text-red-400 border border-red-500/30 px-2.5 py-0.5 rounded">Streams & Trees</span>
+                        <h4 class="font-cinzel text-2xl font-bold text-amber-300 mt-3 mb-2">Live Viewer & Brackets</h4>
+                        <p class="text-xs sm:text-sm text-amber-100/70 leading-relaxed">
+                            Watch live match broadcasts, inspect single-elimination playoff trees (Quarter-Finals through Grand Finals), and track real-time series progression.
                         </p>
                     </div>
-                    <a href="/construction.html" class="font-cinzel block w-full text-center text-xs font-extrabold uppercase tracking-wider text-black bg-gradient-to-r from-amber-400 to-amber-600 py-3 rounded-lg hover:brightness-110 transition-all shadow-[0_0_12px_rgba(245,158,11,0.3)]">
-                        View Player Stats
-                    </a>
-                </div>
-
-                <!-- Portal 3: Team Stats -->
-                <div class="bg-gradient-to-b from-[#320a0e] to-[#1a0507] border border-amber-500/40 rounded-xl p-6 shadow-xl relative overflow-hidden group transition-all duration-300 hover:-translate-y-2 hover:border-amber-400/80 hover:shadow-[0_12px_30px_rgba(139,0,0,0.4)] flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 bg-amber-500/10 border border-amber-500/30 rounded-lg flex items-center justify-center text-amber-400 mb-4 transition-transform duration-300 group-hover:scale-110">
-                            <svg class="w-7 h-7 drop-shadow-[0_0_8px_rgba(245,158,11,0.5)]" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
-                            </svg>
-                        </div>
-                        <span class="font-cinzel text-[10px] font-bold uppercase bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2 py-0.5 rounded">Roster Metrics</span>
-                        <h4 class="font-cinzel text-xl font-bold text-amber-300 mt-3 mb-2">Team Statistics</h4>
-                        <p class="text-xs text-amber-100/70 leading-relaxed mb-6">
-                            Analyze team-level metrics including objective control (Lord/Turtle kills), First Blood rates, and average match duration.
-                        </p>
-                    </div>
-                    <a href="/construction.html" class="font-cinzel block w-full text-center text-xs font-extrabold uppercase tracking-wider text-black bg-gradient-to-r from-amber-400 to-amber-600 py-3 rounded-lg hover:brightness-110 transition-all shadow-[0_0_12px_rgba(245,158,11,0.3)]">
-                        View Team Stats
+                    <a href="/pantheon/viewer.html" class="font-cinzel block w-full text-center text-xs font-black uppercase tracking-wider text-white bg-gradient-to-r from-red-600 to-amber-600 py-3.5 rounded-lg hover:brightness-110 transition-all shadow-[0_0_15px_rgba(239,68,68,0.4)]">
+                        Live Broadcast & Brackets 📺
                     </a>
                 </div>
 
@@ -166,5 +191,22 @@
         </div>
     </footer>
 
+    <!-- Script -->
+    <script>
+        function toggleProfileDrawer() {
+            const drawer = document.getElementById('profile-drawer');
+            const backdrop = document.getElementById('profile-drawer-backdrop');
+            
+            if (drawer.classList.contains('-translate-x-full')) {
+                drawer.classList.remove('-translate-x-full');
+                backdrop.classList.remove('hidden');
+                setTimeout(() => backdrop.classList.remove('opacity-0'), 10);
+            } else {
+                drawer.classList.add('-translate-x-full');
+                backdrop.classList.add('opacity-0');
+                setTimeout(() => backdrop.classList.add('hidden'), 300);
+            }
+        }
+    </script>
 </body>
 </html>

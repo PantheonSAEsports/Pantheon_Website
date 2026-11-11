@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-[#0d0405] text-amber-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Official Store & Services - Pantheon</title>
+    
+    <!-- Google Fonts: Cinzel & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="flex flex-col min-h-full font-sans antialiased bg-[#0d0405] text-amber-100/90 selection:bg-amber-500 selection:text-black">
+
+    <!-- Header Banner / Logo Branding -->
+    <header class="bg-gradient-to-b from-[#1a0507] via-[#120406] to-[#0d0405] border-b border-amber-500/30 pt-6 pb-4 shadow-2xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
+            
+            <!-- Logo Container -->
+            <div class="flex items-center justify-center space-x-3 mb-2">
+                <h1 class="font-cinzel text-3xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-600 tracking-widest uppercase drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]">
+                    Pantheon
+                </h1>
+                <img class="h-10 sm:h-14 w-auto rounded-full border border-amber-500/40 object-contain drop-shadow-[0_2px_10px_rgba(245,158,11,0.5)] transition-transform duration-300 hover:scale-105" src="/images/logo.png" alt="pantheon_logo">
+            </div>
+            
+            <!-- Navigation Links -->
+            <nav class="mt-4 flex flex-nowrap justify-center items-center gap-1 sm:gap-4 border-t border-amber-500/20 pt-4 w-full max-w-4xl font-cinzel overflow-x-auto whitespace-nowrap">
+                <a href="/index.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Home</a>
+                <a href="/pantheon/tournaments.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Tournaments</a>
+                <a href="/pantheonnetwork/network.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Pantheon Network</a>
+                <a href="/pantheonstudios/studios.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Pantheon Studio</a>
+                <a href="/pantheon/store.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider bg-amber-500/10 shadow-[0_0_10px_rgba(245,158,11,0.2)] border border-amber-500/40 text-amber-400 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Store</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16">
+        
+        <!-- SECTION 1: Player Intelligence Membership Tier -->
+        <section class="space-y-6">
+            <div class="border-b border-amber-500/20 pb-4">
+                <span class="font-cinzel text-xs text-amber-400/80 uppercase tracking-widest font-bold">Esports Scouting & Analytics</span>
+                <h3 class="font-cinzel text-2xl font-black text-amber-400 uppercase tracking-wide">Scouting Pass Memberships</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Free Tier Card -->
+                <div class="bg-gradient-to-b from-[#1c0407] to-[#0f0406] border border-amber-500/20 rounded-xl p-6 shadow-xl flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <span class="font-cinzel text-[10px] font-bold uppercase bg-amber-500/10 text-amber-300/70 border border-amber-500/20 px-2.5 py-0.5 rounded">Basic Access</span>
+                        <h4 class="font-cinzel text-2xl font-bold text-amber-300">Community Scout</h4>
+                        <p class="font-cinzel text-3xl font-black text-amber-100">Free</p>
+                        <ul class="space-y-2 text-xs text-amber-100/70 border-t border-amber-500/20 pt-4">
+                            <li class="flex items-center gap-2">✔ View public match results & bracket standings</li>
+                            <li class="flex items-center gap-2">✔ Access to public tournament chat</li>
+                            <li class="flex items-center gap-2 text-amber-100/30">✖ Advanced player win-rate analytics</li>
+                            <li class="flex items-center gap-2 text-amber-100/30">✖ Full hero pool & ban rate breakdown</li>
+                        </ul>
+                    </div>
+                    <button disabled class="font-cinzel mt-6 w-full py-3 bg-[#180507] border border-amber-500/20 text-amber-100/40 font-bold uppercase text-xs rounded-lg cursor-not-allowed">
+                        Default Plan
+                    </button>
+                </div>
+
+                <!-- VIP Pro Pass Card -->
+                <div class="bg-gradient-to-b from-[#320a0e] to-[#1a0507] border border-amber-500/50 rounded-xl p-6 shadow-2xl relative overflow-hidden flex flex-col justify-between group transition-all duration-300 hover:border-amber-400 hover:shadow-[0_0_25px_rgba(245,158,11,0.2)]">
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="font-cinzel text-[10px] font-bold uppercase bg-amber-500 text-black px-2.5 py-0.5 rounded tracking-widest">Recommended</span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse"></span>
+                        </div>
+                        <h4 class="font-cinzel text-2xl font-black text-amber-300">VIP Scouting Pass</h4>
+                        <p class="font-cinzel text-3xl font-black text-amber-400">$9.99 <span class="text-xs font-normal text-amber-100/60">/ month</span></p>
+                        <ul class="space-y-2 text-xs text-amber-100/90 border-t border-amber-500/20 pt-4">
+                            <li class="flex items-center gap-2">✔ Full access to detailed player statistics & match histories</li>
+                            <li class="flex items-center gap-2">✔ In-depth win rates, hero picks, & gold per minute (GPM) stats</li>
+                            <li class="flex items-center gap-2">✔ Scouting dashboard for team managers & analysts</li>
+                            <li class="flex items-center gap-2">✔ Exclusive VIP Discord badge & private channel access</li>
+                        </ul>
+                    </div>
+                    <a href="https://checkout.stripe.com" target="_blank" class="font-cinzel mt-6 block text-center w-full py-3 bg-gradient-to-r from-amber-400 to-amber-600 hover:brightness-110 text-black font-extrabold uppercase tracking-wider text-xs rounded-lg transition-all shadow-[0_0_15px_rgba(245,158,11,0.4)]">
+                        Subscribe Now 🔓
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: Pantheon Studio Software & Web Dev Commissions -->
+        <section class="space-y-6">
+            <div class="border-b border-amber-500/20 pb-4">
+                <span class="font-cinzel text-xs text-amber-400/80 uppercase tracking-widest font-bold">Development Services</span>
+                <h3 class="font-cinzel text-2xl font-black text-amber-400 uppercase tracking-wide">Software & Website Commissions</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Service 1: Custom Minecraft Plugin / Mod -->
+                <div class="bg-gradient-to-b from-[#1c0407] to-[#0f0406] border border-amber-500/30 rounded-xl p-6 shadow-xl flex flex-col justify-between space-y-4">
+                    <div>
+                        <span class="font-cinzel text-[10px] font-bold uppercase bg-emerald-950 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded">Minecraft Dev</span>
+                        <h4 class="font-cinzel text-lg font-bold text-amber-300 mt-2">Custom Mods & Plugins</h4>
+                        <p class="text-xs text-amber-100/70 mt-2 leading-relaxed">
+                            Tailored Spigot/Paper plugins, Fabric mods, or custom Blockbench 3D armor & weapon assets built for your server.
+                        </p>
+                    </div>
+                    <a href="studio.html#commission" class="font-cinzel text-center py-2.5 bg-[#24070a] border border-amber-500/30 hover:border-amber-400 text-amber-300 font-bold uppercase tracking-wider text-xs rounded-lg transition-all">
+                        Request Quote &rarr;
+                    </a>
+                </div>
+
+                <!-- Service 2: Esports Website Development -->
+                <div class="bg-gradient-to-b from-[#1c0407] to-[#0f0406] border border-amber-500/30 rounded-xl p-6 shadow-xl flex flex-col justify-between space-y-4">
+                    <div>
+                        <span class="font-cinzel text-[10px] font-bold uppercase bg-indigo-950 text-indigo-400 border border-indigo-500/30 px-2 py-0.5 rounded">Web Engineering</span>
+                        <h4 class="font-cinzel text-lg font-bold text-amber-300 mt-2">Custom Esports Webstores & Portals</h4>
+                        <p class="text-xs text-amber-100/70 mt-2 leading-relaxed">
+                            Full multi-page platform engineering like Pantheon. High-performance, mobile-responsive dark/gold UI design.
+                        </p>
+                    </div>
+                    <a href="studio.html#commission" class="font-cinzel text-center py-2.5 bg-[#24070a] border border-amber-500/30 hover:border-amber-400 text-amber-300 font-bold uppercase tracking-wider text-xs rounded-lg transition-all">
+                        Request Quote &rarr;
+                    </a>
+                </div>
+
+                <!-- Service 3: Dedicated Bot Development -->
+                <div class="bg-gradient-to-b from-[#1c0407] to-[#0f0406] border border-amber-500/30 rounded-xl p-6 shadow-xl flex flex-col justify-between space-y-4">
+                    <div>
+                        <span class="font-cinzel text-[10px] font-bold uppercase bg-purple-950 text-purple-400 border border-purple-500/30 px-2 py-0.5 rounded">Bot Development</span>
+                        <h4 class="font-cinzel text-lg font-bold text-amber-300 mt-2">Custom Discord Scrim Bots</h4>
+                        <p class="text-xs text-amber-100/70 mt-2 leading-relaxed">
+                            Automated tournament registration, stat fetching, team verification, and match score reporting bots.
+                        </p>
+                    </div>
+                    <a href="studio.html#commission" class="font-cinzel text-center py-2.5 bg-[#24070a] border border-amber-500/30 hover:border-amber-400 text-amber-300 font-bold uppercase tracking-wider text-xs rounded-lg transition-all">
+                        Request Quote &rarr;
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: Minecraft SMP Webstore Direct Link -->
+        <section class="bg-gradient-to-r from-[#4a0d14] via-[#31080d] to-[#1c0407] border border-amber-500/50 rounded-xl p-6 sm:p-10 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8">
+            <div class="space-y-3 text-center md:text-left">
+                <span class="font-cinzel px-2.5 py-0.5 text-[10px] font-black uppercase bg-amber-500 text-black rounded tracking-widest">In-Game Perks</span>
+                <h3 class="font-cinzel text-2xl sm:text-3xl font-black text-amber-300 uppercase">Pantheon Minecraft SMP Webstore</h3>
+                <p class="text-xs sm:text-sm text-amber-100/80 leading-relaxed max-w-xl">
+                    Buy VIP Ranks, cosmetic chat tags, crate keys, and claim blocks for our Minecraft SMP server. All purchases directly fund server hosting and development.
+                </p>
+            </div>
+            <a href="https://store.pantheonesports.com" target="_blank" class="font-cinzel whitespace-nowrap px-8 py-4 bg-gradient-to-r from-amber-400 to-amber-600 hover:from-amber-300 hover:to-amber-500 text-black font-black uppercase tracking-wider text-xs rounded-xl transition-all duration-300 hover:scale-105 shadow-[0_0_20px_rgba(245,158,11,0.4)]">
+                Visit Minecraft Webstore 🛒
+            </a>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#080203] border-t border-amber-500/20 text-amber-100/50 py-6 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs space-y-2">
+            <p class="font-cinzel font-bold text-amber-400 tracking-widest uppercase">&copy; 2026 Pantheon Esports Organization. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

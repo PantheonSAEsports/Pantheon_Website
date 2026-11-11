@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-[#0d0405] text-amber-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Tournament Viewer - Pantheon Esports</title>
+    
+    <!-- Google Fonts: Cinzel & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="flex flex-col min-h-full font-sans antialiased bg-[#0d0405] text-amber-100/90 selection:bg-amber-500 selection:text-black">
+
+    <!-- Header Banner / Logo Branding -->
+    <header class="bg-gradient-to-b from-[#1a0507] via-[#120406] to-[#0d0405] border-b border-amber-500/30 pt-4 pb-4 shadow-2xl relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between pb-3 border-b border-amber-500/10">
+                <button onclick="toggleProfileDrawer()" class="flex items-center gap-2 px-3 py-1.5 bg-[#24070a] border border-amber-500/30 hover:border-amber-400 rounded-lg text-amber-300 transition-all duration-300 group">
+                    <svg class="w-5 h-5 text-amber-400 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    <span class="font-cinzel text-xs font-bold uppercase tracking-wider hidden sm:inline">Profile</span>
+                </button>
+                <div class="flex items-center gap-2 font-cinzel">
+                    <a href="/registration/auth.html" class="px-3 py-1.5 text-[10px] sm:text-xs font-bold uppercase tracking-wider text-amber-300 hover:text-white transition-colors">Sign In</a>
+                    <a href="/registration/auth.html" class="px-3.5 py-1.5 text-[10px] sm:text-xs font-extrabold uppercase tracking-wider text-black bg-gradient-to-r from-amber-400 to-amber-600 hover:brightness-110 rounded-lg shadow-[0_0_10px_rgba(245,158,11,0.3)] transition-all hover:scale-105">Register</a>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-center space-x-3 my-4">
+                <h1 class="font-cinzel text-3xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-600 tracking-widest uppercase drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]">Pantheon</h1>
+                <img class="h-10 sm:h-14 w-auto rounded-full border border-amber-500/40 object-contain drop-shadow-[0_2px_10px_rgba(245,158,11,0.5)] transition-transform duration-300 hover:scale-105" src="/images/logo.png" alt="pantheon_logo">
+            </div>
+            
+            <nav class="flex flex-nowrap justify-center items-center gap-1 sm:gap-4 border-t border-amber-500/20 pt-4 w-full max-w-4xl mx-auto font-cinzel overflow-x-auto whitespace-nowrap">
+                <a href="/index.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Home</a>
+                <a href="/pantheon/tournaments.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Tournaments</a>
+                <a href="/pantheon/stats.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Stats & Intel</a>
+                <a href="/pantheonnetwork/network.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Network</a>
+                <a href="/pantheonstudios/studios.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Studio</a>
+                <a href="/pantheon/community.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/75 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Community</a>
+                <a href="/pantheon/store.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/75 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Store</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Slide-Out Profile Drawer -->
+    <div id="profile-drawer-backdrop" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden transition-opacity opacity-0" onclick="toggleProfileDrawer()"></div>
+    <div id="profile-drawer" class="fixed top-0 left-0 h-full w-80 bg-gradient-to-b from-[#1a0507] via-[#120406] to-[#0d0405] border-r border-amber-500/40 shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 flex flex-col justify-between p-6">
+        <div>
+            <div class="flex items-center justify-between pb-4 border-b border-amber-500/20">
+                <h3 class="font-cinzel text-lg font-black text-amber-300 uppercase tracking-wider">Player Profile</h3>
+                <button onclick="toggleProfileDrawer()" class="text-amber-400 hover:text-white font-cinzel text-lg">&times;</button>
+            </div>
+            <div class="my-6 p-4 bg-[#24070a]/60 border border-amber-500/30 rounded-xl space-y-2">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-amber-500/20 border border-amber-500/50 flex items-center justify-center font-cinzel font-bold text-amber-300">P</div>
+                    <div>
+                        <p class="font-cinzel text-xs font-bold text-amber-200">Guest Player</p>
+                        <p class="text-[10px] text-amber-100/50">Not Signed In</p>
+                    </div>
+                </div>
+            </div>
+            <ul class="space-y-2 font-cinzel text-xs">
+                <li><a href="/registration/auth.html" class="flex items-center gap-3 p-3 rounded-lg bg-[#24070a]/40 border border-amber-500/20 hover:border-amber-400 text-amber-200 transition-all"><span>🛡️</span> My Profile & Stats</a></li>
+                <li><a href="/pantheon/tournaments.html" class="flex items-center gap-3 p-3 rounded-lg bg-[#24070a]/40 border border-amber-500/20 hover:border-amber-400 text-amber-200 transition-all"><span>⚔️</span> Roster Registrations</a></li>
+                <li><a href="/pantheonnetwork/network.html" class="flex items-center gap-3 p-3 rounded-lg bg-[#24070a]/40 border border-amber-500/20 hover:border-amber-400 text-amber-200 transition-all"><span>⛏️</span> SMP Account Link</a></li>
+            </ul>
+        </div>
+        <div class="pt-4 border-t border-amber-500/20 font-cinzel">
+            <a href="/registration/auth.html" class="block text-center w-full py-3 bg-gradient-to-r from-amber-400 to-amber-600 text-black font-extrabold uppercase text-xs rounded-lg shadow-[0_0_12px_rgba(245,158,11,0.3)]">Sign In / Register</a>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+        
+        <!-- SECTION 1: Stream & Active Match Hero Header -->
+        <section class="bg-gradient-to-b from-[#1b0609] via-[#140507] to-[#0f0406] p-6 rounded-xl border border-amber-500/30 shadow-2xl space-y-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 border-b border-amber-500/20 pb-4">
+                <div class="space-y-1 text-center md:text-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-red-950/80 border border-red-500/40 rounded-full">
+                        <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse"></span>
+                        <span class="font-cinzel text-[10px] font-black uppercase text-red-300 tracking-wider">Live Broadcast</span>
+                    </div>
+                    <h2 class="font-cinzel text-2xl sm:text-3xl font-black text-amber-300 uppercase">Heroes of Olympus • Season 1 Finals</h2>
+                </div>
+                <div class="flex items-center gap-3 font-cinzel text-xs">
+                    <a href="/pantheon/stats.html" class="px-4 py-2 bg-[#24070a] border border-amber-500/30 hover:border-amber-400 text-amber-300 rounded-lg transition-all">
+                        📊 Stats & Leaderboards
+                    </a>
+                </div>
+            </div>
+
+            <!-- Embedded Live Player / Placeholder Stream Frame -->
+            <div class="w-full aspect-video bg-black/80 rounded-xl border border-amber-500/30 relative overflow-hidden flex items-center justify-center shadow-inner group">
+                <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-amber-900/20 via-black/80 to-[#0d0405]"></div>
+                
+                <div class="relative z-10 text-center space-y-3 p-6">
+                    <div class="w-16 h-16 mx-auto rounded-full bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400 shadow-[0_0_20px_rgba(245,158,11,0.4)] transition-transform group-hover:scale-110">
+                        <svg class="w-8 h-8 drop-shadow" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-cinzel text-lg sm:text-xl font-bold text-amber-200">Grand Finals Stream Starting Soon</h3>
+                    <p class="text-xs text-amber-100/60 max-w-md mx-auto">Olympus Titans vs Celestial Knights • Best of 5 Series</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: Interactive Tournament Bracket Tree -->
+        <section class="space-y-6">
+            <div class="border-b border-amber-500/20 pb-4 flex justify-between items-center">
+                <div>
+                    <span class="font-cinzel text-xs text-amber-400/80 uppercase tracking-widest font-bold">Bracket Tree</span>
+                    <h3 class="font-cinzel text-2xl font-black text-amber-400 uppercase tracking-wide">Playoff Progression</h3>
+                </div>
+                <span class="font-cinzel text-[10px] uppercase bg-amber-500/10 text-amber-300 border border-amber-500/30 px-3 py-1 rounded">Single Elimination</span>
+            </div>
+
+            <div class="overflow-x-auto pb-4">
+                <div class="min-w-[800px] grid grid-cols-3 gap-8 items-center font-cinzel text-xs">
+                    
+                    <!-- COLUMN 1: Quarter-Finals -->
+                    <div class="space-y-6">
+                        <div class="text-center font-bold text-amber-400 uppercase border-b border-amber-500/20 pb-2">Quarter-Finals</div>
+                        
+                        <!-- Match 1 -->
+                        <div class="bg-[#1c0507] border border-amber-500/30 rounded-lg p-3 space-y-2 shadow-lg">
+                            <div class="flex justify-between items-center text-amber-200 font-bold">
+                                <span>Olympus Titans</span>
+                                <span class="font-mono text-emerald-400">2</span>
+                            </div>
+                            <div class="flex justify-between items-center text-amber-100/50">
+                                <span>Solar Flares</span>
+                                <span class="font-mono">0</span>
+                            </div>
+                        </div>
+
+                        <!-- Match 2 -->
+                        <div class="bg-[#1c0507] border border-amber-500/30 rounded-lg p-3 space-y-2 shadow-lg">
+                            <div class="flex justify-between items-center text-amber-200 font-bold">
+                                <span>Spartan Vanguard</span>
+                                <span class="font-mono text-emerald-400">2</span>
+                            </div>
+                            <div class="flex justify-between items-center text-amber-100/50">
+                                <span>Oceanic Empire</span>
+                                <span class="font-mono">1</span>
+                            </div>
+                        </div>
+
+                        <!-- Match 3 -->
+                        <div class="bg-[#1c0507] border border-amber-500/30 rounded-lg p-3 space-y-2 shadow-lg">
+                            <div class="flex justify-between items-center text-amber-200 font-bold">
+                                <span>Celestial Knights</span>
+                                <span class="font-mono text-emerald-400">2</span>
+                            </div>
+                            <div class="flex justify-between items-center text-amber-100/50">
+                                <span>Underworld Reapers</span>
+                                <span class="font-mono">0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- COLUMN 2: Semi-Finals -->
+                    <div class="space-y-12">
+                        <div class="text-center font-bold text-amber-400 uppercase border-b border-amber-500/20 pb-2">Semi-Finals</div>
+                        
+                        <!-- Semi 1 -->
+                        <div class="bg-[#1c0507] border border-amber-500/40 rounded-lg p-3 space-y-2 shadow-xl">
+                            <div class="flex justify-between items-center text-amber-200 font-bold">
+                                <span>Olympus Titans</span>
+                                <span class="font-mono text-emerald-400">3</span>
+                            </div>
+                            <div class="flex justify-between items-center text-amber-100/50">
+                                <span>Spartan Vanguard</span>
+                                <span class="font-mono">1</span>
+                            </div>
+                        </div>
+
+                        <!-- Semi 2 -->
+                        <div class="bg-[#1c0507] border border-amber-500/40 rounded-lg p-3 space-y-2 shadow-xl">
+                            <div class="flex justify-between items-center text-amber-200 font-bold">
+                                <span>Celestial Knights</span>
+                                <span class="font-mono text-emerald-400">3</span>
+                            </div>
+                            <div class="flex justify-between items-center text-amber-100/50">
+                                <span>Void Walkers</span>
+                                <span class="font-mono">0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- COLUMN 3: Grand Finals -->
+                    <div class="space-y-6">
+                        <div class="text-center font-bold text-amber-400 uppercase border-b border-amber-500/20 pb-2">Grand Finals 🏆</div>
+                        
+                        <!-- Finals Match -->
+                        <div class="bg-gradient-to-b from-[#320a0e] to-[#1a0507] border-2 border-amber-400 rounded-xl p-4 space-y-3 shadow-[0_0_25px_rgba(245,158,11,0.3)]">
+                            <span class="block text-[10px] text-center uppercase tracking-widest text-amber-400 font-black">Championship Match</span>
+                            <div class="flex justify-between items-center text-amber-100 font-black text-sm">
+                                <span>Olympus Titans</span>
+                                <span class="font-mono text-amber-400">VS</span>
+                            </div>
+                            <div class="flex justify-between items-center text-amber-100 font-black text-sm">
+                                <span>Celestial Knights</span>
+                                <span class="font-mono text-xs text-amber-100/50">BO5</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#080203] border-t border-amber-500/20 text-amber-100/50 py-6 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs space-y-2">
+            <p class="font-cinzel font-bold text-amber-400 tracking-widest uppercase">&copy; 2026 Pantheon Esports Organization. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Script -->
+    <script>
+        function toggleProfileDrawer() {
+            const drawer = document.getElementById('profile-drawer');
+            const backdrop = document.getElementById('profile-drawer-backdrop');
+            
+            if (drawer.classList.contains('-translate-x-full')) {
+                drawer.classList.remove('-translate-x-full');
+                backdrop.classList.remove('hidden');
+                setTimeout(() => backdrop.classList.remove('opacity-0'), 10);
+            } else {
+                drawer.classList.add('-translate-x-full');
+                backdrop.classList.add('opacity-0');
+                setTimeout(() => backdrop.classList.add('hidden'), 300);
+            }
+        }
+    </script>
+</body>
+</html>

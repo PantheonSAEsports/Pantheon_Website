@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-[#0d0405] text-amber-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics & Leaderboards - Pantheon Esports</title>
+    
+    <!-- Google Fonts: Cinzel & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="flex flex-col min-h-full font-sans antialiased bg-[#0d0405] text-amber-100/90 selection:bg-amber-500 selection:text-black">
+
+    <!-- Header Banner / Logo Branding -->
+    <header class="bg-gradient-to-b from-[#1a0507] via-[#120406] to-[#0d0405] border-b border-amber-500/30 pt-4 pb-4 shadow-2xl relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- Top Utility Bar: Hamburger Profile (Left) & Auth Buttons (Right) -->
+            <div class="flex items-center justify-between pb-3 border-b border-amber-500/10">
+                <button onclick="toggleProfileDrawer()" class="flex items-center gap-2 px-3 py-1.5 bg-[#24070a] border border-amber-500/30 hover:border-amber-400 rounded-lg text-amber-300 transition-all duration-300 group">
+                    <svg class="w-5 h-5 text-amber-400 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    <span class="font-cinzel text-xs font-bold uppercase tracking-wider hidden sm:inline">Profile</span>
+                </button>
+
+                <div class="flex items-center gap-2 font-cinzel">
+                    <a href="/registration/auth.html" class="px-3 py-1.5 text-[10px] sm:text-xs font-bold uppercase tracking-wider text-amber-300 hover:text-white transition-colors">Sign In</a>
+                    <a href="/registration/auth.html" class="px-3.5 py-1.5 text-[10px] sm:text-xs font-extrabold uppercase tracking-wider text-black bg-gradient-to-r from-amber-400 to-amber-600 hover:brightness-110 rounded-lg shadow-[0_0_10px_rgba(245,158,11,0.3)] transition-all hover:scale-105">Register</a>
+                </div>
+            </div>
+
+            <!-- Logo Container -->
+            <div class="flex items-center justify-center space-x-3 my-4">
+                <h1 class="font-cinzel text-3xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-600 tracking-widest uppercase drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]">
+                    Pantheon
+                </h1>
+                <img class="h-10 sm:h-14 w-auto rounded-full border border-amber-500/40 object-contain drop-shadow-[0_2px_10px_rgba(245,158,11,0.5)] transition-transform duration-300 hover:scale-105" src="/images/logo.png" alt="pantheon_logo">
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="flex flex-nowrap justify-center items-center gap-1 sm:gap-4 border-t border-amber-500/20 pt-4 w-full max-w-4xl mx-auto font-cinzel overflow-x-auto whitespace-nowrap">
+                <a href="/index.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Home</a>
+                <a href="/pantheon/tournaments.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Tournaments</a>
+                <a href="/pantheon/stats.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-400 bg-amber-500/10 border border-amber-500/40 rounded transition-all duration-300 shadow-[0_0_10px_rgba(245,158,11,0.2)] hover:-translate-y-0.5">Stats & Intel</a>
+                <a href="/pantheonnetwork/network.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Network</a>
+                <a href="/pantheonstudios/studios.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Studio</a>
+                <a href="/pantheon/community.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/75 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Community</a>
+                <a href="/pantheon/store.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/75 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Store</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Slide-Out Profile Drawer -->
+    <div id="profile-drawer-backdrop" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden transition-opacity opacity-0" onclick="toggleProfileDrawer()"></div>
+    <div id="profile-drawer" class="fixed top-0 left-0 h-full w-80 bg-gradient-to-b from-[#1a0507] via-[#120406] to-[#0d0405] border-r border-amber-500/40 shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 flex flex-col justify-between p-6">
+        <div>
+            <div class="flex items-center justify-between pb-4 border-b border-amber-500/20">
+                <h3 class="font-cinzel text-lg font-black text-amber-300 uppercase tracking-wider">Player Profile</h3>
+                <button onclick="toggleProfileDrawer()" class="text-amber-400 hover:text-white font-cinzel text-lg">&times;</button>
+            </div>
+            <div class="my-6 p-4 bg-[#24070a]/60 border border-amber-500/30 rounded-xl space-y-2">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-amber-500/20 border border-amber-500/50 flex items-center justify-center font-cinzel font-bold text-amber-300">P</div>
+                    <div>
+                        <p class="font-cinzel text-xs font-bold text-amber-200">Guest Player</p>
+                        <p class="text-[10px] text-amber-100/50">Not Signed In</p>
+                    </div>
+                </div>
+            </div>
+            <ul class="space-y-2 font-cinzel text-xs">
+                <li><a href="/registration/auth.html" class="flex items-center gap-3 p-3 rounded-lg bg-[#24070a]/40 border border-amber-500/20 hover:border-amber-400 text-amber-200 transition-all"><span>🛡️</span> My Profile & Stats</a></li>
+                <li><a href="/pantheon/tournaments.html" class="flex items-center gap-3 p-3 rounded-lg bg-[#24070a]/40 border border-amber-500/20 hover:border-amber-400 text-amber-200 transition-all"><span>⚔️</span> Roster Registrations</a></li>
+                <li><a href="/pantheonnetwork/network.html" class="flex items-center gap-3 p-3 rounded-lg bg-[#24070a]/40 border border-amber-500/20 hover:border-amber-400 text-amber-200 transition-all"><span>⛏️</span> SMP Account Link</a></li>
+            </ul>
+        </div>
+        <div class="pt-4 border-t border-amber-500/20 font-cinzel">
+            <a href="/registration/auth.html" class="block text-center w-full py-3 bg-gradient-to-r from-amber-400 to-amber-600 text-black font-extrabold uppercase text-xs rounded-lg shadow-[0_0_12px_rgba(245,158,11,0.3)]">Sign In / Register</a>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+        
+        <!-- Controls Banner: Compact Horizontal Filters -->
+        <section class="bg-gradient-to-b from-[#1b0609] via-[#140507] to-[#0f0406] p-5 rounded-xl border border-amber-500/30 shadow-xl flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="space-y-0.5 text-center md:text-left">
+                <span class="font-cinzel text-[10px] text-amber-400 uppercase tracking-widest font-bold">Competitive Intelligence</span>
+                <h2 class="font-cinzel text-xl font-black text-amber-300 uppercase">Live Leaderboards</h2>
+            </div>
+
+            <!-- Compact Selectors Toolbar -->
+            <div class="flex flex-wrap items-center justify-center gap-3 font-cinzel text-xs">
+                
+                <!-- View Mode Dropdown -->
+                <div class="flex items-center bg-[#0d0405] border border-amber-500/40 rounded-lg px-3 py-1.5">
+                    <span class="text-[10px] text-amber-100/50 uppercase mr-2 hidden sm:inline">View:</span>
+                    <select id="view-mode-select" onchange="onViewModeChange()" class="bg-transparent text-amber-300 font-bold focus:outline-none cursor-pointer">
+                        <option value="players" class="bg-[#0d0405]">👤 Players</option>
+                        <option value="teams" class="bg-[#0d0405]">🛡️ Teams</option>
+                    </select>
+                </div>
+
+                <!-- Tournament Dropdown -->
+                <div class="flex items-center bg-[#0d0405] border border-amber-500/40 rounded-lg px-3 py-1.5">
+                    <span class="text-[10px] text-amber-100/50 uppercase mr-2 hidden sm:inline">Event:</span>
+                    <select id="tournament-select" onchange="updateLeaderboard()" class="bg-transparent text-amber-200 focus:outline-none cursor-pointer">
+                        <option value="olympus" class="bg-[#0d0405]">Heroes of Olympus (S1)</option>
+                        <option value="grassroots" class="bg-[#0d0405]">Grassroots Open</option>
+                        <option value="titans" class="bg-[#0d0405]">Titans Invitational</option>
+                    </select>
+                </div>
+
+                <!-- Metric Dropdown -->
+                <div class="flex items-center bg-[#0d0405] border border-amber-500/40 rounded-lg px-3 py-1.5">
+                    <span class="text-[10px] text-amber-100/50 uppercase mr-2 hidden sm:inline">Sort:</span>
+                    <select id="metric-select" onchange="updateLeaderboard()" class="bg-transparent text-amber-200 focus:outline-none cursor-pointer">
+                        <!-- Populated dynamically via JS -->
+                    </select>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Leaderboard Data Table Section -->
+        <section class="bg-gradient-to-b from-[#1b0609] via-[#140507] to-[#0f0406] rounded-xl border border-amber-500/30 shadow-2xl overflow-hidden">
+            <div class="p-6 border-b border-amber-500/20 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <h3 id="table-title" class="font-cinzel text-lg font-bold text-amber-300 uppercase tracking-wider">Heroes of Olympus • Player Rankings</h3>
+                <span id="active-metric-badge" class="font-cinzel text-[10px] uppercase bg-amber-500/20 text-amber-400 border border-amber-500/40 px-2.5 py-1 rounded">Sorted by KDA</span>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr id="table-header-row" class="border-b border-amber-500/20 bg-[#24070a]/40 font-cinzel text-xs text-amber-400 uppercase tracking-wider">
+                            <!-- Populated Dynamically via JS -->
+                        </tr>
+                    </thead>
+                    <tbody id="leaderboard-body" class="divide-y divide-amber-500/10 text-xs sm:text-sm text-amber-100/90 font-sans">
+                        <!-- Populated Dynamically via JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#080203] border-t border-amber-500/20 text-amber-100/50 py-6 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs space-y-2">
+            <p class="font-cinzel font-bold text-amber-400 tracking-widest uppercase">&copy; 2026 Pantheon Esports Organization. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        function toggleProfileDrawer() {
+            const drawer = document.getElementById('profile-drawer');
+            const backdrop = document.getElementById('profile-drawer-backdrop');
+            
+            if (drawer.classList.contains('-translate-x-full')) {
+                drawer.classList.remove('-translate-x-full');
+                backdrop.classList.remove('hidden');
+                setTimeout(() => backdrop.classList.remove('opacity-0'), 10);
+            } else {
+                drawer.classList.add('-translate-x-full');
+                backdrop.classList.add('opacity-0');
+                setTimeout(() => backdrop.classList.add('hidden'), 300);
+            }
+        }
+
+        // Mock Datasets for Players & Teams
+        const playersData = {
+            olympus: [
+                { ign: "Zeus_MLBB", team: "Olympus Titans", heroes: "Ling, Gusion, Hayabusa", kda: "8.42", kills: "114", deaths: "22", gpm: "840", mvp: "7" },
+                { ign: "Ares_God", team: "Spartan Vanguard", heroes: "Terizla, Yu Zhong, Lapu-Lapu", kda: "7.15", kills: "98", deaths: "31", gpm: "790", mvp: "5" },
+                { ign: "Athena_Tactics", team: "Celestial Knights", heroes: "Mathilda, Angela, Floryn", kda: "6.88", kills: "34", deaths: "19", gpm: "620", mvp: "6" },
+                { ign: "Hades_Underworld", team: "Underworld Reapers", heroes: "Helcurt, Fanny, Roger", kda: "6.20", kills: "105", deaths: "42", gpm: "810", mvp: "4" },
+                { ign: "Poseidon_Tides", team: "Oceanic Empire", heroes: "Atlas, Tigreal, Khufra", kda: "5.75", kills: "42", deaths: "38", gpm: "650", mvp: "3" },
+                { ign: "Apollo_Sun", team: "Solar Flares", heroes: "Beatrix, Brody, Moskov", kda: "5.40", kills: "122", deaths: "54", gpm: "860", mvp: "4" }
+            ],
+            grassroots: [
+                { ign: "Novice_Blade", team: "Rookie Strikers", heroes: "Alucard, Zilong, Saber", kda: "5.10", kills: "76", deaths: "30", gpm: "680", mvp: "3" },
+                { ign: "Shadow_Step", team: "Void Walkers", heroes: "Karina, Lancelot, Saber", kda: "4.85", kills: "82", deaths: "39", gpm: "710", mvp: "2" },
+                { ign: "Shield_Bearer", team: "Iron Wall", heroes: "Tigreal, Akai, Minotaur", kda: "4.20", kills: "28", deaths: "25", gpm: "590", mvp: "3" }
+            ],
+            titans: [
+                { ign: "Titan_Apex", team: "Olympus Titans", heroes: "Joy, Chou, Valentina", kda: "9.10", kills: "140", deaths: "18", gpm: "890", mvp: "9" },
+                { ign: "Valkyrie_Queen", team: "Celestial Knights", heroes: "Melissa, Claude, Natan", kda: "8.30", kills: "131", deaths: "24", gpm: "870", mvp: "7" },
+                { ign: "Cyclops_Eye", team: "Underworld Reapers", heroes: "Yve, Pharsa, Xavier", kda: "7.95", kills: "95", deaths: "29", gpm: "780", mvp: "5" }
+            ]
+        };
+
+        const teamsData = {
+            olympus: [
+                { team: "Olympus Titans", record: "10 - 2", winRate: "83.3%", lordKills: "24", matches: "12", points: "30" },
+                { team: "Celestial Knights", record: "9 - 3", winRate: "75.0%", lordKills: "19", matches: "12", points: "27" },
+                { team: "Spartan Vanguard", record: "7 - 5", winRate: "58.3%", lordKills: "15", matches: "12", points: "21" },
+                { team: "Underworld Reapers", record: "6 - 6", winRate: "50.0%", lordKills: "14", matches: "12", points: "18" },
+                { team: "Solar Flares", record: "4 - 8", winRate: "33.3%", lordKills: "8", matches: "12", points: "12" },
+                { team: "Oceanic Empire", record: "2 - 10", winRate: "16.7%", lordKills: "5", matches: "12", points: "6" }
+            ],
+            grassroots: [
+                { team: "Rookie Strikers", record: "5 - 1", winRate: "83.3%", lordKills: "11", matches: "6", points: "15" },
+                { team: "Void Walkers", record: "4 - 2", winRate: "66.7%", lordKills: "9", matches: "6", points: "12" },
+                { team: "Iron Wall", record: "2 - 4", winRate: "33.3%", lordKills: "4", matches: "6", points: "6" }
+            ],
+            titans: [
+                { team: "Olympus Titans", record: "6 - 0", winRate: "100.0%", lordKills: "16", matches: "6", points: "18" },
+                { team: "Celestial Knights", record: "4 - 2", winRate: "66.7%", lordKills: "12", matches: "6", points: "12" },
+                { team: "Underworld Reapers", record: "2 - 4", winRate: "33.3%", lordKills: "7", matches: "6", points: "6" }
+            ]
+        };
+
+        function onViewModeChange() {
+            const mode = document.getElementById('view-mode-select').value;
+            const metricSelect = document.getElementById('metric-select');
+
+            if (mode === 'players') {
+                metricSelect.innerHTML = `
+                    <option value="kda" class="bg-[#0d0405]">KDA Ratio</option>
+                    <option value="kills" class="bg-[#0d0405]">Total Kills</option>
+                    <option value="deaths" class="bg-[#0d0405]">Total Deaths</option>
+                    <option value="gpm" class="bg-[#0d0405]">GPM</option>
+                    <option value="mvp" class="bg-[#0d0405]">MVP Awards</option>
+                `;
+            } else {
+                metricSelect.innerHTML = `
+                    <option value="winRate" class="bg-[#0d0405]">Win Rate (%)</option>
+                    <option value="points" class="bg-[#0d0405]">Total Points</option>
+                    <option value="lordKills" class="bg-[#0d0405]">Lord / Turtle</option>
+                `;
+            }
+
+            updateLeaderboard();
+        }
+
+        function updateLeaderboard() {
+            const mode = document.getElementById('view-mode-select').value;
+            const tournamentKey = document.getElementById('tournament-select').value;
+            const metricKey = document.getElementById('metric-select').value;
+            const tournamentName = document.getElementById('tournament-select').selectedOptions[0].text;
+            const metricName = document.getElementById('metric-select').selectedOptions[0].text;
+
+            document.getElementById('table-title').innerText = `${tournamentName} • ${mode === 'players' ? 'Player' : 'Team'} Standings`;
+            document.getElementById('active-metric-badge').innerText = `Sorted by ${metricName}`;
+
+            const headerRow = document.getElementById('table-header-row');
+            const tbody = document.getElementById('leaderboard-body');
+            tbody.innerHTML = "";
+
+            if (mode === 'players') {
+                headerRow.innerHTML = `
+                    <th class="py-4 px-6">Rank</th>
+                    <th class="py-4 px-6">Player IGN</th>
+                    <th class="py-4 px-6">Team Roster</th>
+                    <th class="py-4 px-6">Main Heroes</th>
+                    <th class="py-4 px-6 text-right">Metric Value</th>
+                `;
+
+                let data = [...playersData[tournamentKey]];
+
+                if (metricKey === 'kda') data.sort((a, b) => parseFloat(b.kda) - parseFloat(a.kda));
+                else if (metricKey === 'kills') data.sort((a, b) => parseInt(b.kills) - parseInt(a.kills));
+                else if (metricKey === 'deaths') data.sort((a, b) => parseInt(a.deaths) - parseInt(b.deaths));
+                else if (metricKey === 'gpm') data.sort((a, b) => parseInt(b.gpm) - parseInt(a.gpm));
+                else if (metricKey === 'mvp') data.sort((a, b) => parseInt(b.mvp) - parseInt(a.mvp));
+
+                data.forEach((p, index) => {
+                    let rankBadge = `#${index + 1}`;
+                    let badgeColor = "text-amber-300";
+                    if (index === 0) badgeColor = "text-yellow-400 font-black drop-shadow-[0_0_8px_rgba(250,204,21,0.6)]";
+                    if (index === 1) badgeColor = "text-slate-300 font-bold";
+                    if (index === 2) badgeColor = "text-amber-600 font-bold";
+
+                    let val = p.kda;
+                    if (metricKey === 'kills') val = `<span class="text-emerald-400 font-mono font-bold">${p.kills} Kills</span>`;
+                    else if (metricKey === 'deaths') val = `<span class="text-red-400 font-mono font-bold">${p.deaths} Deaths</span>`;
+                    else if (metricKey === 'gpm') val = `<span class="text-amber-400 font-mono font-bold">${p.gpm} GPM</span>`;
+                    else if (metricKey === 'mvp') val = `<span class="text-purple-400 font-mono font-bold">⭐ ${p.mvp} MVPs</span>`;
+                    else val = `<span class="text-amber-300 font-mono font-bold">${p.kda} KDA</span>`;
+
+                    const tr = document.createElement('tr');
+                    tr.className = "hover:bg-[#24070a]/50 transition-colors";
+                    tr.innerHTML = `
+                        <td class="py-4 px-6 font-cinzel font-bold ${badgeColor}">${rankBadge}</td>
+                        <td class="py-4 px-6 font-cinzel font-bold text-amber-200">${p.ign}</td>
+                        <td class="py-4 px-6 text-amber-100/70">${p.team}</td>
+                        <td class="py-4 px-6 text-xs text-amber-100/50 font-mono">${p.heroes}</td>
+                        <td class="py-4 px-6 text-right font-mono font-bold">${val}</td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+
+            } else {
+                headerRow.innerHTML = `
+                    <th class="py-4 px-6">Rank</th>
+                    <th class="py-4 px-6">Team Roster</th>
+                    <th class="py-4 px-6">Record (W - L)</th>
+                    <th class="py-4 px-6">Matches</th>
+                    <th class="py-4 px-6 text-right">Metric Value</th>
+                `;
+
+                let data = [...teamsData[tournamentKey]];
+
+                if (metricKey === 'winRate') data.sort((a, b) => parseFloat(b.winRate) - parseFloat(a.winRate));
+                else if (metricKey === 'points') data.sort((a, b) => parseInt(b.points) - parseInt(a.points));
+                else if (metricKey === 'lordKills') data.sort((a, b) => parseInt(b.lordKills) - parseInt(a.lordKills));
+
+                data.forEach((t, index) => {
+                    let rankBadge = `#${index + 1}`;
+                    let badgeColor = "text-amber-300";
+                    if (index === 0) badgeColor = "text-yellow-400 font-black drop-shadow-[0_0_8px_rgba(250,204,21,0.6)]";
+                    if (index === 1) badgeColor = "text-slate-300 font-bold";
+                    if (index === 2) badgeColor = "text-amber-600 font-bold";
+
+                    let val = `<span class="text-amber-300 font-mono font-bold">${t.winRate}</span>`;
+                    if (metricKey === 'points') val = `<span class="text-amber-400 font-mono font-bold">${t.points} PTS</span>`;
+                    else if (metricKey === 'lordKills') val = `<span class="text-emerald-400 font-mono font-bold">🐉 ${t.lordKills} Lords</span>`;
+
+                    const tr = document.createElement('tr');
+                    tr.className = "hover:bg-[#24070a]/50 transition-colors";
+                    tr.innerHTML = `
+                        <td class="py-4 px-6 font-cinzel font-bold ${badgeColor}">${rankBadge}</td>
+                        <td class="py-4 px-6 font-cinzel font-bold text-amber-200">${t.team}</td>
+                        <td class="py-4 px-6 font-mono text-amber-100/70">${t.record}</td>
+                        <td class="py-4 px-6 font-mono text-amber-100/60">${t.matches}</td>
+                        <td class="py-4 px-6 text-right font-mono font-bold">${val}</td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            }
+        }
+
+        // Initialize table on load
+        window.onload = onViewModeChange;
+    </script>
+</body>
+</html>

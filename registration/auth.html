@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-[#0d0405] text-amber-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication & Player Portal - Pantheon Esports</title>
+    
+    <!-- Google Fonts: Cinzel & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="flex flex-col min-h-full font-sans antialiased bg-[#0d0405] text-amber-100/90 selection:bg-amber-500 selection:text-black">
+
+    <!-- Header Banner / Logo Branding -->
+    <header class="bg-gradient-to-b from-[#1a0507] via-[#120406] to-[#0d0405] border-b border-amber-500/30 pt-4 pb-4 shadow-2xl relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between pb-3 border-b border-amber-500/10">
+                <button onclick="toggleProfileDrawer()" class="flex items-center gap-2 px-3 py-1.5 bg-[#24070a] border border-amber-500/30 hover:border-amber-400 rounded-lg text-amber-300 transition-all duration-300 group">
+                    <svg class="w-5 h-5 text-amber-400 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    <span class="font-cinzel text-xs font-bold uppercase tracking-wider hidden sm:inline">Profile</span>
+                </button>
+                <div class="flex items-center gap-2 font-cinzel">
+                    <a href="/registration/auth.html" class="px-3 py-1.5 text-[10px] sm:text-xs font-bold uppercase tracking-wider text-amber-300 hover:text-white transition-colors">Sign In</a>
+                    <a href="/registration/auth.html" class="px-3.5 py-1.5 text-[10px] sm:text-xs font-extrabold uppercase tracking-wider text-black bg-gradient-to-r from-amber-400 to-amber-600 hover:brightness-110 rounded-lg shadow-[0_0_10px_rgba(245,158,11,0.3)] transition-all hover:scale-105">Register</a>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-center space-x-3 my-4">
+                <h1 class="font-cinzel text-3xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-600 tracking-widest uppercase drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]">Pantheon</h1>
+                <img class="h-10 sm:h-14 w-auto rounded-full border border-amber-500/40 object-contain drop-shadow-[0_2px_10px_rgba(245,158,11,0.5)] transition-transform duration-300 hover:scale-105" src="/images/logo.png" alt="pantheon_logo">
+            </div>
+            
+            <nav class="flex flex-nowrap justify-center items-center gap-1 sm:gap-4 border-t border-amber-500/20 pt-4 w-full max-w-4xl mx-auto font-cinzel overflow-x-auto whitespace-nowrap">
+                <a href="/index.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Home</a>
+                <a href="/pantheon/tournaments.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Tournaments</a>
+                <a href="/pantheonnetwork/network.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Network</a>
+                <a href="/pantheonstudios/studios.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Studio</a>
+                <a href="/pantheon/community.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Community</a>
+                <a href="/pantheon/store.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/75 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Store</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Slide-Out Profile Drawer -->
+    <div id="profile-drawer-backdrop" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden transition-opacity opacity-0" onclick="toggleProfileDrawer()"></div>
+    <div id="profile-drawer" class="fixed top-0 left-0 h-full w-80 bg-gradient-to-b from-[#1a0507] via-[#120406] to-[#0d0405] border-r border-amber-500/40 shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 flex flex-col justify-between p-6">
+        <div>
+            <div class="flex items-center justify-between pb-4 border-b border-amber-500/20">
+                <h3 class="font-cinzel text-lg font-black text-amber-300 uppercase tracking-wider">Player Profile</h3>
+                <button onclick="toggleProfileDrawer()" class="text-amber-400 hover:text-white font-cinzel text-lg">&times;</button>
+            </div>
+            <div class="my-6 p-4 bg-[#24070a]/60 border border-amber-500/30 rounded-xl space-y-2">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-amber-500/20 border border-amber-500/50 flex items-center justify-center font-cinzel font-bold text-amber-300">P</div>
+                    <div>
+                        <p class="font-cinzel text-xs font-bold text-amber-200">Guest Player</p>
+                        <p class="text-[10px] text-amber-100/50">Not Signed In</p>
+                    </div>
+                </div>
+            </div>
+            <ul class="space-y-2 font-cinzel text-xs">
+                <li><a href="/registration/auth.html" class="flex items-center gap-3 p-3 rounded-lg bg-[#24070a]/40 border border-amber-500/20 hover:border-amber-400 text-amber-200 transition-all"><span>🛡️</span> My Profile & Stats</a></li>
+                <li><a href="/pantheon/tournaments.html" class="flex items-center gap-3 p-3 rounded-lg bg-[#24070a]/40 border border-amber-500/20 hover:border-amber-400 text-amber-200 transition-all"><span>⚔️</span> Roster Registrations</a></li>
+                <li><a href="/pantheonnetwork/network.html" class="flex items-center gap-3 p-3 rounded-lg bg-[#24070a]/40 border border-amber-500/20 hover:border-amber-400 text-amber-200 transition-all"><span>⛏️</span> SMP Account Link</a></li>
+            </ul>
+        </div>
+        <div class="pt-4 border-t border-amber-500/20 font-cinzel">
+            <a href="/registration/auth.html" class="block text-center w-full py-3 bg-gradient-to-r from-amber-400 to-amber-600 text-black font-extrabold uppercase text-xs rounded-lg shadow-[0_0_12px_rgba(245,158,11,0.3)]">Sign In / Register</a>
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <div class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 flex items-center justify-center">
+        <div class="w-full max-w-xl bg-gradient-to-b from-[#1b0609] via-[#140507] to-[#0f0406] p-6 sm:p-10 rounded-xl border border-amber-500/30 shadow-[0_0_35px_rgba(139,0,0,0.35)] space-y-6">
+            
+            <div class="flex border-b border-amber-500/20 font-cinzel">
+                <button id="tab-login-btn" onclick="switchTab('login')" class="flex-1 py-3 text-xs sm:text-sm font-extrabold uppercase tracking-wider border-b-2 border-amber-400 text-amber-400 transition-all duration-200">
+                    Sign In
+                </button>
+                <button id="tab-register-btn" onclick="switchTab('register')" class="flex-1 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider border-b-2 border-transparent text-amber-100/50 hover:text-amber-300 transition-all duration-200">
+                    Register Roster
+                </button>
+            </div>
+
+            <!-- FORM 1: LOGIN -->
+            <form id="form-login" class="space-y-4" onsubmit="handleAuthSubmit(event, 'login')">
+                <div class="space-y-1">
+                    <label class="block font-cinzel text-xs font-bold uppercase text-amber-300 tracking-wider">Player IGN / Email</label>
+                    <input type="text" required placeholder="e.g. Ares_MLBB or player@pantheon.com" class="w-full bg-[#0d0405] border border-amber-500/30 rounded-lg px-4 py-2.5 text-xs text-amber-100 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 placeholder-amber-100/30">
+                </div>
+
+                <div class="space-y-1">
+                    <div class="flex justify-between items-center">
+                        <label class="block font-cinzel text-xs font-bold uppercase text-amber-300 tracking-wider">Password</label>
+                        <a href="#" class="text-[11px] text-amber-400/80 hover:text-amber-300 underline font-cinzel">Forgot Password?</a>
+                    </div>
+                    <input type="password" required placeholder="••••••••" class="w-full bg-[#0d0405] border border-amber-500/30 rounded-lg px-4 py-2.5 text-xs text-amber-100 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 placeholder-amber-100/30">
+                </div>
+
+                <button type="submit" class="font-cinzel w-full py-3.5 bg-gradient-to-r from-amber-400 to-amber-600 hover:from-amber-300 hover:to-amber-500 text-black font-black uppercase tracking-wider text-xs rounded-lg transition-all duration-300 hover:scale-[1.01] shadow-[0_0_15px_rgba(245,158,11,0.3)] mt-2">
+                    Enter Portal ⚔️
+                </button>
+            </form>
+
+            <!-- FORM 2: REGISTER -->
+            <form id="form-register" class="space-y-4 hidden" onsubmit="handleAuthSubmit(event, 'register')">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="space-y-1">
+                        <label class="block font-cinzel text-xs font-bold uppercase text-amber-300 tracking-wider">Team Name</label>
+                        <input type="text" required placeholder="e.g. Olympus Titans" class="w-full bg-[#0d0405] border border-amber-500/30 rounded-lg px-4 py-2.5 text-xs text-amber-100 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 placeholder-amber-100/30">
+                    </div>
+                    <div class="space-y-1">
+                        <label class="block font-cinzel text-xs font-bold uppercase text-amber-300 tracking-wider">Primary Game</label>
+                        <select class="w-full bg-[#0d0405] border border-amber-500/30 rounded-lg px-4 py-2.5 text-xs text-amber-100 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400">
+                            <option value="mlbb">MLBB (Heroes of Olympus)</option>
+                            <option value="smp">Minecraft SMP Player</option>
+                            <option value="codm">CODM Roster</option>
+                            <option value="other">Other Title</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="space-y-1">
+                    <label class="block font-cinzel text-xs font-bold uppercase text-amber-300 tracking-wider">Captain / Manager IGN</label>
+                    <input type="text" required placeholder="e.g. Captain_Zeus" class="w-full bg-[#0d0405] border border-amber-500/30 rounded-lg px-4 py-2.5 text-xs text-amber-100 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 placeholder-amber-100/30">
+                </div>
+
+                <div class="space-y-1">
+                    <label class="block font-cinzel text-xs font-bold uppercase text-amber-300 tracking-wider">Email Address</label>
+                    <input type="email" required placeholder="manager@teamdomain.com" class="w-full bg-[#0d0405] border border-amber-500/30 rounded-lg px-4 py-2.5 text-xs text-amber-100 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 placeholder-amber-100/30">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="space-y-1">
+                        <label class="block font-cinzel text-xs font-bold uppercase text-amber-300 tracking-wider">Password</label>
+                        <input type="password" required placeholder="••••••••" class="w-full bg-[#0d0405] border border-amber-500/30 rounded-lg px-4 py-2.5 text-xs text-amber-100 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 placeholder-amber-100/30">
+                    </div>
+                    <div class="space-y-1">
+                        <label class="block font-cinzel text-xs font-bold uppercase text-amber-300 tracking-wider">Confirm Password</label>
+                        <input type="password" required placeholder="••••••••" class="w-full bg-[#0d0405] border border-amber-500/30 rounded-lg px-4 py-2.5 text-xs text-amber-100 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 placeholder-amber-100/30">
+                    </div>
+                </div>
+
+                <button type="submit" class="font-cinzel w-full py-3.5 bg-gradient-to-r from-amber-400 to-amber-600 hover:from-amber-300 hover:to-amber-500 text-black font-black uppercase tracking-wider text-xs rounded-lg transition-all duration-300 hover:scale-[1.01] shadow-[0_0_15px_rgba(245,158,11,0.3)] mt-2">
+                    Register Roster & Account 🏆
+                </button>
+            </form>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#080203] border-t border-amber-500/20 text-amber-100/50 py-6 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs space-y-2">
+            <p class="font-cinzel font-bold text-amber-400 tracking-widest uppercase">&copy; 2026 Pantheon Esports Organization. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        function toggleProfileDrawer() {
+            const drawer = document.getElementById('profile-drawer');
+            const backdrop = document.getElementById('profile-drawer-backdrop');
+            
+            if (drawer.classList.contains('-translate-x-full')) {
+                drawer.classList.remove('-translate-x-full');
+                backdrop.classList.remove('hidden');
+                setTimeout(() => backdrop.classList.remove('opacity-0'), 10);
+            } else {
+                drawer.classList.add('-translate-x-full');
+                backdrop.classList.add('opacity-0');
+                setTimeout(() => backdrop.classList.add('hidden'), 300);
+            }
+        }
+
+        function switchTab(tab) {
+            const loginForm = document.getElementById('form-login');
+            const registerForm = document.getElementById('form-register');
+            const loginBtn = document.getElementById('tab-login-btn');
+            const registerBtn = document.getElementById('tab-register-btn');
+
+            if (tab === 'login') {
+                loginForm.classList.remove('hidden');
+                registerForm.classList.add('hidden');
+                loginBtn.className = "flex-1 py-3 text-xs sm:text-sm font-extrabold uppercase tracking-wider border-b-2 border-amber-400 text-amber-400 transition-all duration-200";
+                registerBtn.className = "flex-1 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider border-b-2 border-transparent text-amber-100/50 hover:text-amber-300 transition-all duration-200";
+            } else {
+                loginForm.classList.add('hidden');
+                registerForm.classList.remove('hidden');
+                registerBtn.className = "flex-1 py-3 text-xs sm:text-sm font-extrabold uppercase tracking-wider border-b-2 border-amber-400 text-amber-400 transition-all duration-200";
+                loginBtn.className = "flex-1 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider border-b-2 border-transparent text-amber-100/50 hover:text-amber-300 transition-all duration-200";
+            }
+        }
+
+        function handleAuthSubmit(event, type) {
+            event.preventDefault();
+            alert(`${type === 'login' ? 'Login' : 'Registration'} submitted!`);
+        }
+    </script>
+</body>
+</html>
