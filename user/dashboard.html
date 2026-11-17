@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-[#0d0405] text-amber-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Dashboard - Pantheon Esports</title>
+    
+    <!-- Google Fonts: Cinzel & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="flex flex-col min-h-full font-sans antialiased bg-[#0d0405] text-amber-100/90 selection:bg-amber-500 selection:text-black">
+
+    <!-- Header Banner / Logo Branding -->
+    <header class="bg-gradient-to-b from-[#1a0507] via-[#120406] to-[#0d0405] border-b border-amber-500/30 pt-4 pb-4 shadow-2xl relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- Top Utility Bar: Hamburger Profile (Left) & Auth Buttons (Right) -->
+            <div class="flex items-center justify-between pb-3 border-b border-amber-500/10">
+                <button onclick="toggleProfileDrawer()" class="flex items-center gap-2 px-3 py-1.5 bg-[#24070a] border border-amber-500/30 hover:border-amber-400 rounded-lg text-amber-300 transition-all duration-300 group cursor-pointer">
+                    <svg class="w-5 h-5 text-amber-400 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    <span class="font-cinzel text-xs font-bold uppercase tracking-wider hidden sm:inline">Profile</span>
+                </button>
+
+                <div class="flex items-center gap-2 font-cinzel">
+                    <a href="../registration/auth.html" class="px-3 py-1.5 text-[10px] sm:text-xs font-bold uppercase tracking-wider text-amber-300 hover:text-white transition-colors">Sign In</a>
+                    <a href="../registration/auth.html" class="px-3.5 py-1.5 text-[10px] sm:text-xs font-extrabold uppercase tracking-wider text-black bg-gradient-to-r from-amber-400 to-amber-600 hover:brightness-110 rounded-lg shadow-[0_0_10px_rgba(245,158,11,0.3)] transition-all hover:scale-105">Register</a>
+                </div>
+            </div>
+
+            <!-- Logo Container -->
+            <div class="flex items-center justify-center space-x-3 my-4">
+                <h1 class="font-cinzel text-3xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-600 tracking-widest uppercase drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]">
+                    Pantheon
+                </h1>
+                <img class="h-10 sm:h-14 w-auto rounded-full border border-amber-500/40 object-contain drop-shadow-[0_2px_10px_rgba(245,158,11,0.5)] transition-transform duration-300 hover:scale-105" src="../images/logo.png" alt="pantheon_logo">
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="flex flex-nowrap justify-center items-center gap-1 sm:gap-4 border-t border-amber-500/20 pt-4 w-full max-w-4xl mx-auto font-cinzel overflow-x-auto whitespace-nowrap">
+                <a href="../index.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Home</a>
+                <a href="./tournaments.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Tournaments</a>
+                <a href="./stats.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Stats & Intel</a>
+                <a href="../pantheonnetwork/network.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Network</a>
+                <a href="../pantheonstudios/studios.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Studio</a>
+                <a href="./community.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Community</a>
+                <a href="./store.html" class="px-2.5 sm:px-4 py-1.5 text-[10px] sm:text-sm font-bold uppercase tracking-wider text-amber-200/70 hover:text-amber-400 hover:bg-amber-500/10 rounded transition-all duration-300 hover:-translate-y-0.5">Store</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Slide-Out Profile Drawer -->
+    <div id="profile-drawer-backdrop" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden transition-opacity opacity-0 pointer-events-none" onclick="toggleProfileDrawer()"></div>
+    <div id="profile-drawer" class="fixed top-0 left-0 h-full w-80 bg-gradient-to-b from-[#1a0507] via-[#120406] to-[#0d0405] border-r border-amber-500/40 shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 flex flex-col justify-between p-6">
+        <div>
+            <div class="flex items-center justify-between pb-4 border-b border-amber-500/20">
+                <h3 class="font-cinzel text-lg font-black text-amber-300 uppercase tracking-wider">Player Profile</h3>
+                <button onclick="toggleProfileDrawer()" class="text-amber-400 hover:text-white font-cinzel text-lg cursor-pointer">&times;</button>
+            </div>
+            <div class="my-6 p-4 bg-[#24070a]/60 border border-amber-500/30 rounded-xl space-y-2">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-amber-500/20 border border-amber-500/50 flex items-center justify-center font-cinzel font-bold text-amber-300">A</div>
+                    <div>
+                        <p class="font-cinzel text-xs font-bold text-amber-200">Ares_MLBB</p>
+                        <p class="text-[10px] text-emerald-400 font-semibold">● Online</p>
+                    </div>
+                </div>
+            </div>
+            <ul class="space-y-2 font-cinzel text-xs">
+                <li><a href="./dashboard.html" class="flex items-center gap-3 p-3 rounded-lg bg-amber-500/10 border border-amber-400 text-amber-300 font-bold transition-all"><span>⚔️</span> My Dashboard</a></li>
+                <li><a href="./stats.html" class="flex items-center gap-3 p-3 rounded-lg bg-[#24070a]/40 border border-amber-500/20 hover:border-amber-400 text-amber-200 transition-all"><span>📊</span> Global Standings</a></li>
+                <li><a href="./store.html" class="flex items-center gap-3 p-3 rounded-lg bg-[#24070a]/40 border border-amber-500/20 hover:border-amber-400 text-amber-200 transition-all"><span>💎</span> Manage Subscription</a></li>
+                <li><a href="../registration/auth.html" class="flex items-center gap-3 p-3 rounded-lg bg-[#24070a]/40 border border-amber-500/20 hover:border-amber-400 text-amber-200 transition-all"><span>🚪</span> Sign Out</a></li>
+            </ul>
+        </div>
+        <div class="pt-4 border-t border-amber-500/20 font-cinzel">
+            <a href="./store.html" class="block text-center w-full py-3 bg-gradient-to-r from-amber-400 to-amber-600 text-black font-extrabold uppercase text-xs rounded-lg shadow-[0_0_12px_rgba(245,158,11,0.3)]">Upgrade Scouting Pass</a>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
+
+        <!-- DEV PREVIEW BAR: Toggle Subscription Tier for UI Testing -->
+        <div class="bg-[#180507] border border-dashed border-amber-500/40 rounded-lg px-4 py-2.5 flex flex-wrap items-center justify-between gap-4 text-xs">
+            <div class="flex items-center gap-2">
+                <span class="px-2 py-0.5 bg-amber-500/20 text-amber-300 font-cinzel font-bold rounded text-[10px] uppercase">UI Preview Mode</span>
+                <span class="text-amber-100/70">Test how the dashboard reacts to different membership tiers:</span>
+            </div>
+            <div class="flex items-center gap-2 font-cinzel">
+                <button id="btn-tier-free" onclick="setSubscriptionTier('free')" class="px-3 py-1 rounded border border-amber-500/30 text-amber-200/70 hover:text-white transition-all cursor-pointer">Community Scout (Free)</button>
+                <button id="btn-tier-vip" onclick="setSubscriptionTier('vip')" class="px-3 py-1 rounded bg-amber-500 text-black font-bold transition-all cursor-pointer">VIP Scouting Pass ($9.99)</button>
+            </div>
+        </div>
+
+        <!-- SECTION 1: Player Identity, Team Roster & Subscription Status -->
+        <section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            
+            <!-- Player Profile & Personal Stats (Spans 2 cols on desktop) -->
+            <div class="lg:col-span-2 bg-gradient-to-b from-[#1b0609] via-[#140507] to-[#0f0406] border border-amber-500/30 rounded-xl p-6 sm:p-8 shadow-2xl flex flex-col justify-between space-y-6">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-amber-500/20 pb-5">
+                    <div class="flex items-center gap-4">
+                        <div class="w-16 h-16 rounded-full bg-gradient-to-br from-amber-400 to-amber-700 p-0.5 shadow-[0_0_15px_rgba(245,158,11,0.3)] shrink-0">
+                            <div class="w-full h-full bg-[#120406] rounded-full flex items-center justify-center font-cinzel text-2xl font-black text-amber-400">
+                                A
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h2 class="font-cinzel text-2xl sm:text-3xl font-black text-amber-300 tracking-wide">Ares_MLBB</h2>
+                                <span class="px-2 py-0.5 text-[10px] font-cinzel font-bold uppercase bg-amber-500/20 text-amber-300 border border-amber-500/30 rounded">Jungler</span>
+                            </div>
+                            <p class="text-xs text-amber-100/60 mt-1">Player ID: <span class="font-mono text-amber-200/80">#PNTH-0842</span> • Region: <span class="text-amber-200/80">South Africa</span></p>
+                        </div>
+                    </div>
+
+                    <!-- Active Team Pill -->
+                    <div class="bg-[#24070a] border border-amber-500/30 rounded-xl px-4 py-3 flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-lg bg-amber-500/10 border border-amber-500/40 flex items-center justify-center text-amber-400 font-cinzel font-black text-sm">
+                            OT
+                        </div>
+                        <div>
+                            <span class="block text-[10px] font-cinzel uppercase tracking-wider text-amber-400/70">Active Roster</span>
+                            <span class="font-cinzel text-sm font-bold text-amber-200">Olympus Titans</span>
+                            <span class="block text-[10px] text-emerald-400">Team Captain • Rank #1</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Personal Season Stats Grid -->
+                <div>
+                    <span class="block font-cinzel text-xs font-bold uppercase tracking-widest text-amber-400/80 mb-3">Heroes of Olympus • Season 1 Personal Stats</span>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                        <div class="bg-[#0d0405] border border-amber-500/20 rounded-lg p-4 text-center">
+                            <span class="block text-[10px] font-cinzel uppercase text-amber-100/50">Season KDA</span>
+                            <span class="font-cinzel text-2xl font-black text-amber-400 mt-1 block">6.84</span>
+                            <span class="text-[10px] text-emerald-400">Top 3% League</span>
+                        </div>
+                        <div class="bg-[#0d0405] border border-amber-500/20 rounded-lg p-4 text-center">
+                            <span class="block text-[10px] font-cinzel uppercase text-amber-100/50">Win Rate</span>
+                            <span class="font-cinzel text-2xl font-black text-amber-200 mt-1 block">78.5%</span>
+                            <span class="text-[10px] text-amber-100/50">11W - 3L</span>
+                        </div>
+                        <div class="bg-[#0d0405] border border-amber-500/20 rounded-lg p-4 text-center">
+                            <span class="block text-[10px] font-cinzel uppercase text-amber-100/50">Avg GPM</span>
+                            <span class="font-cinzel text-2xl font-black text-amber-200 mt-1 block">742</span>
+                            <span class="text-[10px] text-amber-100/50">Gold / Min</span>
+                        </div>
+                        <div class="bg-[#0d0405] border border-amber-500/20 rounded-lg p-4 text-center">
+                            <span class="block text-[10px] font-cinzel uppercase text-amber-100/50">MVP Awards</span>
+                            <span class="font-cinzel text-2xl font-black text-amber-400 mt-1 block">5</span>
+                            <span class="text-[10px] text-amber-100/50">14 Matches</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subscription Status Card -->
+            <div id="sub-card" class="bg-gradient-to-b from-[#320a0e] to-[#1a0507] border border-amber-500/50 rounded-xl p-6 sm:p-8 shadow-2xl flex flex-col justify-between space-y-6">
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="font-cinzel text-xs font-bold uppercase tracking-widest text-amber-400/80">Membership</span>
+                        <span id="sub-badge" class="font-cinzel text-[10px] font-black uppercase bg-amber-500 text-black px-2.5 py-0.5 rounded tracking-wider">Active VIP</span>
+                    </div>
+                    
+                    <div>
+                        <h3 id="sub-title" class="font-cinzel text-2xl font-black text-amber-300">VIP Scouting Pass</h3>
+                        <p id="sub-price" class="text-xs text-amber-100/60 mt-1">$9.99 / month • Next billing: Dec 17, 2026</p>
+                    </div>
+
+                    <ul id="sub-perks" class="space-y-2 text-xs text-amber-100/85 border-t border-amber-500/20 pt-4">
+                        <li class="flex items-center gap-2"><span class="text-emerald-400">✔</span> Full Team & Player Scouting Database</li>
+                        <li class="flex items-center gap-2"><span class="text-emerald-400">✔</span> Deep Hero Pool, Ban Rates & GPM Metrics</li>
+                        <li class="flex items-center gap-2"><span class="text-emerald-400">✔</span> Priority Scrim Finder & VIP Discord Role</li>
+                    </ul>
+                </div>
+
+                <div id="sub-action-area" class="pt-2">
+                    <a href="./store.html" class="font-cinzel block w-full text-center py-3 bg-[#24070a] border border-amber-500/40 hover:border-amber-400 text-amber-300 font-bold uppercase tracking-wider text-xs rounded-lg transition-all">
+                        Manage Subscription
+                    </a>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- SECTION 2: Team Roster Overview -->
+        <section class="bg-gradient-to-b from-[#1b0609] via-[#140507] to-[#0f0406] border border-amber-500/30 rounded-xl p-6 shadow-xl space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-amber-500/20 pb-4">
+                <div>
+                    <span class="font-cinzel text-[10px] text-amber-400/80 uppercase tracking-widest font-bold">Squad Lineup</span>
+                    <h3 class="font-cinzel text-xl font-black text-amber-300 uppercase">Olympus Titans • Starting Roster</h3>
+                </div>
+                <div class="text-xs text-amber-100/60 font-cinzel">
+                    Division: <span class="text-amber-300 font-bold">Heroes of Olympus Premier</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                <div class="bg-[#0d0405] border border-amber-500/30 rounded-lg p-3.5 flex items-center justify-between">
+                    <div>
+                        <span class="text-[10px] font-cinzel uppercase text-amber-400 font-bold">Jungler (C)</span>
+                        <p class="font-bold text-sm text-amber-100">Ares_MLBB</p>
+                    </div>
+                    <span class="font-mono text-xs text-emerald-400">6.84 KDA</span>
+                </div>
+                <div class="bg-[#0d0405] border border-amber-500/20 rounded-lg p-3.5 flex items-center justify-between">
+                    <div>
+                        <span class="text-[10px] font-cinzel uppercase text-amber-100/50 font-bold">Mid Lane</span>
+                        <p class="font-bold text-sm text-amber-100">AthenaValkyrie</p>
+                    </div>
+                    <span class="font-mono text-xs text-amber-300">6.12 KDA</span>
+                </div>
+                <div class="bg-[#0d0405] border border-amber-500/20 rounded-lg p-3.5 flex items-center justify-between">
+                    <div>
+                        <span class="text-[10px] font-cinzel uppercase text-amber-100/50 font-bold">Gold Lane</span>
+                        <p class="font-bold text-sm text-amber-100">ApolloStrike</p>
+                    </div>
+                    <span class="font-mono text-xs text-amber-300">5.90 KDA</span>
+                </div>
+                <div class="bg-[#0d0405] border border-amber-500/20 rounded-lg p-3.5 flex items-center justify-between">
+                    <div>
+                        <span class="text-[10px] font-cinzel uppercase text-amber-100/50 font-bold">EXP Lane</span>
+                        <p class="font-bold text-sm text-amber-100">KratosForge</p>
+                    </div>
+                    <span class="font-mono text-xs text-amber-300">4.75 KDA</span>
+                </div>
+                <div class="bg-[#0d0405] border border-amber-500/20 rounded-lg p-3.5 flex items-center justify-between">
+                    <div>
+                        <span class="text-[10px] font-cinzel uppercase text-amber-100/50 font-bold">Roamer</span>
+                        <p class="font-bold text-sm text-amber-100">HermesDash</p>
+                    </div>
+                    <span class="font-mono text-xs text-amber-300">5.40 KDA</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: GATED VIP SCOUTING DATABASE (Teams & Players) -->
+        <section class="space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-amber-500/20 pb-4">
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="font-cinzel text-xs text-amber-400/80 uppercase tracking-widest font-bold">VIP Scouting Intelligence</span>
+                        <span id="db-lock-badge" class="px-2 py-0.5 text-[10px] font-cinzel font-black uppercase bg-emerald-950 text-emerald-400 border border-emerald-500/40 rounded">Unlocked</span>
+                    </div>
+                    <h3 class="font-cinzel text-2xl font-black text-amber-400 uppercase tracking-wide mt-1">Team & Player Database</h3>
+                </div>
+
+                <!-- Database Controls (Search & View Toggle) -->
+                <div id="db-controls" class="flex flex-wrap items-center gap-3 font-cinzel">
+                    <div class="inline-flex rounded-lg bg-[#180507] border border-amber-500/30 p-1">
+                        <button id="db-tab-players" onclick="switchDbView('players')" class="px-3 py-1.5 text-xs font-bold uppercase rounded bg-amber-500 text-black transition-all cursor-pointer">Players</button>
+                        <button id="db-tab-teams" onclick="switchDbView('teams')" class="px-3 py-1.5 text-xs font-bold uppercase rounded text-amber-200/70 hover:text-amber-300 transition-all cursor-pointer">Teams</button>
+                    </div>
+                    <input id="db-search" type="text" oninput="renderDatabase()" placeholder="Search IGN, team, or role..." class="bg-[#0d0405] border border-amber-500/30 rounded-lg px-3.5 py-2 text-xs font-sans text-amber-100 focus:outline-none focus:border-amber-400 placeholder-amber-100/30 w-56">
+                </div>
+            </div>
+
+            <!-- Database Container (Relative wrapper for Lock Overlay) -->
+            <div class="relative rounded-xl border border-amber-500/30 bg-gradient-to-b from-[#1b0609] to-[#0f0406] overflow-hidden shadow-2xl">
+                
+                <!-- LOCKED OVERLAY (Shown when user is on Free Tier) -->
+                <div id="db-locked-overlay" class="hidden absolute inset-0 z-20 bg-[#0d0405]/85 backdrop-blur-md flex flex-col items-center justify-center p-6 text-center">
+                    <div class="max-w-md space-y-4 bg-gradient-to-b from-[#320a0e] to-[#1a0507] border border-amber-500/50 p-8 rounded-2xl shadow-[0_0_40px_rgba(0,0,0,0.9)]">
+                        <div class="w-14 h-14 mx-auto rounded-full bg-amber-500/15 border border-amber-400/50 flex items-center justify-center text-amber-400 text-2xl shadow-[0_0_15px_rgba(245,158,11,0.3)]">
+                            🔒
+                        </div>
+                        <span class="font-cinzel text-[10px] font-black uppercase bg-amber-500 text-black px-2.5 py-0.5 rounded tracking-widest">VIP Scouting Pass Required</span>
+                        <h4 class="font-cinzel text-2xl font-black text-amber-300 uppercase">Unlock Full Scouting Database</h4>
+                        <p class="text-xs text-amber-100/80 leading-relaxed">
+                            Your current plan (<strong class="text-amber-300">Community Scout - Free</strong>) does not include access to the competitive scouting database. Upgrade to the <strong class="text-amber-300">VIP Scouting Pass</strong> to inspect opponent KDA matrices, hero pools, ban priorities, and team win rates.
+                        </p>
+                        <a href="./store.html" class="font-cinzel block w-full py-3.5 bg-gradient-to-r from-amber-400 to-amber-600 hover:brightness-110 text-black font-black uppercase tracking-wider text-xs rounded-lg shadow-[0_0_20px_rgba(245,158,11,0.4)] transition-all">
+                            Upgrade to VIP Pass ($9.99/mo) 🔓
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Data Table -->
+                <div id="db-table-wrapper" class="overflow-x-auto transition-all duration-300">
+                    <table class="w-full text-left border-collapse">
+                        <thead id="db-thead" class="bg-[#24070a] border-b border-amber-500/30 font-cinzel text-[11px] uppercase tracking-wider text-amber-300">
+                            <!-- Populated by JS -->
+                        </thead>
+                        <tbody id="db-tbody" class="divide-y divide-amber-500/15 text-xs">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#080203] border-t border-amber-500/20 text-amber-100/50 py-6 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs space-y-2">
+            <p class="font-cinzel font-bold text-amber-400 tracking-widest uppercase">&copy; 2026 Pantheon Esports Organization. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Mock Scouting Database Records
+        const scoutPlayers = [
+            { ign: "Ares_MLBB", team: "Olympus Titans", role: "Jungler", kda: "6.84", winRate: "78.5%", gpm: 742, topHeroes: "Ling, Lancelot, Hayabusa" },
+            { ign: "NyxShadow", team: "Celestial Knights", role: "Mid Lane", kda: "6.45", winRate: "73.3%", gpm: 685, topHeroes: "Valentina, Pharsa, Yve" },
+            { ign: "ZeusBolt", team: "Spartan Vanguard", role: "Gold Lane", kda: "6.10", winRate: "64.2%", gpm: 790, topHeroes: "Beatrix, Claude, Brody" },
+            { ign: "AthenaValkyrie", team: "Olympus Titans", role: "Mid Lane", kda: "6.12", winRate: "78.5%", gpm: 660, topHeroes: "Novaria, Faramis, Lylia" },
+            { ign: "HadesReaper", team: "Underworld Reapers", role: "EXP Lane", kda: "5.22", winRate: "57.1%", gpm: 640, topHeroes: "Yu Zhong, Terizla, Arlott" },
+            { ign: "PoseidonWave", team: "Oceanic Empire", role: "Roamer", kda: "5.65", winRate: "60.0%", gpm: 495, topHeroes: "Minotaur, Tigreal, Mathilda" },
+            { ign: "SolarisPrime", team: "Solar Flares", role: "Jungler", kda: "5.88", winRate: "61.5%", gpm: 728, topHeroes: "Fanny, Nolan, Fredrinn" },
+            { ign: "VoidWalkerX", team: "Void Walkers", role: "Gold Lane", kda: "5.41", winRate: "53.8%", gpm: 765, topHeroes: "Karrie, Moskov, Wanwan" }
+        ];
+
+        const scoutTeams = [
+            { name: "Olympus Titans", tag: "OT", record: "11W - 3L", winRate: "78.5%", avgDuration: "14m 20s", objectiveRate: "84%", priorityBan: "Fanny, Mathilda" },
+            { name: "Celestial Knights", tag: "CK", record: "11W - 4L", winRate: "73.3%", avgDuration: "15m 45s", objectiveRate: "79%", priorityBan: "Valentina, Ling" },
+            { name: "Spartan Vanguard", tag: "SV", record: "9W - 5L", winRate: "64.2%", avgDuration: "16m 10s", objectiveRate: "71%", priorityBan: "Nolan, Tigreal" },
+            { name: "Solar Flares", tag: "SF", record: "8W - 5L", winRate: "61.5%", avgDuration: "15m 05s", objectiveRate: "68%", priorityBan: "Hayabusa, Luo Yi" },
+            { name: "Oceanic Empire", tag: "OE", record: "9W - 6L", winRate: "60.0%", avgDuration: "17m 30s", objectiveRate: "65%", priorityBan: "Arlott, Beatrix" },
+            { name: "Underworld Reapers", tag: "UR", record: "8W - 6L", winRate: "57.1%", avgDuration: "16m 50s", objectiveRate: "62%", priorityBan: "Faramis, Fredrinn" }
+        ];
+
+        let currentTier = 'vip'; // 'vip' or 'free'
+        let currentDbView = 'players'; // 'players' or 'teams'
+
+        function toggleProfileDrawer() {
+            const drawer = document.getElementById('profile-drawer');
+            const backdrop = document.getElementById('profile-drawer-backdrop');
+            
+            if (drawer.classList.contains('-translate-x-full')) {
+                drawer.classList.remove('-translate-x-full');
+                backdrop.classList.remove('hidden');
+                backdrop.classList.remove('pointer-events-none');
+                setTimeout(() => backdrop.classList.remove('opacity-0'), 10);
+            } else {
+                drawer.classList.add('-translate-x-full');
+                backdrop.classList.add('opacity-0');
+                backdrop.classList.add('pointer-events-none');
+                setTimeout(() => backdrop.classList.add('hidden'), 300);
+            }
+        }
+
+        function setSubscriptionTier(tier) {
+            currentTier = tier;
+
+            const btnFree = document.getElementById('btn-tier-free');
+            const btnVip = document.getElementById('btn-tier-vip');
+
+            const subBadge = document.getElementById('sub-badge');
+            const subTitle = document.getElementById('sub-title');
+            const subPrice = document.getElementById('sub-price');
+            const subPerks = document.getElementById('sub-perks');
+            const subActionArea = document.getElementById('sub-action-area');
+
+            const dbLockBadge = document.getElementById('db-lock-badge');
+            const dbOverlay = document.getElementById('db-locked-overlay');
+            const dbWrapper = document.getElementById('db-table-wrapper');
+            const dbControls = document.getElementById('db-controls');
+
+            if (tier === 'vip') {
+                // Toggle buttons styling
+                btnVip.className = "px-3 py-1 rounded bg-amber-500 text-black font-bold transition-all cursor-pointer";
+                btnFree.className = "px-3 py-1 rounded border border-amber-500/30 text-amber-200/70 hover:text-white transition-all cursor-pointer";
+
+                // Subscription Card UI
+                subBadge.className = "font-cinzel text-[10px] font-black uppercase bg-amber-500 text-black px-2.5 py-0.5 rounded tracking-wider";
+                subBadge.innerText = "Active VIP";
+                subTitle.innerText = "VIP Scouting Pass";
+                subPrice.innerText = "$9.99 / month • Next billing: Dec 17, 2026";
+                subPerks.innerHTML = `
+                    <li class="flex items-center gap-2"><span class="text-emerald-400">✔</span> Full Team & Player Scouting Database</li>
+                    <li class="flex items-center gap-2"><span class="text-emerald-400">✔</span> Deep Hero Pool, Ban Rates & GPM Metrics</li>
+                    <li class="flex items-center gap-2"><span class="text-emerald-400">✔</span> Priority Scrim Finder & VIP Discord Role</li>
+                `;
+                subActionArea.innerHTML = `
+                    <a href="./store.html" class="font-cinzel block w-full text-center py-3 bg-[#24070a] border border-amber-500/40 hover:border-amber-400 text-amber-300 font-bold uppercase tracking-wider text-xs rounded-lg transition-all">
+                        Manage Subscription
+                    </a>
+                `;
+
+                // Unlock Database
+                dbLockBadge.className = "px-2 py-0.5 text-[10px] font-cinzel font-black uppercase bg-emerald-950 text-emerald-400 border border-emerald-500/40 rounded";
+                dbLockBadge.innerText = "Unlocked";
+                dbOverlay.classList.add('hidden');
+                dbWrapper.classList.remove('blur-sm', 'select-none', 'pointer-events-none', 'min-h-[340px]');
+                dbControls.classList.remove('opacity-40', 'pointer-events-none');
+            } else {
+                // Toggle buttons styling
+                btnFree.className = "px-3 py-1 rounded bg-amber-500 text-black font-bold transition-all cursor-pointer";
+                btnVip.className = "px-3 py-1 rounded border border-amber-500/30 text-amber-200/70 hover:text-white transition-all cursor-pointer";
+
+                // Subscription Card UI
+                subBadge.className = "font-cinzel text-[10px] font-bold uppercase bg-amber-500/15 text-amber-300/80 border border-amber-500/30 px-2.5 py-0.5 rounded tracking-wider";
+                subBadge.innerText = "Free Tier";
+                subTitle.innerText = "Community Scout";
+                subPrice.innerText = "Free Plan • Basic Tournament Access";
+                subPerks.innerHTML = `
+                    <li class="flex items-center gap-2"><span class="text-emerald-400">✔</span> Public Match Results & Standings</li>
+                    <li class="flex items-center gap-2 text-amber-100/40"><span>✖</span> Full Team & Player Scouting Database</li>
+                    <li class="flex items-center gap-2 text-amber-100/40"><span>✖</span> Hero Pool, Ban Rates & GPM Metrics</li>
+                `;
+                subActionArea.innerHTML = `
+                    <a href="./store.html" class="font-cinzel block w-full text-center py-3 bg-gradient-to-r from-amber-400 to-amber-600 hover:brightness-110 text-black font-black uppercase tracking-wider text-xs rounded-lg shadow-[0_0_15px_rgba(245,158,11,0.35)] transition-all">
+                        Upgrade to VIP Pass 🔓
+                    </a>
+                `;
+
+                // Lock Database
+                dbLockBadge.className = "px-2 py-0.5 text-[10px] font-cinzel font-black uppercase bg-red-950 text-red-400 border border-red-500/40 rounded";
+                dbLockBadge.innerText = "Locked • VIP Only";
+                dbOverlay.classList.remove('hidden');
+                dbWrapper.classList.add('blur-sm', 'select-none', 'pointer-events-none', 'min-h-[340px]');
+                dbControls.classList.add('opacity-40', 'pointer-events-none');
+            }
+        }
+
+        function switchDbView(view) {
+            currentDbView = view;
+            const tabPlayers = document.getElementById('db-tab-players');
+            const tabTeams = document.getElementById('db-tab-teams');
+
+            if (view === 'players') {
+                tabPlayers.className = "px-3 py-1.5 text-xs font-bold uppercase rounded bg-amber-500 text-black transition-all cursor-pointer";
+                tabTeams.className = "px-3 py-1.5 text-xs font-bold uppercase rounded text-amber-200/70 hover:text-amber-300 transition-all cursor-pointer";
+            } else {
+                tabTeams.className = "px-3 py-1.5 text-xs font-bold uppercase rounded bg-amber-500 text-black transition-all cursor-pointer";
+                tabPlayers.className = "px-3 py-1.5 text-xs font-bold uppercase rounded text-amber-200/70 hover:text-amber-300 transition-all cursor-pointer";
+            }
+
+            renderDatabase();
+        }
+
+        function renderDatabase() {
+            const thead = document.getElementById('db-thead');
+            const tbody = document.getElementById('db-tbody');
+            const query = document.getElementById('db-search').value.toLowerCase().trim();
+
+            if (currentDbView === 'players') {
+                thead.innerHTML = `
+                    <tr>
+                        <th class="py-3.5 px-4">Player IGN</th>
+                        <th class="py-3.5 px-4">Team</th>
+                        <th class="py-3.5 px-4">Role</th>
+                        <th class="py-3.5 px-4">KDA</th>
+                        <th class="py-3.5 px-4">Win Rate</th>
+                        <th class="py-3.5 px-4">Avg GPM</th>
+                        <th class="py-3.5 px-4">Signature Hero Pool</th>
+                    </tr>
+                `;
+
+                const filtered = scoutPlayers.filter(p => 
+                    p.ign.toLowerCase().includes(query) || 
+                    p.team.toLowerCase().includes(query) || 
+                    p.role.toLowerCase().includes(query) ||
+                    p.topHeroes.toLowerCase().includes(query)
+                );
+
+                tbody.innerHTML = filtered.length ? filtered.map(p => `
+                    <tr class="hover:bg-amber-500/5 transition-colors">
+                        <td class="py-3.5 px-4 font-bold text-amber-200">${p.ign}</td>
+                        <td class="py-3.5 px-4 text-amber-100/80">${p.team}</td>
+                        <td class="py-3.5 px-4"><span class="px-2 py-0.5 rounded bg-[#24070a] border border-amber-500/30 text-amber-300 font-cinzel text-[10px] font-bold">${p.role}</span></td>
+                        <td class="py-3.5 px-4 font-mono font-bold text-emerald-400">${p.kda}</td>
+                        <td class="py-3.5 px-4 font-mono text-amber-200">${p.winRate}</td>
+                        <td class="py-3.5 px-4 font-mono text-amber-100/80">${p.gpm}</td>
+                        <td class="py-3.5 px-4 text-amber-100/70">${p.topHeroes}</td>
+                    </tr>
+                `).join('') : `<tr><td colspan="7" class="py-8 text-center text-amber-100/50 font-cinzel">No matching players found in database.</td></tr>`;
+
+            } else {
+                thead.innerHTML = `
+                    <tr>
+                        <th class="py-3.5 px-4">Team Roster</th>
+                        <th class="py-3.5 px-4">Tag</th>
+                        <th class="py-3.5 px-4">Match Record</th>
+                        <th class="py-3.5 px-4">Win Rate</th>
+                        <th class="py-3.5 px-4">Avg Game Time</th>
+                        <th class="py-3.5 px-4">Lord / Turtle Control</th>
+                        <th class="py-3.5 px-4">Target Bans Against</th>
+                    </tr>
+                `;
+
+                const filtered = scoutTeams.filter(t => 
+                    t.name.toLowerCase().includes(query) || 
+                    t.tag.toLowerCase().includes(query) ||
+                    t.priorityBan.toLowerCase().includes(query)
+                );
+
+                tbody.innerHTML = filtered.length ? filtered.map(t => `
+                    <tr class="hover:bg-amber-500/5 transition-colors">
+                        <td class="py-3.5 px-4 font-bold text-amber-200 font-cinzel">${t.name}</td>
+                        <td class="py-3.5 px-4"><span class="px-2 py-0.5 rounded bg-amber-500/15 border border-amber-500/30 text-amber-300 font-mono text-[11px] font-bold">${t.tag}</span></td>
+                        <td class="py-3.5 px-4 font-mono text-amber-100/80">${t.record}</td>
+                        <td class="py-3.5 px-4 font-mono font-bold text-emerald-400">${t.winRate}</td>
+                        <td class="py-3.5 px-4 font-mono text-amber-100/80">${t.avgDuration}</td>
+                        <td class="py-3.5 px-4 font-mono text-amber-300">${t.objectiveRate}</td>
+                        <td class="py-3.5 px-4 text-red-300/90">${t.priorityBan}</td>
+                    </tr>
+                `).join('') : `<tr><td colspan="7" class="py-8 text-center text-amber-100/50 font-cinzel">No matching teams found in database.</td></tr>`;
+            }
+        }
+
+        // Initialize on load
+        renderDatabase();
+        setSubscriptionTier('vip');
+    </script>
+
+</body>
+</html>
